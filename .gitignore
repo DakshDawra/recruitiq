@@ -1,0 +1,34 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dataset (too large for git — users download separately)
+*.jsonl
+*.jsonl.gz
+*.zip
+
+# Temporary analysis scripts
+analyze_data.py
+detect_patterns.py
+
+# Mac artifacts
+__MACOSX/
+
+# The provided challenge bundle (reference only, not part of our code)
+[PUB]*/
