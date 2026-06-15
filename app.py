@@ -622,13 +622,21 @@ if nav_page == "Intelligence Dashboard":
         # Candidate List Card
         st.markdown('<div class="bento-card">', unsafe_allow_html=True)
         
-        col_list_hdr, col_list_filters = st.columns([1.2, 1.8])
+        col_list_hdr, col_list_scope, col_list_filters = st.columns([1.2, 0.9, 0.9])
         with col_list_hdr:
             st.markdown('<h3 style="margin: 0; font-size: 20px;">AI Candidate Shortlist</h3>', unsafe_allow_html=True)
         
+        with col_list_scope:
+            view_scope = st.selectbox(
+                "Scope",
+                ["Top 10 Picks", "All 100 Shortlist"],
+                index=0,
+                label_visibility="collapsed"
+            )
+        
         with col_list_filters:
             # Search / Filter panel
-            search_query = st.text_input("Search", label_visibility="collapsed", placeholder="Search candidates by name, title, or skills...")
+            search_query = st.text_input("Search", label_visibility="collapsed", placeholder="Search name/skills...")
             
         st.markdown('<div style="height: 1px; background-color: #EAE8E4; margin: 16px 0;"></div>', unsafe_allow_html=True)
         
@@ -642,6 +650,9 @@ if nav_page == "Intelligence Dashboard":
                 or q in c.get('profile', {}).get('current_title', '').lower()
                 or any(q in s.get('name', '').lower() for s in c.get('skills', []))
             ]
+            
+        if view_scope == "Top 10 Picks":
+            filtered_candidates = filtered_candidates[:10]
 
         if not filtered_candidates:
             st.warning("No candidates matched your search criteria.")
