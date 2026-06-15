@@ -3,32 +3,65 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Virtual environment
-venv/
-.env/
-env/
+# C extensions
+*.so
 
-# IDE
-.vscode/
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# Streamlit
+.streamlit/config.toml
+.streamlit/secrets.toml
+
+# IDEs
 .idea/
+.vscode/
 *.swp
 *.swo
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Dataset (too large for git — users download separately)
+# Project specific data files (Too large for GitHub)
+candidates.jsonl
 *.jsonl
-*.jsonl.gz
-*.zip
-
-# Temporary analysis scripts
+*India_runs_data_and_ai_challenge*
 analyze_data.py
 detect_patterns.py
 
-# Mac artifacts
-__MACOSX/
+# Intermediate output logs & details
+honeypots_caught.json
+stuffers_filtered.json
+pipeline_stats.json
+top_100_details.json
+submission.csv
 
-# The provided challenge bundle (reference only, not part of our code)
-[PUB]*/
+# Temporary scratch scripts
+scratch/
+extract_prompt.py
+last_input.txt
+last_prompt.txt
+*.md
+!README.md
+!walkthrough.md
+!audit_report.md
