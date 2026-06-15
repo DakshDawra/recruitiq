@@ -1,0 +1,112 @@
+from config import PERSONA_WEIGHTS
+from pipeline.honeypot import is_honeypot
+from pipeline.coarse_filter import is_coarse_match
+from pipeline.scorers.technical import calculate_technical_score
+from pipeline.scorers.hiring_manager import calculate_hiring_manager_score
+from pipeline.scorers.culture_fit import calculate_culture_fit_score
+from pipeline.scorers.recruiter_ops import calculate_recruiter_ops_score
+from pipeline.scorers.logistics_education import calculate_logistics_education_score
+from pipeline.modifiers.semantic_similarity import apply_semantic_similarity
+from pipeline.modifiers.hard_disqualifiers import get_hard_disqualifier_multiplier
+
+def rank_candidates(candidates_generator, jd_text):
+    """
+    Core pipeline coordinator. Runs ingestion, honeypot filters, coarse filters,
+    calculates persona scores, computes semantic similarity boosts, sorts and ranks candidates.
+    Returns the top 100 ranked candidates and pipeline statistics.
+    """
+    scored_candidates = []
+    honeypot_details = []
+    stuffer_details = []
+    
+    # Track stats for the dashboard stats counters
+    stats = {
+        'total_scanned': 0,
+        'honeypots_blocked': 0,
+        'stuffers_filtered': 0
+    }
+    
+    for candidate in candidates_generator:
+        stats['total_scanned'] += 1
+        profile = candidate.get('profile', {})
+        
+        # 1. Honeypot check
+        if is_honeypot(candidate):
+            stats['honeypots_blocked'] += 1
+            honeypot_details.append({
+                'id': candidate.get('candidate_id', ''),
+                'name': profile.get('anonymized_name', 'Anonymous'),
+                'title': profile.get('current_title', ''),
+                'yoe': profile.get('years_of_experience', 0)
+            })
+            continue
+            
+        # 2. Coarse Heuristics Filter
+        if not is_coarse_match(candidate):
+            stats['stuffers_filtered'] += 1
+            stuffer_details.append({
+                'id': candidate.get('candidate_id', ''),
+                'name': profile.get('anonymized_name', 'Anonymous'),
+                'title': profile.get('current_title', ''),
+                'yoe': profile.get('years_of_experience', 0),
+                'skills': [s.get('name', '') for s in candidate.get('skills', [])[:3]]
+            })
+            continue
+            
+        # 3. Calculate Individual Persona Scores
+        tech = calculate_technical_score(candidate)
+        hiring_manager = calculate_hiring_manager_score(candidate)
+        culture_fit = calculate_culture_fit_score(candidate)
+        recruiter_ops = calculate_recruiter_ops_score(candidate)
+        logistics_edu = calculate_logistics_education_score(candidate)
+        
+        # Weighted Persona Sum
+        persona_sum = (
+            tech * PERSONA_WEIGHTS['technical'] +
+            hiring_manager * PERSONA_WEIGHTS['hiring_manager'] +
+            culture_fit * PERSONA_WEIGHTS['culture_fit'] +
+            recruiter_ops * PERSONA_WEIGHTS['recruiter_ops'] +
+            logistics_edu * (PERSONA_WEIGHTS['logistics'] + PERSONA_WEIGHTS['education'])
+        )
+        
+        # Store individual scores in candidate object for explainability & dashboard Plotly charts
+        candidate['scores'] = {
+            'technical': tech,
+            'hiring_manager': hiring_manager,
+            'culture_fit': culture_fit,
+            'recruiter_ops': recruiter_ops,
+            'logistics_education': logistics_edu,
+            'persona_sum': persona_sum
+        }
+        
+        scored_candidates.append(candidate)
+        
+    # 4. Apply TF-IDF Semantic similarity re-ranking on the high-potential pool
+    scored_candidates = apply_semantic_similarity(scored_candidates, jd_text)
+    
+    # 5. Calculate Final Composite Scores
+    for c in scored_candidates:
+        persona_sum = c['scores']['persona_sum']
+        boost = c.get('semantic_boost', 1.0)
+        mult, reason = get_hard_disqualifier_multiplier(c)
+        
+        c['final_score'] = round(float(persona_sum * boost * mult), 4)
+        if mult < 1.0:
+            c['hard_disqualified_reason'] = reason
+
+        
+    # 6. Sort by final score descending, breaking ties by candidate_id ascending (deterministic)
+    scored_candidates.sort(key=lambda x: (-x['final_score'], x.get('candidate_id', '')))
+    
+    # 7. Take top 100
+    top_100 = scored_candidates[:100]
+    
+    # Add ranking index (1-based)
+    for idx, c in enumerate(top_100):
+        c['rank'] = idx + 1
+    
+    # Attach detail lists to stats for audit logging
+    stats['honeypot_details'] = honeypot_details
+    stats['stuffer_details'] = stuffer_details
+        
+    return top_100, stats
