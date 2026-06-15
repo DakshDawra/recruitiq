@@ -1,0 +1,40 @@
+team_name: "AlphaBeta"
+primary_contact:
+  name: "Daksh Dawra"
+  email: "dakshdawra13@gmail.com"
+  phone: "+91 8858690000"
+team_members:
+  - name: "Daksh Dawra"
+    email: "dakshdawra13@gmail.com"
+    role: "Lead"
+  - name: "Adhya Varshney"
+    email: ""
+    role: "Member"
+  - name: "Chhavi"
+    email: ""
+    role: "Member"
+github_repo: "https://github.com/dakshdawra/recruitiq"
+sandbox_link: ""
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+compute:
+  platform: "Windows 11, Intel i5"
+  cpu_cores: 4
+  ram_gb: 16
+  python_version: "3.11"
+  os: "Windows 11"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+ai_tools_used:
+  - "Gemini"
+  - "Claude"
+  - "Cursor"
+ai_usage_summary: "Used AI assistants for code scaffolding, debugging, and documentation. All ranking logic, scoring formulas, and architectural decisions were designed and validated by the team. The pipeline runs fully offline with no AI API calls during ranking."
+methodology_summary: "Multi-persona consensus ranking engine with 5 virtual evaluators (Technical Interviewer, Hiring Manager, Culture-Fit Assessor, Recruiter Ops, Logistics/Education). Pipeline: JSONL streaming ingestion -> 9-rule honeypot immune system -> coarse heuristic filter -> per-persona scoring using all 23 redrob behavioral signals -> TF-IDF semantic similarity boost -> hard disqualifier modifiers -> weighted consensus ranking. Produces top-100 with per-candidate explainable reasoning. Runs in ~28s on CPU, well within 5-minute budget."
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
