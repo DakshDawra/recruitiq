@@ -219,7 +219,7 @@ st.markdown(f"<style>{''.join(css_code.splitlines())}</style>", unsafe_allow_htm
 
 # Helper function to load top 100 details
 @st.cache_data
-def load_top_100():
+def load_top_100(mtime):
     json_path = "top_100_details.json"
     if os.path.exists(json_path):
         with open(json_path, 'r', encoding='utf-8') as f:
@@ -325,7 +325,7 @@ def load_honeypot_stats(mtime_hp, mtime_st):
     return [], []
 
 # Load data
-candidates = load_top_100()
+candidates = load_top_100(get_mtime("top_100_details.json"))
 
 # Sidebar Header
 st.sidebar.markdown(
@@ -526,6 +526,12 @@ if nav_page == "Intelligence Dashboard":
                     # Save to top_100_details.json
                     with open("top_100_details.json", "w", encoding="utf-8") as fj:
                         json.dump(ranked_candidates, fj, indent=2, ensure_ascii=False)
+                        
+                    # Save honeypot and stuffer logs for dashboard
+                    with open("honeypots_caught.json", "w", encoding="utf-8") as fhp:
+                        json.dump(stats.get('honeypot_details', []), fhp, indent=2, ensure_ascii=False)
+                    with open("stuffers_filtered.json", "w", encoding="utf-8") as fst:
+                        json.dump(stats.get('stuffer_details', []), fst, indent=2, ensure_ascii=False)
                         
                     # Save to submission.csv
                     with open("submission.csv", "w", encoding="utf-8", newline="") as fcsv:
