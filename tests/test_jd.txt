@@ -1,0 +1,33 @@
+Job Title: Senior AI Engineer — Founding Team (Series A Startup)
+
+Company: NexaAI (Series A, $12M raised)
+
+Location: Noida / Pune (Hybrid — 3 days onsite)
+
+About the Role:
+We are looking for a Senior AI Engineer to join our founding engineering team. You will own the end-to-end ML pipeline — from data ingestion to production deployment. This is a hands-on IC role, not a management position.
+
+Must-Have Skills:
+- LLMs (GPT, Llama, Mistral) — fine-tuning, prompt engineering, evaluation
+- RAG architectures — chunking strategies, retrieval optimization, re-ranking
+- Vector databases — FAISS, Pinecone, Milvus, Qdrant
+- PyTorch or TensorFlow — model training, inference optimization
+- NLP — text classification, NER, summarization, embeddings
+- Python — production-grade code, not just notebooks
+
+Nice-to-Have:
+- Experience with LoRA/QLoRA/PEFT for efficient fine-tuning
+- MLOps tools — MLflow, Weights & Biases, DVC
+- Recommendation systems or information retrieval background
+- Hugging Face ecosystem (Transformers, Datasets, Hub)
+
+Experience: 5-9 years in ML/AI roles at product companies
+
+Do Not Want:
+- Pure consulting backgrounds (TCS, Infosys, Wipro, Accenture, Cognizant, Capgemini)
+- Title-chasers with <18 months average tenure
+- Computer vision or robotics specialists without NLP experience
+- Academic-only researchers with no production deployment experience
+
+Salary Range: 30-55 LPA
+Notice Period: Prefer <30 days, max 60 days
