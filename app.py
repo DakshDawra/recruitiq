@@ -1866,8 +1866,24 @@ elif nav_page == "🛡️ Honeypot Audit Logs":
         
         # Render table or list of honeypots in a scrollable container
         st.markdown('<h3 style="margin: 24px 0 12px 0; font-size: 18px;">Audit Logs</h3>', unsafe_allow_html=True)
+        
+        # Add live search input
+        search_query = st.text_input("🔍 Search Honeypots by ID, Declared Title, or Violation Reason:", key="hp_search_query")
+        
+        filtered_honeypots = honeypots
+        if search_query:
+            q = search_query.strip().lower()
+            filtered_honeypots = [
+                hp for hp in honeypots
+                if q in str(hp.get('id', '')).lower()
+                or q in str(hp.get('title', '')).lower()
+                or q in str(hp.get('reasons', '')).lower()
+            ]
+            
+        st.caption(f"💡 Showing top {min(100, len(filtered_honeypots))} of {len(filtered_honeypots)} matching records to maintain high performance.")
+        
         with st.container(height=600):
-            for hp in honeypots:
+            for hp in filtered_honeypots[:100]:
                 st.markdown(
                     f"""
                     <div class="bento-card" style="border-left: 5px solid #EF4444; margin-bottom: 12px;">
@@ -1914,8 +1930,24 @@ elif nav_page == "🔍 Keyword Stuffing Rules":
         
         # Render table or list of stuffers in scrollable container
         st.markdown('<h3 style="margin: 24px 0 12px 0; font-size: 18px;">Filtered Profiles Logs</h3>', unsafe_allow_html=True)
+        
+        # Add search query
+        search_query = st.text_input("🔍 Search Filtered Profiles by ID, Declared Title, or Skills:", key="stf_search_query")
+        
+        filtered_stuffers = stuffers
+        if search_query:
+            q = search_query.strip().lower()
+            filtered_stuffers = [
+                stf for stf in stuffers
+                if q in str(stf.get('id', '')).lower()
+                or q in str(stf.get('title', '')).lower()
+                or q in ", ".join(stf.get('skills', [])).lower()
+            ]
+            
+        st.caption(f"💡 Showing top {min(100, len(filtered_stuffers))} of {len(filtered_stuffers)} matching records to maintain high performance.")
+        
         with st.container(height=600):
-            for stf in stuffers:
+            for stf in filtered_stuffers[:100]:
                 st.markdown(
                     f"""
                     <div class="bento-card" style="border-left: 5px solid #F59E0B; margin-bottom: 12px;">
