@@ -1473,63 +1473,59 @@ elif nav_page == "🔍 Keyword Stuffing Rules":
             )
 
 elif nav_page == "🚀 Product Roadmap":
-    render_html(
-        """
-        <h1 style="margin-bottom: 4px; font-size: 32px;">🚀 RecruitIQ Product Roadmap & Monetization</h1>
-        <p style="color: #6B7280; font-size: 14px; margin-top: 0;">Enterprise-ready features designed to scale recruitment pipelines, monetize intelligence, and empower recruiting teams.</p>
-        <div style="height: 1px; background-color: #EAE8E4; margin: 20px 0;"></div>
-        """
+    st.markdown(
+        """<h1 style="margin-bottom: 4px; font-size: 32px;">🚀 RecruitIQ Product Roadmap & Monetization</h1>
+<p style="color: #6B7280; font-size: 14px; margin-top: 0;">Enterprise-ready features designed to scale recruitment pipelines, monetize intelligence, and empower recruiting teams.</p>
+<div style="height: 1px; background-color: #EAE8E4; margin: 20px 0;"></div>""",
+        unsafe_allow_html=True
     )
     
-    render_html(
-        """
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
-            <div class="stat-card" style="border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
-                <div style="font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 4px;">RecruitIQ Free</div>
-                <div style="font-size: 14px; color: #6B7280; margin-bottom: 16px;">For individual recruiters / basic sorting</div>
-                <div style="font-size: 24px; font-weight: 800; color: #111827; margin-bottom: 16px;">₹0 <span style="font-size: 14px; font-weight: 400; color: #6B7280;">/ forever</span></div>
-                <hr style="border: 0; border-top: 1px solid #E5E7EB; margin-bottom: 16px;"/>
-                <ul style="padding-left: 20px; font-size: 13px; color: #4B5563; line-height: 1.6; margin: 0;">
-                    <li>100K Candidate Batch Upload</li>
-                    <li>Consensus Weight Tuner</li>
-                    <li>Honeypot Audit Shield</li>
-                    <li>Keyword Stuffing Rules</li>
-                    <li>CSV Results Export</li>
-                </ul>
-            </div>
-            
-            <div class="stat-card" style="border: 2px solid #3B82F6; border-radius: 12px; padding: 20px; background: #EFF6FF; box-shadow: 0 10px 15px -3px rgba(59,130,246,0.1);">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <span style="font-size: 20px; font-weight: 700; color: #1E3A8A;">RecruitIQ Pro</span>
-                    <span style="background: #3B82F6; color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 9999px;">POPULAR</span>
-                </div>
-                <div style="font-size: 14px; color: #2563EB; margin-bottom: 16px;">For power recruiters & hiring managers</div>
-                <div style="font-size: 24px; font-weight: 800; color: #1E3A8A; margin-bottom: 16px;">₹2,999 <span style="font-size: 14px; font-weight: 400; color: #2563EB;">/ month</span></div>
-                <hr style="border: 0; border-top: 1px solid #BFDBFE; margin-bottom: 16px;"/>
-                <ul style="padding-left: 20px; font-size: 13px; color: #1E40AF; line-height: 1.6; margin: 0;">
-                    <li><b>Candidate Comparison Arena</b> (Interactive side-by-side radar analysis)</li>
-                    <li><b>Smart JD Analyzer</b> (Extract skills, experience levels, and disqualifiers automatically)</li>
-                    <li><b>Personalized AI Outreach</b> (One-click tailored recruiter outreach drafts)</li>
-                    <li>PDF Summary Reports</li>
-                </ul>
-            </div>
-            
-            <div class="stat-card" style="border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
-                <div style="font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 4px;">RecruitIQ Team</div>
-                <div style="font-size: 14px; color: #6B7280; margin-bottom: 16px;">For collaborative talent acquisition teams</div>
-                <div style="font-size: 24px; font-weight: 800; color: #111827; margin-bottom: 16px;">₹9,999 <span style="font-size: 14px; font-weight: 400; color: #6B7280;">/ month</span></div>
-                <hr style="border: 0; border-top: 1px solid #E5E7EB; margin-bottom: 16px;"/>
-                <ul style="padding-left: 20px; font-size: 13px; color: #4B5563; line-height: 1.6; margin: 0;">
-                    <li><b>Multi-JD Pipeline</b> (Evaluate candidate pool against multiple roles simultaneously)</li>
-                    <li><b>Historical Audit Trail</b> (Track rank improvements when profiles/GitHub update)</li>
-                    <li><b>Team Collaboration</b> (Recruiter sharing, comments, and rating reviews)</li>
-                    <li>Custom ATS Integrations (Greenhouse, Lever)</li>
-                </ul>
-            </div>
-        </div>
-        
-        <h3 style="margin-top: 32px; margin-bottom: 16px;">🛠️ Premium Features Interactive Sandbox</h3>
-        """
+    st.markdown(
+        """<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+<div class="stat-card" style="border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+<div style="font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 4px;">RecruitIQ Free</div>
+<div style="font-size: 14px; color: #6B7280; margin-bottom: 16px;">For individual recruiters / basic sorting</div>
+<div style="font-size: 24px; font-weight: 800; color: #111827; margin-bottom: 16px;">₹0 <span style="font-size: 14px; font-weight: 400; color: #6B7280;">/ forever</span></div>
+<hr style="border: 0; border-top: 1px solid #E5E7EB; margin-bottom: 16px;"/>
+<ul style="padding-left: 20px; font-size: 13px; color: #4B5563; line-height: 1.6; margin: 0;">
+<li>100K Candidate Batch Upload</li>
+<li>Consensus Weight Tuner</li>
+<li>Honeypot Audit Shield</li>
+<li>Keyword Stuffing Rules</li>
+<li>CSV Results Export</li>
+</ul>
+</div>
+<div class="stat-card" style="border: 2px solid #3B82F6; border-radius: 12px; padding: 20px; background: #EFF6FF; box-shadow: 0 10px 15px -3px rgba(59,130,246,0.1);">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+<span style="font-size: 20px; font-weight: 700; color: #1E3A8A;">RecruitIQ Pro</span>
+<span style="background: #3B82F6; color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 9999px;">POPULAR</span>
+</div>
+<div style="font-size: 14px; color: #2563EB; margin-bottom: 16px;">For power recruiters & hiring managers</div>
+<div style="font-size: 24px; font-weight: 800; color: #1E3A8A; margin-bottom: 16px;">₹2,999 <span style="font-size: 14px; font-weight: 400; color: #2563EB;">/ month</span></div>
+<hr style="border: 0; border-top: 1px solid #BFDBFE; margin-bottom: 16px;"/>
+<ul style="padding-left: 20px; font-size: 13px; color: #1E40AF; line-height: 1.6; margin: 0;">
+<li><b>Candidate Comparison Arena</b> (Interactive side-by-side radar analysis)</li>
+<li><b>Smart JD Analyzer</b> (Extract skills, experience levels, and disqualifiers automatically)</li>
+<li><b>Personalized AI Outreach</b> (One-click tailored recruiter outreach drafts)</li>
+<li>PDF Summary Reports</li>
+</ul>
+</div>
+<div class="stat-card" style="border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+<div style="font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 4px;">RecruitIQ Team</div>
+<div style="font-size: 14px; color: #6B7280; margin-bottom: 16px;">For collaborative talent acquisition teams</div>
+<div style="font-size: 24px; font-weight: 800; color: #111827; margin-bottom: 16px;">₹9,999 <span style="font-size: 14px; font-weight: 400; color: #6B7280;">/ month</span></div>
+<hr style="border: 0; border-top: 1px solid #E5E7EB; margin-bottom: 16px;"/>
+<ul style="padding-left: 20px; font-size: 13px; color: #4B5563; line-height: 1.6; margin: 0;">
+<li><b>Multi-JD Pipeline</b> (Evaluate candidate pool against multiple roles simultaneously)</li>
+<li><b>Historical Audit Trail</b> (Track rank improvements when profiles/GitHub update)</li>
+<li><b>Team Collaboration</b> (Recruiter sharing, comments, and rating reviews)</li>
+<li>Custom ATS Integrations (Greenhouse, Lever)</li>
+</ul>
+</div>
+</div>
+<h3 style="margin-top: 32px; margin-bottom: 16px;">🛠️ Premium Features Interactive Sandbox</h3>
+""",
+        unsafe_allow_html=True
     )
     
     # Showcase some visual mockups of these features
