@@ -327,6 +327,12 @@ def load_honeypot_stats(mtime_hp, mtime_st):
 # Load data
 candidates = load_top_100(get_mtime("top_100_details.json"))
 
+# Initialize session state for plans
+if 'current_tier' not in st.session_state:
+    st.session_state.current_tier = 'Free'
+if 'billing_freq' not in st.session_state:
+    st.session_state.billing_freq = 'Monthly'
+
 # Sidebar Header
 st.sidebar.markdown(
     """
@@ -336,6 +342,18 @@ st.sidebar.markdown(
             <path d="M25 8 L27 10 M27 8 L25 10" stroke="#F59E0B" stroke-width="2" />
         </svg>
         <span style="font-size: 22px; font-weight: 800; font-family: 'Public Sans', sans-serif; color: #1F2937;">RecruitIQ</span>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+current_tier = st.session_state.current_tier
+tier_colors = {"Free": "#6B7280", "Pro": "#6366F1", "Team": "#10B981"}
+st.sidebar.markdown(
+    f"""
+    <div style="margin-bottom: 20px; padding: 10px 14px; border: 1px solid #EAE8E4; border-radius: 12px; background-color: #FCFAF7; display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 11px; font-weight: 600; color: #4B5563; text-transform: uppercase;">Active Plan</span>
+        <span style="background-color: {tier_colors[current_tier]}15; color: {tier_colors[current_tier]}; padding: 3px 8px; border-radius: 9999px; font-size: 11px; font-weight: 700;">{current_tier.upper()}</span>
     </div>
     """,
     unsafe_allow_html=True
@@ -380,7 +398,7 @@ st.sidebar.markdown(
 st.sidebar.markdown("### Navigation")
 nav_page = st.sidebar.radio(
     "Navigation",
-    ["📋 Intelligence Dashboard", "🔬 Rank Robustness", "🧬 Skill Ecosystem", "📊 Pipeline X-Ray", "🛡️ Honeypot Audit Logs", "🔍 Keyword Stuffing Rules", "🚀 Product Roadmap"],
+    ["📋 Intelligence Dashboard", "📊 Candidate Arena", "👥 Team Workspace", "🔬 Rank Robustness", "🧬 Skill Ecosystem", "📊 Pipeline X-Ray", "🛡️ Honeypot Audit Logs", "🔍 Keyword Stuffing Rules", "🚀 Product Roadmap"],
     label_visibility="collapsed",
     key="nav_page"
 )
@@ -986,6 +1004,302 @@ if nav_page == "📋 Intelligence Dashboard":
         else:
             st.info("Select a candidate to view spotlight details.")
 
+elif nav_page == "📊 Candidate Arena":
+    st.markdown(
+        """
+        <h1 style="margin-bottom: 4px; font-size: 32px;">📊 Candidate Arena</h1>
+        <p style="color: #6B7280; font-size: 14px; margin-top: 0;">Compare candidate profiles side-by-side across persona dimensions and draft outreach emails.</p>
+        <div style="height: 1px; background-color: #EAE8E4; margin: 20px 0;"></div>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    if candidates:
+        # Multiple selection
+        selected_names = st.multiselect(
+            "Select 2 to 4 candidates to compare:",
+            [f"#{c['rank']} {c['profile']['anonymized_name']} ({c['candidate_id']})" for c in candidates],
+            default=[f"#{c['rank']} {c['profile']['anonymized_name']} ({c['candidate_id']})" for c in candidates[:3]],
+            max_selections=4,
+            key="arena_multiselect"
+        )
+        
+        if len(selected_names) < 2:
+            st.warning("Please select at least 2 candidates to compare.")
+        else:
+            # Load selected candidates data
+            arena_cands = []
+            for name_str in selected_names:
+                cid = name_str.split("(")[-1].replace(")", "")
+                cand = next((c for c in candidates if c['candidate_id'] == cid), None)
+                if cand:
+                    arena_cands.append(cand)
+            
+            # Radar chart comparison
+            st.markdown("### 📊 Persona Radar Comparison")
+            categories = ['Technical Depth', 'Hiring Manager Fit', 'Culture Fit', 'Recruiter Ops', 'Logistics/Edu']
+            fig_compare = go.Figure()
+            
+            colors_palette = ['#6366F1', '#F59E0B', '#10B981', '#EC4899']
+            for i, c in enumerate(arena_cands):
+                scores = c['scores']
+                r_vals = [
+                    scores.get('technical', 0.0),
+                    scores.get('hiring_manager', 0.0),
+                    scores.get('culture_fit', 0.0),
+                    scores.get('recruiter_ops', 0.0),
+                    scores.get('logistics_education', 0.0)
+                ]
+                fig_compare.add_trace(go.Scatterpolar(
+                    r=r_vals,
+                    theta=categories,
+                    fill='toself',
+                    name=f"#{c['rank']} {c['profile']['anonymized_name'].split()[0]}",
+                    line=dict(color=colors_palette[i % len(colors_palette)])
+                ))
+                
+            fig_compare.update_layout(
+                polar=dict(radialaxis=dict(visible=True, range=[0, 1], tickfont=dict(size=10))),
+                showlegend=True,
+                height=420,
+                paper_bgcolor='rgba(0,0,0,0)',
+                plot_bgcolor='rgba(0,0,0,0)',
+                font=dict(family='Inter'),
+                margin=dict(l=60, r=60, t=30, b=30),
+                legend=dict(orientation="h", yanchor="bottom", y=-0.15, xanchor="center", x=0.5)
+            )
+            st.plotly_chart(fig_compare, use_container_width=True)
+            
+            # side-by-side stats summary cards
+            st.markdown("### 📋 Side-by-Side Profile Summary")
+            cols = st.columns(len(arena_cands))
+            for i, c in enumerate(arena_cands):
+                with cols[i]:
+                    profile = c['profile']
+                    st.markdown(
+                        f"""
+                        <div class="bento-card" style="padding: 16px; border-top: 4px solid {colors_palette[i % len(colors_palette)]}; min-height: 250px;">
+                            <h4 style="margin: 0; font-size: 15px; color: #1F2937;">#{c['rank']} {profile['anonymized_name']}</h4>
+                            <p style="margin: 2px 0 10px 0; font-size: 11px; color: #6B7280;">{profile['current_title']}</p>
+                            <p style="margin: 0; font-size: 12px; color: #4B5563;"><b>YoE:</b> {format_yoe(profile.get('years_of_experience', 0))}</p>
+                            <p style="margin: 4px 0 0 0; font-size: 12px; color: #4B5563;"><b>Score:</b> {c['final_score']}</p>
+                            <p style="margin: 4px 0 0 0; font-size: 12px; color: #4B5563;"><b>Location:</b> {profile.get('location', 'N/A')}</p>
+                            <p style="margin: 8px 0 0 0; font-size: 11px; color: #6B7280; line-height: 1.4; font-style: italic;">
+                                \"{c.get('reasoning', '')[:100]}...\"
+                            </p>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+            
+            # Outreach Drafts
+            st.markdown("### ✉️ AI Personalized Outreach Drafts")
+            st.write("Generate custom recruiter emails for the selected candidates based on their factual history.")
+            
+            demo_candidate = st.selectbox(
+                "Select Candidate to Draft Email For:",
+                [f"#{c['rank']} {c['profile']['anonymized_name']}" for c in arena_cands],
+                key="arena_outreach_select"
+            )
+            
+            selected_cand_outreach = next((c for c in arena_cands if f"#{c['rank']} {c['profile']['anonymized_name']}" == demo_candidate), None)
+            if selected_cand_outreach:
+                profile = selected_cand_outreach['profile']
+                name = profile['anonymized_name']
+                title = profile['current_title']
+                company = profile.get('current_company', 'their current company')
+                skills_str = ", ".join([s.get('name') for s in selected_cand_outreach.get('skills', [])[:3] if s.get('name')])
+                
+                outreach_email = f"Subject: Senior AI Engineer Opportunity — Love your background at {company}!\n\n" \
+                                 f"Hi {name.split()[0]},\n\n" \
+                                 f"I was reviewing your candidate profile and was highly impressed by your work as a {title} at {company}. " \
+                                 f"Your technical expertise in {skills_str} makes you a standout candidate for our Senior AI Engineer opening at Redrob AI.\n\n" \
+                                 f"We are looking for strong hands-on builders who prefer shipping products over writing pure research papers, and your career history aligns perfectly. " \
+                                 f"Would you be open to a quick 15-minute call this week to explore this further?\n\n" \
+                                 f"Best regards,\n" \
+                                 f"Daksh Dawra\n" \
+                                 f"AlphaBeta Recruiting"
+                st.code(outreach_email, language="text")
+    else:
+        st.warning("No candidate data available.")
+
+elif nav_page == "👥 Team Workspace":
+    st.markdown(
+        """
+        <h1 style="margin-bottom: 4px; font-size: 32px;">👥 Team Collaboration Workspace</h1>
+        <p style="color: #6B7280; font-size: 14px; margin-top: 0;">Collaborative workspace for recruiting teams, hiring managers, and interviewers.</p>
+        <div style="height: 1px; background-color: #EAE8E4; margin: 20px 0;"></div>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    st.info("👥 **Team Feature Showcase**: Below are active team features. You can review comments, submit scorecards, configure ATS connectors, and track team activities.")
+    
+    # 1. Team Collaboration & Comments
+    st.markdown("### 💬 Candidate Scorecards & Team Feedback")
+    st.write("Review ratings and comments left by team members, and add your own feedback for candidate evaluations.")
+    
+    if 'team_comments' not in st.session_state:
+        st.session_state.team_comments = {
+            "CAND_1079361": [
+                {"user": "Daksh Dawra (Admin)", "role": "Lead Recruiter", "rating": 5, "comment": "Perfect match on PyTorch/Transformers. GitHub activity is exceptional.", "date": "2026-06-16 14:30"},
+                {"user": "Sarah Jenkins", "role": "Hiring Manager", "rating": 5, "comment": "Agreed. Checked her DeepMind experience; it aligns perfectly with our core LLM tasks.", "date": "2026-06-16 16:15"}
+            ],
+            "CAND_1079362": [
+                {"user": "Daksh Dawra (Admin)", "role": "Lead Recruiter", "rating": 4, "comment": "Very strong candidate from Haptik, but notice period is slightly high (60 days).", "date": "2026-06-16 15:00"}
+            ]
+        }
+        
+    c_sel = st.selectbox(
+        "Select Candidate to Review:",
+        [f"#{c['rank']} {c['profile']['anonymized_name']} ({c['candidate_id']})" for c in candidates[:15]],
+        key="team_c_select"
+    )
+    
+    c_id_selected = c_sel.split("(")[-1].replace(")", "")
+    cand_obj = next((c for c in candidates if c['candidate_id'] == c_id_selected), None)
+    
+    if cand_obj:
+        comments = st.session_state.team_comments.get(c_id_selected, [])
+        
+        # Display existing comments
+        if comments:
+            for comm in comments:
+                stars = "⭐" * comm['rating']
+                st.markdown(
+                    f"""
+                    <div style="background-color: white; border: 1px solid #EAE8E4; border-radius: 12px; padding: 12px; margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <div>
+                                <span style="font-weight: 700; font-size: 13px; color: #1F2937;">{comm['user']}</span>
+                                <span style="font-size: 11px; color: #6B7280; margin-left: 8px;">({comm['role']})</span>
+                            </div>
+                            <span style="font-size: 12px;">{stars}</span>
+                        </div>
+                        <p style="margin: 0; font-size: 13px; color: #4B5563; line-height: 1.4;">{comm['comment']}</p>
+                        <div style="text-align: right; font-size: 10px; color: #9CA3AF; margin-top: 4px;">{comm['date']}</div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+        else:
+            st.info("No comments or scorecard reviews yet for this candidate. Add one below!")
+            
+        # Form to add comment
+        with st.form("add_comment_form", clear_on_submit=True):
+            col_f1, col_f2 = st.columns([3, 1])
+            with col_f1:
+                new_comment = st.text_area("Add Review / Evaluation Notes:", placeholder="Type your feedback here...")
+            with col_f2:
+                new_rating = st.slider("Rating (1-5 stars)", 1, 5, 5)
+                new_role = st.selectbox("Your Role:", ["Lead Recruiter", "Hiring Manager", "AI Engineer", "VP of Engineering"])
+            submit_comment = st.form_submit_button("Submit Review Scorecard")
+            
+            if submit_comment:
+                if not new_comment.strip():
+                    st.error("Please enter a comment before submitting.")
+                else:
+                    from datetime import datetime
+                    new_entry = {
+                        "user": f"Daksh Dawra ({new_role})",
+                        "role": new_role,
+                        "rating": new_rating,
+                        "comment": new_comment.strip(),
+                        "date": datetime.now().strftime("%Y-%m-%d %H:%M")
+                    }
+                    if c_id_selected not in st.session_state.team_comments:
+                        st.session_state.team_comments[c_id_selected] = []
+                    st.session_state.team_comments[c_id_selected].append(new_entry)
+                    st.success("Review added successfully!")
+                    st.rerun()
+
+    # 2. Multi-JD Pipeline Management
+    st.markdown("<br/>", unsafe_allow_html=True)
+    st.markdown("### 💼 Multi-Role Sourcing Pipeline")
+    st.write("Manage candidate lists across all active engineering roles in your department.")
+    
+    import pandas as pd
+    jd_options = {
+        "Senior AI Engineer (Active)": {"candidates": len(candidates), "date": "2026-06-16"},
+        "Senior Frontend Lead (Draft)": {"candidates": 0, "date": "N/A"},
+        "DevOps / AI Platform Lead (Active)": {"candidates": 12, "date": "2026-06-15"}
+    }
+    
+    st.dataframe(
+        pd.DataFrame([
+            {"Job Title": k, "Ranked Candidates": v['candidates'], "Last Compiled": v['date'], "Status": "Active" if "Active" in k else "Draft"}
+            for k, v in jd_options.items()
+        ]),
+        use_container_width=True,
+        hide_index=True
+    )
+    
+    # 3. ATS Integration Connectors
+    st.markdown("<br/>", unsafe_allow_html=True)
+    st.markdown("### 🔌 ATS Live Connectors")
+    st.write("Configure synchronization with your Applicant Tracking System (ATS).")
+    
+    ats_col1, ats_col2, ats_col3 = st.columns(3)
+    with ats_col1:
+        st.markdown(
+            """
+            <div style="background-color: white; border: 1px solid #EAE8E4; border-radius: 16px; padding: 16px; text-align: center; min-height: 140px;">
+                <div style="font-weight: 800; font-size: 16px; color: #1F2937; margin-bottom: 8px;">Greenhouse</div>
+                <span style="background-color: #D1FADF; color: #065F46; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700;">CONNECTED</span>
+                <p style="margin: 12px 0 0 0; font-size: 11px; color: #6B7280;">Auto-syncs Top 10 shortlists daily.</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        st.button("Configure Greenhouse", key="cfg_greenhouse")
+    with ats_col2:
+        st.markdown(
+            """
+            <div style="background-color: white; border: 1px solid #EAE8E4; border-radius: 16px; padding: 16px; text-align: center; min-height: 140px;">
+                <div style="font-weight: 800; font-size: 16px; color: #1F2937; margin-bottom: 8px;">Lever</div>
+                <span style="background-color: #FEE2E2; color: #EF4444; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700;">DISCONNECTED</span>
+                <p style="margin: 12px 0 0 0; font-size: 11px; color: #6B7280;">Direct API integration via OAuth.</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        st.button("Connect Lever API", key="cfg_lever")
+    with ats_col3:
+        st.markdown(
+            """
+            <div style="background-color: white; border: 1px solid #EAE8E4; border-radius: 16px; padding: 16px; text-align: center; min-height: 140px;">
+                <div style="font-weight: 800; font-size: 16px; color: #1F2937; margin-bottom: 8px;">Workday</div>
+                <span style="background-color: #FEF3C7; color: #D97706; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700;">PENDING CONFIG</span>
+                <p style="margin: 12px 0 0 0; font-size: 11px; color: #6B7280;">Requires client ID and endpoint URL.</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        st.button("Verify Credentials", key="cfg_workday")
+
+    # 4. Team Activity Audit Trail
+    st.markdown("<br/>", unsafe_allow_html=True)
+    st.markdown("### 📜 Team Activity Audit Trail")
+    st.write("Track changes made to ranking configurations, weights, and comments.")
+    
+    audit_logs = [
+        {"time": "2026-06-16 16:15", "user": "Sarah Jenkins", "action": "Added review comment for CAND_1079361"},
+        {"time": "2026-06-16 14:48", "user": "Daksh Dawra", "action": "Modified Technical Depth weighting from 0.25 to 0.30"},
+        {"time": "2026-06-16 14:30", "user": "Daksh Dawra", "action": "Run pipeline on new custom dataset (150 candidates)"},
+        {"time": "2026-06-16 11:22", "user": "Sarah Jenkins", "action": "Downloaded candidate CSV shortlist for review"}
+    ]
+    
+    for log in audit_logs:
+        st.markdown(
+            f"""
+            <div style="border-left: 2px solid #6366F1; padding-left: 12px; margin-bottom: 8px; font-size: 12px;">
+                <span style="color: #6B7280; font-family: 'JetBrains Mono', monospace;">{log['time']}</span> • 
+                <strong>{log['user']}</strong>: <span style="color: #374151;">{log['action']}</span>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
 elif nav_page == "🔬 Rank Robustness":
     st.markdown(
         """
@@ -999,6 +1313,7 @@ elif nav_page == "🔬 Rank Robustness":
     st.info("💡 **How to use this:** This tool runs 500 simulations with randomized persona weights. Candidates with a low Standard Deviation (σ) are 'Safe Bets'—they stay at the top regardless of which evaluator you prioritize. Highly volatile candidates might be risky hires.")
     
     if candidates:
+        num_candidates = st.slider("Number of Candidates to Analyze", 10, 100, 100, key="rob_slider")
         import random
         random.seed(42)
         n_sims = 500
@@ -1064,20 +1379,20 @@ elif nav_page == "🔬 Rank Robustness":
             unsafe_allow_html=True
         )
         
-        # Rank stability chart (top 30)
-        top_30 = robustness_data[:30]
+        # Rank stability chart (dynamic size)
+        top_n = robustness_data[:num_candidates]
         fig_rob = go.Figure()
         
-        colors = ['#10B981' if r['stability'] == 'Safe Bet' else ('#F59E0B' if r['stability'] == 'Moderate' else '#EF4444') for r in top_30]
+        colors = ['#10B981' if r['stability'] == 'Safe Bet' else ('#F59E0B' if r['stability'] == 'Moderate' else '#EF4444') for r in top_n]
         
         fig_rob.add_trace(go.Bar(
-            x=[f"#{r['current_rank']} {r['name'].split()[0]}" for r in top_30],
-            y=[r['std_rank'] for r in top_30],
+            x=[f"#{r['current_rank']} {r['name'].split()[0]}" for r in top_n],
+            y=[r['std_rank'] for r in top_n],
             marker_color=colors,
-            text=[f"±{r['std_rank']}" for r in top_30],
+            text=[f"±{r['std_rank']}" for r in top_n],
             textposition='outside',
             hovertemplate='<b>%{x}</b><br>Rank Stability σ: %{y:.1f}<br>Range: %{customdata}<extra></extra>',
-            customdata=[f"#{r['min_rank']}-#{r['max_rank']}" for r in top_30]
+            customdata=[f"#{r['min_rank']}-#{r['max_rank']}" for r in top_n]
         ))
         
         fig_rob.update_layout(
@@ -1094,8 +1409,8 @@ elif nav_page == "🔬 Rank Robustness":
         st.plotly_chart(fig_rob, width='stretch', config={'displayModeBar': False})
         
         # Detailed table
-        st.markdown('<h3 style="margin: 24px 0 12px 0; font-size: 18px;">Detailed Robustness Table</h3>', unsafe_allow_html=True)
-        for r in top_30:
+        st.markdown(f'<h3 style="margin: 24px 0 12px 0; font-size: 18px;">Detailed Robustness Table — Top {num_candidates}</h3>', unsafe_allow_html=True)
+        for r in top_n:
             stability_color = '#10B981' if r['stability'] == 'Safe Bet' else ('#F59E0B' if r['stability'] == 'Moderate' else '#EF4444')
             st.markdown(
                 f"""
@@ -1243,7 +1558,8 @@ elif nav_page == "🧬 Skill Ecosystem":
         st.plotly_chart(fig_bar, width='stretch', config={'displayModeBar': False})
         
         # Persona Disagreement Heatmap
-        st.markdown('<h3 style="margin: 24px 0 12px 0; font-size: 18px;">Persona Disagreement Heatmap — Top 20</h3>', unsafe_allow_html=True)
+        num_heatmap = st.slider("Number of Candidates in Heatmap", 10, 100, 50, key="heat_slider")
+        st.markdown(f'<h3 style="margin: 24px 0 12px 0; font-size: 18px;">Persona Disagreement Heatmap — Top {num_heatmap}</h3>', unsafe_allow_html=True)
         st.markdown('<p style="font-size: 12px; color: #6B7280;">High variance across personas = controversial candidate where evaluators disagree.</p>', unsafe_allow_html=True)
         
         heatmap_data = []
@@ -1251,7 +1567,7 @@ elif nav_page == "🧬 Skill Ecosystem":
         personas = ['technical', 'hiring_manager', 'culture_fit', 'recruiter_ops', 'logistics_education']
         persona_labels = ['Technical', 'Hiring Mgr', 'Culture Fit', 'Recruiter Ops', 'Logistics/Edu']
         
-        for c in candidates[:20]:
+        for c in candidates[:num_heatmap]:
             scores = c.get('scores', {})
             row = [round(scores.get(p, 0) * 100, 1) for p in personas]
             heatmap_data.append(row)
@@ -1268,7 +1584,7 @@ elif nav_page == "🧬 Skill Ecosystem":
             hovertemplate='%{y}<br>%{x}: %{z:.1f}%<extra></extra>'
         ))
         fig_heat.update_layout(
-            height=500,
+            height=max(400, num_heatmap * 18),
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
             font=dict(family='Inter'),
@@ -1409,25 +1725,27 @@ elif nav_page == "🛡️ Honeypot Audit Logs":
             unsafe_allow_html=True
         )
         
-        # Render table or list of honeypots
-        for hp in honeypots[:30]: # Limit to top 30 caught for performance
-            st.markdown(
-                f"""
-                <div class="bento-card" style="border-left: 5px solid #EF4444;">
-                    <div style="display: flex; justify-content: space-between; align-items: start;">
-                        <div>
-                            <h4 style="margin: 0; font-size: 16px; color: #EF4444;">{hp['id']} • {hp['name']}</h4>
-                            <p style="margin: 4px 0 0 0; font-size: 13px; color: #1F2937;"><b>Declared Title:</b> {hp['title']} • {format_yoe(hp['yoe'])} Declared YoE</p>
-                            <p style="margin: 8px 0 0 0; font-size: 12px; color: #6B7280; background-color: #FEF2F2; padding: 8px 12px; border-radius: 8px; border: 1px solid #FEE2E2;">
-                                <b>Flagged Violation:</b> {hp.get('reasons', 'Timeline paradox or structural anomaly detected')}
-                            </p>
+        # Render table or list of honeypots in a scrollable container
+        st.markdown('<h3 style="margin: 24px 0 12px 0; font-size: 18px;">Audit Logs</h3>', unsafe_allow_html=True)
+        with st.container(height=600):
+            for hp in honeypots:
+                st.markdown(
+                    f"""
+                    <div class="bento-card" style="border-left: 5px solid #EF4444; margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; align-items: start;">
+                            <div>
+                                <h4 style="margin: 0; font-size: 16px; color: #EF4444;">{hp['id']} • {hp['name']}</h4>
+                                <p style="margin: 4px 0 0 0; font-size: 13px; color: #1F2937;"><b>Declared Title:</b> {hp['title']} • {format_yoe(hp['yoe'])} Declared YoE</p>
+                                <p style="margin: 8px 0 0 0; font-size: 12px; color: #6B7280; background-color: #FEF2F2; padding: 8px 12px; border-radius: 8px; border: 1px solid #FEE2E2;">
+                                    <b>Flagged Violation:</b> {hp.get('reasons', 'Timeline paradox or structural anomaly detected')}
+                                </p>
+                            </div>
+                            <span class="badge-peach" style="background-color: #FEE2E2 !important; color: #EF4444 !important; font-size: 10px !important;">DISQUALIFIED</span>
                         </div>
-                        <span class="badge-peach" style="background-color: #FEE2E2 !important; color: #EF4444 !important; font-size: 10px !important;">DISQUALIFIED</span>
                     </div>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
+                    """,
+                    unsafe_allow_html=True
+                )
 
 elif nav_page == "🔍 Keyword Stuffing Rules":
     st.markdown(
@@ -1455,175 +1773,152 @@ elif nav_page == "🔍 Keyword Stuffing Rules":
             unsafe_allow_html=True
         )
         
-        # Render table or list of stuffers
-        for stf in stuffers[:30]:
-            st.markdown(
-                f"""
-                <div class="bento-card" style="border-left: 5px solid #F59E0B;">
-                    <div>
-                        <h4 style="margin: 0; font-size: 16px; color: #B45309;">{stf['id']} • {stf['name']}</h4>
-                        <p style="margin: 4px 0 0 0; font-size: 13px; color: #1F2937;"><b>Current Title:</b> {stf['title']} • {format_yoe(stf['yoe'])}</p>
-                        <p style="margin: 8px 0 0 0; font-size: 12px; color: #6B7280;">
-                            <b>Listed Skills:</b> {', '.join(stf['skills'])}
-                        </p>
+        # Render table or list of stuffers in scrollable container
+        st.markdown('<h3 style="margin: 24px 0 12px 0; font-size: 18px;">Filtered Profiles Logs</h3>', unsafe_allow_html=True)
+        with st.container(height=600):
+            for stf in stuffers:
+                st.markdown(
+                    f"""
+                    <div class="bento-card" style="border-left: 5px solid #F59E0B; margin-bottom: 12px;">
+                        <div>
+                            <h4 style="margin: 0; font-size: 16px; color: #B45309;">{stf['id']} • {stf['name']}</h4>
+                            <p style="margin: 4px 0 0 0; font-size: 13px; color: #1F2937;"><b>Current Title:</b> {stf['title']} • {format_yoe(stf['yoe'])}</p>
+                            <p style="margin: 8px 0 0 0; font-size: 12px; color: #6B7280;">
+                                <b>Listed Skills:</b> {', '.join(stf['skills'])}
+                            </p>
+                        </div>
                     </div>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
+                    """,
+                    unsafe_allow_html=True
+                )
 
 elif nav_page == "🚀 Product Roadmap":
-    st.markdown(
-        """<h1 style="margin-bottom: 4px; font-size: 32px;">🚀 RecruitIQ Product Roadmap & Monetization</h1>
-<p style="color: #6B7280; font-size: 14px; margin-top: 0;">Enterprise-ready features designed to scale recruitment pipelines, monetize intelligence, and empower recruiting teams.</p>
-<div style="height: 1px; background-color: #EAE8E4; margin: 20px 0;"></div>""",
-        unsafe_allow_html=True
+    st.markdown("""<h1 style="margin-bottom: 4px; font-size: 32px;">🚀 RecruitIQ Product Roadmap</h1>
+<p style="color: #6B7280; font-size: 14px; margin-top: 0;">From hackathon prototype to production-grade recruiting intelligence platform.</p>
+<div style="height: 1px; background-color: #EAE8E4; margin: 20px 0;"></div>""", unsafe_allow_html=True)
+
+    # Billing Cycle Switcher
+    st.markdown("### 📅 Plans & Pricing")
+    billing_cycle = st.radio(
+        "Choose Billing Frequency:",
+        ["Monthly Billing", "Annual Billing (Save 20%)"],
+        horizontal=True,
+        label_visibility="collapsed",
+        key="billing_cycle_radio"
     )
     
-    st.markdown(
-        """<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
-<div class="stat-card" style="border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
-<div style="font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 4px;">RecruitIQ Free</div>
-<div style="font-size: 14px; color: #6B7280; margin-bottom: 16px;">For individual recruiters / basic sorting</div>
-<div style="font-size: 24px; font-weight: 800; color: #111827; margin-bottom: 16px;">₹0 <span style="font-size: 14px; font-weight: 400; color: #6B7280;">/ forever</span></div>
-<hr style="border: 0; border-top: 1px solid #E5E7EB; margin-bottom: 16px;"/>
-<ul style="padding-left: 20px; font-size: 13px; color: #4B5563; line-height: 1.6; margin: 0;">
-<li>100K Candidate Batch Upload</li>
-<li>Consensus Weight Tuner</li>
-<li>Honeypot Audit Shield</li>
-<li>Keyword Stuffing Rules</li>
-<li>CSV Results Export</li>
+    is_annual = "Annual" in billing_cycle
+    st.session_state.billing_freq = "Annually" if is_annual else "Monthly"
+    
+    # Prices
+    pro_price = "₹799" if is_annual else "₹999"
+    team_price = "₹3,199" if is_annual else "₹3,999"
+    billing_suffix = "/ month, billed annually" if is_annual else "/ month"
+    
+    current_tier = st.session_state.get('current_tier', 'Free')
+    
+    tier_free, tier_pro, tier_team = st.columns(3)
+    
+    # ── Free Card ──
+    free_highlight = current_tier == "Free"
+    free_border = "2px solid #10B981" if free_highlight else "1px solid #E5E7EB"
+    free_bg = "linear-gradient(180deg, #ECFDF5 0%, #FFFFFF 100%)" if free_highlight else "white"
+    
+    with tier_free:
+        st.markdown(f"""<div style="border: {free_border}; border-radius: 16px; padding: 24px; background: {free_bg}; min-height: 480px; position: relative;">
+{"<div style='position: absolute; top: 12px; right: 12px; background: #10B981; color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 9999px;'>ACTIVE PLAN</div>" if free_highlight else ""}
+<div style="font-size: 18px; font-weight: 700; color: #111827;">RecruitIQ Free</div>
+<div style="font-size: 12px; color: #6B7280; margin: 4px 0 12px 0;">For individual recruiters</div>
+<div style="font-size: 28px; font-weight: 800; color: #111827;">₹0 <span style="font-size: 13px; font-weight: 400; color: #9CA3AF;">/ forever</span></div>
+<hr style="border: 0; border-top: 1px solid #F3F4F6; margin: 16px 0;"/>
+<ul style="padding-left: 18px; font-size: 13px; color: #374151; line-height: 2; margin: 0;">
+<li>Up to 100K candidate batch ranking</li>
+<li>Single JD upload (.txt / .docx)</li>
+<li>5-Persona consensus engine</li>
+<li>Honeypot detection shield</li>
+<li>Keyword stuffer filter</li>
+<li>CSV export of Top 100</li>
+<li>Interactive weight tuner</li>
+<li>Full 100 candidate profiles unlocked</li>
 </ul>
-</div>
-<div class="stat-card" style="border: 2px solid #3B82F6; border-radius: 12px; padding: 20px; background: #EFF6FF; box-shadow: 0 10px 15px -3px rgba(59,130,246,0.1);">
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-<span style="font-size: 20px; font-weight: 700; color: #1E3A8A;">RecruitIQ Pro</span>
-<span style="background: #3B82F6; color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 9999px;">POPULAR</span>
-</div>
-<div style="font-size: 14px; color: #2563EB; margin-bottom: 16px;">For power recruiters & hiring managers</div>
-<div style="font-size: 24px; font-weight: 800; color: #1E3A8A; margin-bottom: 16px;">₹2,999 <span style="font-size: 14px; font-weight: 400; color: #2563EB;">/ month</span></div>
-<hr style="border: 0; border-top: 1px solid #BFDBFE; margin-bottom: 16px;"/>
-<ul style="padding-left: 20px; font-size: 13px; color: #1E40AF; line-height: 1.6; margin: 0;">
-<li><b>Candidate Comparison Arena</b> (Interactive side-by-side radar analysis)</li>
-<li><b>Smart JD Analyzer</b> (Extract skills, experience levels, and disqualifiers automatically)</li>
-<li><b>Personalized AI Outreach</b> (One-click tailored recruiter outreach drafts)</li>
-<li>PDF Summary Reports</li>
+</div>""", unsafe_allow_html=True)
+        if st.button("Select Free Plan", key="btn_free_tier", disabled=free_highlight, use_container_width=True):
+            st.session_state.current_tier = "Free"
+            st.success("Switched to Free Plan!")
+            st.rerun()
+
+    # ── Pro Card ──
+    pro_highlight = current_tier == "Pro"
+    pro_border = "2px solid #6366F1" if pro_highlight else "1px solid #E5E7EB"
+    pro_bg = "linear-gradient(180deg, #F5F3FF 0%, #FFFFFF 100%)" if pro_highlight else "white"
+    
+    with tier_pro:
+        st.markdown(f"""<div style="border: {pro_border}; border-radius: 16px; padding: 24px; background: {pro_bg}; min-height: 480px; position: relative;">
+<div style="position: absolute; top: 12px; right: 12px; background: #6366F1; color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 9999px;">{"ACTIVE PLAN" if pro_highlight else "MOST POPULAR"}</div>
+<div style="font-size: 18px; font-weight: 700; color: #312E81;">RecruitIQ Pro</div>
+<div style="font-size: 12px; color: #6366F1; margin: 4px 0 12px 0;">For hiring managers & power recruiters</div>
+<div style="font-size: 28px; font-weight: 800; color: #312E81;">{pro_price} <span style="font-size: 13px; font-weight: 400; color: #6366F1;">{billing_suffix}</span></div>
+<hr style="border: 0; border-top: 1px solid #E0E7FF; margin: 16px 0;"/>
+<div style="font-size: 11px; font-weight: 600; color: #6366F1; margin-bottom: 8px; text-transform: uppercase;">Everything in Free, plus:</div>
+<ul style="padding-left: 18px; font-size: 13px; color: #312E81; line-height: 2; margin: 0;">
+<li><b>Candidate Comparison Arena</b> — compare profiles side-by-side</li>
+<li><b>Smart JD Analyzer</b> — auto-extract skills & filters</li>
+<li><b>AI Outreach Drafts</b> — personalized email templates</li>
+<li><b>PDF Summary Reports</b> — candidate brief exports</li>
+<li><b>Unlimited JD uploads</b></li>
 </ul>
-</div>
-<div class="stat-card" style="border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
-<div style="font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 4px;">RecruitIQ Team</div>
-<div style="font-size: 14px; color: #6B7280; margin-bottom: 16px;">For collaborative talent acquisition teams</div>
-<div style="font-size: 24px; font-weight: 800; color: #111827; margin-bottom: 16px;">₹9,999 <span style="font-size: 14px; font-weight: 400; color: #6B7280;">/ month</span></div>
-<hr style="border: 0; border-top: 1px solid #E5E7EB; margin-bottom: 16px;"/>
-<ul style="padding-left: 20px; font-size: 13px; color: #4B5563; line-height: 1.6; margin: 0;">
-<li><b>Multi-JD Pipeline</b> (Evaluate candidate pool against multiple roles simultaneously)</li>
-<li><b>Historical Audit Trail</b> (Track rank improvements when profiles/GitHub update)</li>
-<li><b>Team Collaboration</b> (Recruiter sharing, comments, and rating reviews)</li>
-<li>Custom ATS Integrations (Greenhouse, Lever)</li>
+</div>""", unsafe_allow_html=True)
+        if st.button("Select Pro Plan", key="btn_pro_tier", disabled=pro_highlight, use_container_width=True):
+            st.session_state.current_tier = "Pro"
+            st.success("Switched to Pro Plan!")
+            st.rerun()
+
+    # ── Team Card ──
+    team_highlight = current_tier == "Team"
+    team_border = "2px solid #4F46E5" if team_highlight else "1px solid #E5E7EB"
+    team_bg = "linear-gradient(180deg, #EEF2FF 0%, #FFFFFF 100%)" if team_highlight else "white"
+    
+    with tier_team:
+        st.markdown(f"""<div style="border: {team_border}; border-radius: 16px; padding: 24px; background: {team_bg}; min-height: 480px; position: relative;">
+{"<div style='position: absolute; top: 12px; right: 12px; background: #4F46E5; color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 9999px;'>ACTIVE PLAN</div>" if team_highlight else ""}
+<div style="font-size: 18px; font-weight: 700; color: #111827;">RecruitIQ Team</div>
+<div style="font-size: 12px; color: #6B7280; margin: 4px 0 12px 0;">For talent acquisition teams</div>
+<div style="font-size: 28px; font-weight: 800; color: #111827;">{team_price} <span style="font-size: 13px; font-weight: 400; color: #9CA3AF;">{billing_suffix}</span></div>
+<hr style="border: 0; border-top: 1px solid #F3F4F6; margin: 16px 0;"/>
+<div style="font-size: 11px; font-weight: 600; color: #6B7280; margin-bottom: 8px; text-transform: uppercase;">Everything in Pro, plus:</div>
+<ul style="padding-left: 18px; font-size: 13px; color: #374151; line-height: 2; margin: 0;">
+<li><b>👥 Team Workspace</b> — collaborative review dashboard</li>
+<li><b>Multi-JD Pipeline</b> — manage multiple job profiles</li>
+<li><b>Team Collaboration</b> — shared shortlists, comments & stars</li>
+<li><b>Historical Audit Trail</b> — audit logs of all rank edits</li>
+<li><b>ATS Integration</b> — Greenhouse, Lever, Workday connectors</li>
 </ul>
-</div>
-</div>
-<h3 style="margin-top: 32px; margin-bottom: 16px;">🛠️ Premium Features Interactive Sandbox</h3>
-""",
-        unsafe_allow_html=True
-    )
-    
-    # Showcase some visual mockups of these features
-    st.markdown("#### 📊 1. Candidate Comparison Arena (Pro feature)")
-    st.write("Compare shortlisted candidates across multiple dimensional strengths. This live sandbox demonstrates how recruiters can run side-by-side comparisons of technical fit, manager alignment, culture fit, and logistic readiness.")
-    
-    # Render a dummy radar/bar chart comparison using Plotly
-    import plotly.graph_objects as go
-    
-    categories = ['Technical Depth', 'Hiring Manager Fit', 'Culture Fit', 'Recruiter Ops', 'Logistics/Edu']
-    
-    fig = go.Figure()
-    fig.add_trace(go.Scatterpolar(
-        r=[0.85, 0.78, 0.90, 0.80, 0.75],
-        theta=categories,
-        fill='toself',
-        name='TEST_PERFECT_AI (Senior ML @ Google DeepMind)'
-    ))
-    fig.add_trace(go.Scatterpolar(
-        r=[0.64, 0.70, 0.55, 0.60, 0.80],
-        theta=categories,
-        fill='toself',
-        name='TEST_JUNIOR_ML (ML Engineer @ Haptik)'
-    ))
-    fig.add_trace(go.Scatterpolar(
-        r=[0.55, 0.50, 0.65, 0.70, 0.60],
-        theta=categories,
-        fill='toself',
-        name='TEST_BACKEND_PYSKILL (Backend @ Razorpay)'
-    ))
-    
-    fig.update_layout(
-        polar=dict(
-            radialaxis=dict(
-                visible=True,
-                range=[0, 1]
-            )
-        ),
-        showlegend=True,
-        margin=dict(l=40, r=40, t=20, b=20),
-        height=350
-    )
-    st.plotly_chart(fig, use_container_width=True)
-    
-    st.markdown("#### ✉️ 2. Personalized AI Outreach Drafts (Pro feature)")
-    st.write("Draft hyper-personalized, context-aware emails based on candidate profile evidence, and copy/send them with one click.")
-    
-    # Interactive demo of outreach generator
-    demo_candidate = st.selectbox(
-        "Select candidate to generate draft for:",
-        ["TEST_PERFECT_AI (Senior ML @ Google DeepMind)", "TEST_JUNIOR_ML (ML Engineer @ Haptik)", "TEST_BACKEND_PYSKILL (Backend @ Razorpay)"]
-    )
-    
-    if "PERFECT" in demo_candidate:
-        outreach_email = """Subject: Senior AI Engineer Role @ AlphaBeta (Your DeepMind work!)
+</div>""", unsafe_allow_html=True)
+        if st.button("Select Team Plan", key="btn_team_tier", disabled=team_highlight, use_container_width=True):
+            st.session_state.current_tier = "Team"
+            st.success("Switched to Team Plan!")
+            st.rerun()
 
-Hi Senior ML Engineer,
+    # ── Feature Comparison Table ──
+    st.markdown("")
+    st.markdown("### 📋 Feature Comparison")
+    comparison_data = {
+        "Feature": [
+            "Candidate batch ranking", "JD upload & parsing", "Consensus weight tuner",
+            "Honeypot & stuffer detection", "CSV export", "Candidate Comparison Arena",
+            "Smart JD Analyzer", "AI Outreach Drafts", "PDF Reports", "Unlimited JDs",
+            "Multi-JD Pipeline", "Team Collaboration", "Historical Audit Trail",
+            "Role-based Access", "ATS Integration"
+        ],
+        "Free": ["✅", "✅ (1 at a time)", "✅", "✅", "✅", "❌", "❌", "❌", "❌", "❌", "❌", "❌", "❌", "❌", "❌"],
+        "Pro (₹999/mo)": ["✅", "✅ Unlimited", "✅", "✅", "✅", "✅", "✅", "✅", "✅", "✅", "❌", "❌", "❌", "❌", "❌"],
+        "Team (₹3,999/mo)": ["✅", "✅ Unlimited", "✅", "✅", "✅", "✅", "✅", "✅", "✅", "✅", "✅", "✅", "✅", "✅", "✅"]
+    }
+    import pandas as pd
+    st.dataframe(pd.DataFrame(comparison_data), use_container_width=True, hide_index=True, height=560)
 
-I came across your profile and was highly impressed by your work at Google DeepMind, specifically your deep expertise in ML Engineering. We are building our core AI ranking engine here at AlphaBeta, and your strong logistics, culture fit, and technical background would make you an outstanding fit for our Senior AI Engineer role.
+    st.markdown("---")
+    st.markdown("### 🛠️ Interactive Feature Preview")
+    st.info("💡 **Premium Features Sandbox**: Try the interactive **Candidate Arena** and **Team Workspace** pages from the sidebar to see these premium modules in action with the real dataset!")
 
-Let me know if you have 15 minutes for a quick chat this week!
-
-Best,
-Daksh Dawra
-Lead Recruiter, AlphaBeta"""
-    elif "JUNIOR" in demo_candidate:
-        outreach_email = """Subject: ML Engineering Opportunity @ AlphaBeta
-
-Hi ML Engineer,
-
-I saw your profile and was impressed by your work as an ML Engineer at Haptik. We are looking for talented AI builders at AlphaBeta. Your experience with ML systems and strong team communication skills stood out to us. 
-
-Would you be open to a brief chat about our open ML Engineer roles?
-
-Best,
-Daksh Dawra
-Lead Recruiter, AlphaBeta"""
-    else:
-        outreach_email = """Subject: Technical Growth Opportunity @ AlphaBeta
-
-Hi Senior Backend Engineer,
-
-I was reviewing your backend engineering background at Razorpay and was impressed by your software architecture skills. We are expanding our team at AlphaBeta and believe your technical capabilities and execution focus could be a great fit for our systems engineering role.
-
-Let me know if you are open to exploring new career steps!
-
-Best,
-Daksh Dawra
-Lead Recruiter, AlphaBeta"""
-        
-    st.code(outreach_email, language="text")
-    
-    st.markdown("#### 💡 3. Smart JD Analyzer (Pro feature)")
-    st.write("Understand exact hiring parameters extracted by the AI parser before you run the pipeline.")
-    
-    col1, col2 = st.columns(2)
-    with col1:
-        st.info("💡 **Required Technical Skills Extracted:**\\n- machine learning, pytorch, tensorflow, deep learning, python, transformers, large language models, kubernetes, system design")
-    with col2:
-        st.warning("⚠️ **Hard Disqualifiers Active:**\\n- consulting_only (TCS, Infosys, Wipro, Cognizant, Accenture, Capgemini)\\n- title_chasing (frequent job hopping)")
 
