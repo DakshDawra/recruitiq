@@ -214,6 +214,47 @@ div[data-testid="stColumn"] button:active {
     background-color: #FFFFFF !important;
     border-right: 1px solid #EAE8E4 !important;
 }
+
+/* Clickable Pricing Cards & Overlay Rules */
+div[data-testid="stColumn"]:has(.plan-card) {
+    position: relative !important;
+}
+
+div[data-testid="stColumn"]:has(.plan-card) div[data-testid="element-container"]:has(div[data-testid="stButton"]) {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 10 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+div[data-testid="stColumn"]:has(.plan-card) div[data-testid="stButton"] button {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.plan-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer;
+}
+
+div[data-testid="stColumn"]:has(.plan-card):hover .plan-card {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 12px 24px -10px rgba(99, 102, 241, 0.25) !important;
+    border-color: #818CF8 !important;
+}
 """
 st.markdown(f"<style>{''.join(css_code.splitlines())}</style>", unsafe_allow_html=True)
 
@@ -1817,12 +1858,12 @@ elif nav_page == "🚀 Product Roadmap":
     
     # ── Free Card ──
     free_highlight = current_tier == "Free"
-    free_border = "2px solid #10B981" if free_highlight else "1px solid #E5E7EB"
-    free_bg = "linear-gradient(180deg, #ECFDF5 0%, #FFFFFF 100%)" if free_highlight else "white"
+    free_border = "2px solid #6366F1" if free_highlight else "1px solid #E5E7EB"
+    free_bg = "linear-gradient(180deg, #F5F3FF 0%, #FFFFFF 100%)" if free_highlight else "white"
     
     with tier_free:
-        st.markdown(f"""<div style="border: {free_border}; border-radius: 16px; padding: 24px; background: {free_bg}; min-height: 480px; position: relative;">
-{"<div style='position: absolute; top: 12px; right: 12px; background: #10B981; color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 9999px;'>ACTIVE PLAN</div>" if free_highlight else ""}
+        st.markdown(f"""<div class="plan-card" style="border: {free_border}; border-radius: 16px; padding: 24px; background: {free_bg}; min-height: 480px; position: relative;">
+{"<div style='position: absolute; top: 12px; right: 12px; background: #6366F1; color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 9999px;'>ACTIVE PLAN</div>" if free_highlight else ""}
 <div style="font-size: 18px; font-weight: 700; color: #111827;">RecruitIQ Free</div>
 <div style="font-size: 12px; color: #6B7280; margin: 4px 0 12px 0;">For individual recruiters</div>
 <div style="font-size: 28px; font-weight: 800; color: #111827;">₹0 <span style="font-size: 13px; font-weight: 400; color: #9CA3AF;">/ forever</span></div>
@@ -1849,7 +1890,7 @@ elif nav_page == "🚀 Product Roadmap":
     pro_bg = "linear-gradient(180deg, #F5F3FF 0%, #FFFFFF 100%)" if pro_highlight else "white"
     
     with tier_pro:
-        st.markdown(f"""<div style="border: {pro_border}; border-radius: 16px; padding: 24px; background: {pro_bg}; min-height: 480px; position: relative;">
+        st.markdown(f"""<div class="plan-card" style="border: {pro_border}; border-radius: 16px; padding: 24px; background: {pro_bg}; min-height: 480px; position: relative;">
 <div style="position: absolute; top: 12px; right: 12px; background: #6366F1; color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 9999px;">{"ACTIVE PLAN" if pro_highlight else "MOST POPULAR"}</div>
 <div style="font-size: 18px; font-weight: 700; color: #312E81;">RecruitIQ Pro</div>
 <div style="font-size: 12px; color: #6366F1; margin: 4px 0 12px 0;">For hiring managers & power recruiters</div>
@@ -1871,12 +1912,12 @@ elif nav_page == "🚀 Product Roadmap":
 
     # ── Team Card ──
     team_highlight = current_tier == "Team"
-    team_border = "2px solid #4F46E5" if team_highlight else "1px solid #E5E7EB"
-    team_bg = "linear-gradient(180deg, #EEF2FF 0%, #FFFFFF 100%)" if team_highlight else "white"
+    team_border = "2px solid #6366F1" if team_highlight else "1px solid #E5E7EB"
+    team_bg = "linear-gradient(180deg, #F5F3FF 0%, #FFFFFF 100%)" if team_highlight else "white"
     
     with tier_team:
-        st.markdown(f"""<div style="border: {team_border}; border-radius: 16px; padding: 24px; background: {team_bg}; min-height: 480px; position: relative;">
-{"<div style='position: absolute; top: 12px; right: 12px; background: #4F46E5; color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 9999px;'>ACTIVE PLAN</div>" if team_highlight else ""}
+        st.markdown(f"""<div class="plan-card" style="border: {team_border}; border-radius: 16px; padding: 24px; background: {team_bg}; min-height: 480px; position: relative;">
+{"<div style='position: absolute; top: 12px; right: 12px; background: #6366F1; color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 9999px;'>ACTIVE PLAN</div>" if team_highlight else ""}
 <div style="font-size: 18px; font-weight: 700; color: #111827;">RecruitIQ Team</div>
 <div style="font-size: 12px; color: #6B7280; margin: 4px 0 12px 0;">For talent acquisition teams</div>
 <div style="font-size: 28px; font-weight: 800; color: #111827;">{team_price} <span style="font-size: 13px; font-weight: 400; color: #9CA3AF;">{billing_suffix}</span></div>
