@@ -25,16 +25,14 @@ def extract_jd_metadata(jd_text):
         
     lines = [line.strip() for line in jd_text.split("\n") if line.strip()]
     
-    # Try to find Title
     for line in lines:
         if line.lower().startswith("job title:") or line.lower().startswith("job description:"):
             title_part = line.split(":", 1)[1].strip()
-            if "—" in title_part:
-                title_part = title_part.split("—", 1)[0].strip()
+            if "\u2014" in title_part:
+                title_part = title_part.split("\u2014", 1)[0].strip()
             metadata["title"] = title_part
             break
             
-    # Try to find Company/Role
     for line in lines:
         if line.lower().startswith("company:"):
             comp_part = line.split(":", 1)[1].strip()
@@ -43,7 +41,6 @@ def extract_jd_metadata(jd_text):
             metadata["role"] = f"Hiring at {comp_part}"
             break
             
-    # Parse skills
     skills_found = []
     vocab = [
         "Ray", "Triton", "CUDA", "PyTorch", "TensorFlow", "FAISS", "Milvus", "Qdrant",
@@ -57,7 +54,6 @@ def extract_jd_metadata(jd_text):
     if skills_found:
         metadata["skills"] = ", ".join(skills_found[:6])
         
-    # Parse disqualifiers
     disq_found = []
     if "consulting" in jd_text.lower() or "tcs" in jd_text.lower():
         disq_found.append("Pure Consulting")
@@ -71,13 +67,38 @@ def extract_jd_metadata(jd_text):
         
     return metadata
 
+def apply_diversity_reranking(candidates, top_n=150):
+    """
+    Prevent clustering of near-identical candidates in the top 100.
+    If multiple candidates share the same company+title combo, apply
+    diminishing returns after the 3rd occurrence.
+    """
+    # Track company+title combos seen
+    combo_counts = {}
+    
+    for c in candidates[:top_n]:
+        profile = c.get('profile', {})
+        company = str(profile.get('current_company', '')).lower().strip()
+        title = str(profile.get('current_title', '')).lower().strip()
+        combo = f"{company}|{title}"
+        
+        combo_counts[combo] = combo_counts.get(combo, 0) + 1
+        count = combo_counts[combo]
+        
+        if count > 3:
+            # Diminishing returns: 5% penalty per duplicate beyond 3rd
+            penalty = 1.0 - min((count - 3) * 0.05, 0.40)
+            c['final_score'] = round(c['final_score'] * penalty, 4)
+            c['diversity_penalty'] = True
+    
+    return candidates
+
 def rank_candidates(candidates_generator, jd_text):
     """
     Core pipeline coordinator. Runs ingestion, honeypot filters, coarse filters,
     calculates persona scores, computes semantic similarity boosts, sorts and ranks candidates.
     Returns the top 100 ranked candidates and pipeline statistics.
     """
-    # Save JD metadata for the sidebar dynamically
     try:
         metadata = extract_jd_metadata(jd_text)
         with open("active_jd_metadata.json", "w", encoding="utf-8") as fmeta:
@@ -88,7 +109,6 @@ def rank_candidates(candidates_generator, jd_text):
     honeypot_details = []
     stuffer_details = []
     
-    # Track stats for the dashboard stats counters
     stats = {
         'total_scanned': 0,
         'honeypots_blocked': 0,
@@ -138,7 +158,6 @@ def rank_candidates(candidates_generator, jd_text):
             logistics_edu * (PERSONA_WEIGHTS['logistics'] + PERSONA_WEIGHTS['education'])
         )
         
-        # Store individual scores in candidate object for explainability & dashboard Plotly charts
         candidate['scores'] = {
             'technical': tech,
             'hiring_manager': hiring_manager,
@@ -167,7 +186,13 @@ def rank_candidates(candidates_generator, jd_text):
     # 6. Sort by final score descending, breaking ties by candidate_id ascending (deterministic)
     scored_candidates.sort(key=lambda x: (-x['final_score'], x.get('candidate_id', '')))
     
-    # 7. Take top 100
+    # 7. Apply diversity re-ranking to prevent clustering
+    scored_candidates = apply_diversity_reranking(scored_candidates)
+    
+    # 8. Re-sort after diversity penalty
+    scored_candidates.sort(key=lambda x: (-x['final_score'], x.get('candidate_id', '')))
+    
+    # 9. Take top 100
     top_100 = scored_candidates[:100]
     
     # Add ranking index (1-based)
