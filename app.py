@@ -1261,7 +1261,20 @@ elif nav_page == "📊 Pipeline X-Ray":
     hp_data, st_data = load_honeypot_stats(get_mtime("honeypots_caught.json"), get_mtime("stuffers_filtered.json"))
     n_hp = len(hp_data)
     n_st = len(st_data)
-    n_total = n_hp + n_st + 46826
+    
+    # Load saved pipeline stats or default
+    p_stats = st.session_state.get('pipeline_stats')
+    if not p_stats and os.path.exists("pipeline_stats.json"):
+        try:
+            with open("pipeline_stats.json", "r", encoding="utf-8") as f:
+                p_stats = json.load(f)
+        except Exception:
+            pass
+            
+    if not p_stats:
+        p_stats = {}
+        
+    n_total = p_stats.get('scanned', n_hp + n_st + 46826)
     n_evaluated = n_total - n_hp - n_st
     
     # Sankey Funnel Diagram
