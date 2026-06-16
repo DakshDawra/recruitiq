@@ -1004,301 +1004,297 @@ if nav_page == "📋 Intelligence Dashboard":
         else:
             st.info("Select a candidate to view spotlight details.")
 
-elif nav_page == "📊 Candidate Arena":
+elif nav_page == "💎 Premium SaaS Workspace":
     st.markdown(
         """
-        <h1 style="margin-bottom: 4px; font-size: 32px;">📊 Candidate Arena</h1>
-        <p style="color: #6B7280; font-size: 14px; margin-top: 0;">Compare candidate profiles side-by-side across persona dimensions and draft outreach emails.</p>
+        <h1 style="margin-bottom: 4px; font-size: 32px;">💎 Premium SaaS Workspace</h1>
+        <p style="color: #6B7280; font-size: 14px; margin-top: 0;">Enterprise recruitment intelligence tools, team workflows, and ATS integrations.</p>
         <div style="height: 1px; background-color: #EAE8E4; margin: 20px 0;"></div>
         """,
         unsafe_allow_html=True
     )
     
-    if candidates:
-        # Multiple selection
-        selected_names = st.multiselect(
-            "Select 2 to 4 candidates to compare:",
-            [f"#{c['rank']} {c['profile']['anonymized_name']} ({c['candidate_id']})" for c in candidates],
-            default=[f"#{c['rank']} {c['profile']['anonymized_name']} ({c['candidate_id']})" for c in candidates[:3]],
-            max_selections=4,
-            key="arena_multiselect"
+    tab_arena, tab_team, tab_ats = st.tabs([
+        "📊 Candidate Comparison Arena",
+        "👥 Team Collaboration Scorecards",
+        "🔌 ATS Connectors & Sync"
+    ])
+    
+    with tab_arena:
+        st.markdown("### 📊 Candidate Comparison Arena")
+        st.write("Compare candidate profiles side-by-side across persona dimensions and draft outreach emails.")
+        if candidates:
+            # Multiple selection
+            selected_names = st.multiselect(
+                "Select 2 to 4 candidates to compare:",
+                [f"#{c['rank']} {c['profile']['anonymized_name']} ({c['candidate_id']})" for c in candidates],
+                default=[f"#{c['rank']} {c['profile']['anonymized_name']} ({c['candidate_id']})" for c in candidates[:3]],
+                max_selections=4,
+                key="arena_multiselect"
+            )
+            
+            if len(selected_names) < 2:
+                st.warning("Please select at least 2 candidates to compare.")
+            else:
+                # Load selected candidates data
+                arena_cands = []
+                for name_str in selected_names:
+                    cid = name_str.split("(")[-1].replace(")", "")
+                    cand = next((c for c in candidates if c['candidate_id'] == cid), None)
+                    if cand:
+                        arena_cands.append(cand)
+                
+                # Radar chart comparison
+                st.markdown("#### 📊 Persona Radar Comparison")
+                categories = ['Technical Depth', 'Hiring Manager Fit', 'Culture Fit', 'Recruiter Ops', 'Logistics/Edu']
+                fig_compare = go.Figure()
+                
+                colors_palette = ['#6366F1', '#F59E0B', '#10B981', '#EC4899']
+                for i, c in enumerate(arena_cands):
+                    scores = c['scores']
+                    r_vals = [
+                        scores.get('technical', 0.0),
+                        scores.get('hiring_manager', 0.0),
+                        scores.get('culture_fit', 0.0),
+                        scores.get('recruiter_ops', 0.0),
+                        scores.get('logistics_education', 0.0)
+                    ]
+                    fig_compare.add_trace(go.Scatterpolar(
+                        r=r_vals,
+                        theta=categories,
+                        fill='toself',
+                        name=f"#{c['rank']} {c['profile']['anonymized_name'].split()[0]}",
+                        line=dict(color=colors_palette[i % len(colors_palette)])
+                    ))
+                    
+                fig_compare.update_layout(
+                    polar=dict(radialaxis=dict(visible=True, range=[0, 1], tickfont=dict(size=10))),
+                    showlegend=True,
+                    height=420,
+                    paper_bgcolor='rgba(0,0,0,0)',
+                    plot_bgcolor='rgba(0,0,0,0)',
+                    font=dict(family='Inter'),
+                    margin=dict(l=60, r=60, t=30, b=30),
+                    legend=dict(orientation="h", yanchor="bottom", y=-0.15, xanchor="center", x=0.5)
+                )
+                st.plotly_chart(fig_compare, use_container_width=True)
+                
+                # side-by-side stats summary cards
+                st.markdown("#### 📋 Side-by-Side Profile Summary")
+                cols = st.columns(len(arena_cands))
+                for i, c in enumerate(arena_cands):
+                    with cols[i]:
+                        profile = c['profile']
+                        st.markdown(
+                            f"""
+                            <div class="bento-card" style="padding: 16px; border-top: 4px solid {colors_palette[i % len(colors_palette)]}; min-height: 250px;">
+                                <h4 style="margin: 0; font-size: 15px; color: #1F2937;">#{c['rank']} {profile['anonymized_name']}</h4>
+                                <p style="margin: 2px 0 10px 0; font-size: 11px; color: #6B7280;">{profile['current_title']}</p>
+                                <p style="margin: 0; font-size: 12px; color: #4B5563;"><b>YoE:</b> {format_yoe(profile.get('years_of_experience', 0))}</p>
+                                <p style="margin: 4px 0 0 0; font-size: 12px; color: #4B5563;"><b>Score:</b> {c['final_score']}</p>
+                                <p style="margin: 4px 0 0 0; font-size: 12px; color: #4B5563;"><b>Location:</b> {profile.get('location', 'N/A')}</p>
+                                <p style="margin: 8px 0 0 0; font-size: 11px; color: #6B7280; line-height: 1.4; font-style: italic;">
+                                    \"{c.get('reasoning', '')[:100]}...\"
+                                </p>
+                            </div>
+                            """,
+                            unsafe_allow_html=True
+                        )
+                
+                # Outreach Drafts
+                st.markdown("#### ✉️ AI Personalized Outreach Drafts")
+                st.write("Generate custom recruiter emails for the selected candidates based on their factual history.")
+                
+                demo_candidate = st.selectbox(
+                    "Select Candidate to Draft Email For:",
+                    [f"#{c['rank']} {c['profile']['anonymized_name']}" for c in arena_cands],
+                    key="arena_outreach_select"
+                )
+                
+                selected_cand_outreach = next((c for c in arena_cands if f"#{c['rank']} {c['profile']['anonymized_name']}" == demo_candidate), None)
+                if selected_cand_outreach:
+                    profile = selected_cand_outreach['profile']
+                    name = profile['anonymized_name']
+                    title = profile['current_title']
+                    company = profile.get('current_company', 'their current company')
+                    skills_str = ", ".join([s.get('name') for s in selected_cand_outreach.get('skills', [])[:3] if s.get('name')])
+                    
+                    outreach_email = f"Subject: Senior AI Engineer Opportunity — Love your background at {company}!\n\n" \
+                                     f"Hi {name.split()[0]},\n\n" \
+                                     f"I was reviewing your candidate profile and was highly impressed by your work as a {title} at {company}. " \
+                                     f"Your technical expertise in {skills_str} makes you a standout candidate for our Senior AI Engineer opening at Redrob AI.\n\n" \
+                                     f"We are looking for strong hands-on builders who prefer shipping products over writing pure research papers, and your career history aligns perfectly. " \
+                                     f"Would you be open to a quick 15-minute call this week to explore this further?\n\n" \
+                                     f"Best regards,\n" \
+                                     f"Daksh Dawra\n" \
+                                     f"AlphaBeta Recruiting"
+                    st.code(outreach_email, language="text")
+        else:
+            st.warning("No candidate data available.")
+        
+    with tab_team:
+        st.markdown("### 👥 Team Collaboration Scorecards")
+        st.write("Review ratings and comments left by team members, and add your own feedback for candidate evaluations.")
+        
+        if 'team_comments' not in st.session_state:
+            st.session_state.team_comments = {
+                "CAND_1079361": [
+                    {"user": "Daksh Dawra (Admin)", "role": "Lead Recruiter", "rating": 5, "comment": "Perfect match on PyTorch/Transformers. GitHub activity is exceptional.", "date": "2026-06-16 14:30"},
+                    {"user": "Sarah Jenkins", "role": "Hiring Manager", "rating": 5, "comment": "Agreed. Checked her DeepMind experience; it aligns perfectly with our core LLM tasks.", "date": "2026-06-16 16:15"}
+                ],
+                "CAND_1079362": [
+                    {"user": "Daksh Dawra (Admin)", "role": "Lead Recruiter", "rating": 4, "comment": "Very strong candidate from Haptik, but notice period is slightly high (60 days).", "date": "2026-06-16 15:00"}
+                ]
+            }
+            
+        c_sel = st.selectbox(
+            "Select Candidate to Review:",
+            [f"#{c['rank']} {c['profile']['anonymized_name']} ({c['candidate_id']})" for c in candidates[:15]],
+            key="team_c_select"
         )
         
-        if len(selected_names) < 2:
-            st.warning("Please select at least 2 candidates to compare.")
-        else:
-            # Load selected candidates data
-            arena_cands = []
-            for name_str in selected_names:
-                cid = name_str.split("(")[-1].replace(")", "")
-                cand = next((c for c in candidates if c['candidate_id'] == cid), None)
-                if cand:
-                    arena_cands.append(cand)
+        c_id_selected = c_sel.split("(")[-1].replace(")", "")
+        cand_obj = next((c for c in candidates if c['candidate_id'] == c_id_selected), None)
+        
+        if cand_obj:
+            comments = st.session_state.team_comments.get(c_id_selected, [])
             
-            # Radar chart comparison
-            st.markdown("### 📊 Persona Radar Comparison")
-            categories = ['Technical Depth', 'Hiring Manager Fit', 'Culture Fit', 'Recruiter Ops', 'Logistics/Edu']
-            fig_compare = go.Figure()
-            
-            colors_palette = ['#6366F1', '#F59E0B', '#10B981', '#EC4899']
-            for i, c in enumerate(arena_cands):
-                scores = c['scores']
-                r_vals = [
-                    scores.get('technical', 0.0),
-                    scores.get('hiring_manager', 0.0),
-                    scores.get('culture_fit', 0.0),
-                    scores.get('recruiter_ops', 0.0),
-                    scores.get('logistics_education', 0.0)
-                ]
-                fig_compare.add_trace(go.Scatterpolar(
-                    r=r_vals,
-                    theta=categories,
-                    fill='toself',
-                    name=f"#{c['rank']} {c['profile']['anonymized_name'].split()[0]}",
-                    line=dict(color=colors_palette[i % len(colors_palette)])
-                ))
-                
-            fig_compare.update_layout(
-                polar=dict(radialaxis=dict(visible=True, range=[0, 1], tickfont=dict(size=10))),
-                showlegend=True,
-                height=420,
-                paper_bgcolor='rgba(0,0,0,0)',
-                plot_bgcolor='rgba(0,0,0,0)',
-                font=dict(family='Inter'),
-                margin=dict(l=60, r=60, t=30, b=30),
-                legend=dict(orientation="h", yanchor="bottom", y=-0.15, xanchor="center", x=0.5)
-            )
-            st.plotly_chart(fig_compare, use_container_width=True)
-            
-            # side-by-side stats summary cards
-            st.markdown("### 📋 Side-by-Side Profile Summary")
-            cols = st.columns(len(arena_cands))
-            for i, c in enumerate(arena_cands):
-                with cols[i]:
-                    profile = c['profile']
+            # Display existing comments
+            if comments:
+                for comm in comments:
+                    stars = "⭐" * comm['rating']
                     st.markdown(
                         f"""
-                        <div class="bento-card" style="padding: 16px; border-top: 4px solid {colors_palette[i % len(colors_palette)]}; min-height: 250px;">
-                            <h4 style="margin: 0; font-size: 15px; color: #1F2937;">#{c['rank']} {profile['anonymized_name']}</h4>
-                            <p style="margin: 2px 0 10px 0; font-size: 11px; color: #6B7280;">{profile['current_title']}</p>
-                            <p style="margin: 0; font-size: 12px; color: #4B5563;"><b>YoE:</b> {format_yoe(profile.get('years_of_experience', 0))}</p>
-                            <p style="margin: 4px 0 0 0; font-size: 12px; color: #4B5563;"><b>Score:</b> {c['final_score']}</p>
-                            <p style="margin: 4px 0 0 0; font-size: 12px; color: #4B5563;"><b>Location:</b> {profile.get('location', 'N/A')}</p>
-                            <p style="margin: 8px 0 0 0; font-size: 11px; color: #6B7280; line-height: 1.4; font-style: italic;">
-                                \"{c.get('reasoning', '')[:100]}...\"
-                            </p>
+                        <div style="background-color: white; border: 1px solid #EAE8E4; border-radius: 12px; padding: 12px; margin-bottom: 12px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                                <div>
+                                    <span style="font-weight: 700; font-size: 13px; color: #1F2937;">{comm['user']}</span>
+                                    <span style="font-size: 11px; color: #6B7280; margin-left: 8px;">({comm['role']})</span>
+                                </div>
+                                <span style="font-size: 12px;">{stars}</span>
+                            </div>
+                            <p style="margin: 0; font-size: 13px; color: #4B5563; line-height: 1.4;">{comm['comment']}</p>
+                            <div style="text-align: right; font-size: 10px; color: #9CA3AF; margin-top: 4px;">{comm['date']}</div>
                         </div>
                         """,
                         unsafe_allow_html=True
                     )
-            
-            # Outreach Drafts
-            st.markdown("### ✉️ AI Personalized Outreach Drafts")
-            st.write("Generate custom recruiter emails for the selected candidates based on their factual history.")
-            
-            demo_candidate = st.selectbox(
-                "Select Candidate to Draft Email For:",
-                [f"#{c['rank']} {c['profile']['anonymized_name']}" for c in arena_cands],
-                key="arena_outreach_select"
-            )
-            
-            selected_cand_outreach = next((c for c in arena_cands if f"#{c['rank']} {c['profile']['anonymized_name']}" == demo_candidate), None)
-            if selected_cand_outreach:
-                profile = selected_cand_outreach['profile']
-                name = profile['anonymized_name']
-                title = profile['current_title']
-                company = profile.get('current_company', 'their current company')
-                skills_str = ", ".join([s.get('name') for s in selected_cand_outreach.get('skills', [])[:3] if s.get('name')])
+            else:
+                st.info("No comments or scorecard reviews yet for this candidate. Add one below!")
                 
-                outreach_email = f"Subject: Senior AI Engineer Opportunity — Love your background at {company}!\n\n" \
-                                 f"Hi {name.split()[0]},\n\n" \
-                                 f"I was reviewing your candidate profile and was highly impressed by your work as a {title} at {company}. " \
-                                 f"Your technical expertise in {skills_str} makes you a standout candidate for our Senior AI Engineer opening at Redrob AI.\n\n" \
-                                 f"We are looking for strong hands-on builders who prefer shipping products over writing pure research papers, and your career history aligns perfectly. " \
-                                 f"Would you be open to a quick 15-minute call this week to explore this further?\n\n" \
-                                 f"Best regards,\n" \
-                                 f"Daksh Dawra\n" \
-                                 f"AlphaBeta Recruiting"
-                st.code(outreach_email, language="text")
-    else:
-        st.warning("No candidate data available.")
+            # Form to add comment
+            with st.form("add_comment_form", clear_on_submit=True):
+                col_f1, col_f2 = st.columns([3, 1])
+                with col_f1:
+                    new_comment = st.text_area("Add Review / Evaluation Notes:", placeholder="Type your feedback here...")
+                with col_f2:
+                    new_rating = st.slider("Rating (1-5 stars)", 1, 5, 5)
+                    new_role = st.selectbox("Your Role:", ["Lead Recruiter", "Hiring Manager", "AI Engineer", "VP of Engineering"])
+                submit_comment = st.form_submit_button("Submit Review Scorecard")
+                
+                if submit_comment:
+                    if not new_comment.strip():
+                        st.error("Please enter a comment before submitting.")
+                    else:
+                        from datetime import datetime
+                        new_entry = {
+                            "user": f"Daksh Dawra ({new_role})",
+                            "role": new_role,
+                            "rating": new_rating,
+                            "comment": new_comment.strip(),
+                            "date": datetime.now().strftime("%Y-%m-%d %H:%M")
+                        }
+                        if c_id_selected not in st.session_state.team_comments:
+                            st.session_state.team_comments[c_id_selected] = []
+                        st.session_state.team_comments[c_id_selected].append(new_entry)
+                        st.success("Review added successfully!")
+                        st.rerun()
 
-elif nav_page == "👥 Team Workspace":
-    st.markdown(
-        """
-        <h1 style="margin-bottom: 4px; font-size: 32px;">👥 Team Collaboration Workspace</h1>
-        <p style="color: #6B7280; font-size: 14px; margin-top: 0;">Collaborative workspace for recruiting teams, hiring managers, and interviewers.</p>
-        <div style="height: 1px; background-color: #EAE8E4; margin: 20px 0;"></div>
-        """,
-        unsafe_allow_html=True
-    )
-    
-    st.info("👥 **Team Feature Showcase**: Below are active team features. You can review comments, submit scorecards, configure ATS connectors, and track team activities.")
-    
-    # 1. Team Collaboration & Comments
-    st.markdown("### 💬 Candidate Scorecards & Team Feedback")
-    st.write("Review ratings and comments left by team members, and add your own feedback for candidate evaluations.")
-    
-    if 'team_comments' not in st.session_state:
-        st.session_state.team_comments = {
-            "CAND_1079361": [
-                {"user": "Daksh Dawra (Admin)", "role": "Lead Recruiter", "rating": 5, "comment": "Perfect match on PyTorch/Transformers. GitHub activity is exceptional.", "date": "2026-06-16 14:30"},
-                {"user": "Sarah Jenkins", "role": "Hiring Manager", "rating": 5, "comment": "Agreed. Checked her DeepMind experience; it aligns perfectly with our core LLM tasks.", "date": "2026-06-16 16:15"}
-            ],
-            "CAND_1079362": [
-                {"user": "Daksh Dawra (Admin)", "role": "Lead Recruiter", "rating": 4, "comment": "Very strong candidate from Haptik, but notice period is slightly high (60 days).", "date": "2026-06-16 15:00"}
-            ]
+        # 2. Multi-JD Pipeline Management
+        st.markdown("<br/>", unsafe_allow_html=True)
+        st.markdown("#### 💼 Department Multi-Role Sourcing Pipeline")
+        st.write("Manage candidate lists across all active engineering roles in your department.")
+        
+        import pandas as pd
+        jd_options = {
+            "Senior AI Engineer (Active)": {"candidates": len(candidates), "date": "2026-06-16"},
+            "Senior Frontend Lead (Draft)": {"candidates": 0, "date": "N/A"},
+            "DevOps / AI Platform Lead (Active)": {"candidates": 12, "date": "2026-06-15"}
         }
         
-    c_sel = st.selectbox(
-        "Select Candidate to Review:",
-        [f"#{c['rank']} {c['profile']['anonymized_name']} ({c['candidate_id']})" for c in candidates[:15]],
-        key="team_c_select"
-    )
-    
-    c_id_selected = c_sel.split("(")[-1].replace(")", "")
-    cand_obj = next((c for c in candidates if c['candidate_id'] == c_id_selected), None)
-    
-    if cand_obj:
-        comments = st.session_state.team_comments.get(c_id_selected, [])
+        st.dataframe(
+            pd.DataFrame([
+                {"Job Title": k, "Ranked Candidates": v['candidates'], "Last Compiled": v['date'], "Status": "Active" if "Active" in k else "Draft"}
+                for k, v in jd_options.items()
+            ]),
+            use_container_width=True,
+            hide_index=True
+        )
         
-        # Display existing comments
-        if comments:
-            for comm in comments:
-                stars = "⭐" * comm['rating']
-                st.markdown(
-                    f"""
-                    <div style="background-color: white; border: 1px solid #EAE8E4; border-radius: 12px; padding: 12px; margin-bottom: 12px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                            <div>
-                                <span style="font-weight: 700; font-size: 13px; color: #1F2937;">{comm['user']}</span>
-                                <span style="font-size: 11px; color: #6B7280; margin-left: 8px;">({comm['role']})</span>
-                            </div>
-                            <span style="font-size: 12px;">{stars}</span>
-                        </div>
-                        <p style="margin: 0; font-size: 13px; color: #4B5563; line-height: 1.4;">{comm['comment']}</p>
-                        <div style="text-align: right; font-size: 10px; color: #9CA3AF; margin-top: 4px;">{comm['date']}</div>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
-        else:
-            st.info("No comments or scorecard reviews yet for this candidate. Add one below!")
-            
-        # Form to add comment
-        with st.form("add_comment_form", clear_on_submit=True):
-            col_f1, col_f2 = st.columns([3, 1])
-            with col_f1:
-                new_comment = st.text_area("Add Review / Evaluation Notes:", placeholder="Type your feedback here...")
-            with col_f2:
-                new_rating = st.slider("Rating (1-5 stars)", 1, 5, 5)
-                new_role = st.selectbox("Your Role:", ["Lead Recruiter", "Hiring Manager", "AI Engineer", "VP of Engineering"])
-            submit_comment = st.form_submit_button("Submit Review Scorecard")
-            
-            if submit_comment:
-                if not new_comment.strip():
-                    st.error("Please enter a comment before submitting.")
-                else:
-                    from datetime import datetime
-                    new_entry = {
-                        "user": f"Daksh Dawra ({new_role})",
-                        "role": new_role,
-                        "rating": new_rating,
-                        "comment": new_comment.strip(),
-                        "date": datetime.now().strftime("%Y-%m-%d %H:%M")
-                    }
-                    if c_id_selected not in st.session_state.team_comments:
-                        st.session_state.team_comments[c_id_selected] = []
-                    st.session_state.team_comments[c_id_selected].append(new_entry)
-                    st.success("Review added successfully!")
-                    st.rerun()
-
-    # 2. Multi-JD Pipeline Management
-    st.markdown("<br/>", unsafe_allow_html=True)
-    st.markdown("### 💼 Multi-Role Sourcing Pipeline")
-    st.write("Manage candidate lists across all active engineering roles in your department.")
-    
-    import pandas as pd
-    jd_options = {
-        "Senior AI Engineer (Active)": {"candidates": len(candidates), "date": "2026-06-16"},
-        "Senior Frontend Lead (Draft)": {"candidates": 0, "date": "N/A"},
-        "DevOps / AI Platform Lead (Active)": {"candidates": 12, "date": "2026-06-15"}
-    }
-    
-    st.dataframe(
-        pd.DataFrame([
-            {"Job Title": k, "Ranked Candidates": v['candidates'], "Last Compiled": v['date'], "Status": "Active" if "Active" in k else "Draft"}
-            for k, v in jd_options.items()
-        ]),
-        use_container_width=True,
-        hide_index=True
-    )
-    
-    # 3. ATS Integration Connectors
-    st.markdown("<br/>", unsafe_allow_html=True)
-    st.markdown("### 🔌 ATS Live Connectors")
-    st.write("Configure synchronization with your Applicant Tracking System (ATS).")
-    
-    ats_col1, ats_col2, ats_col3 = st.columns(3)
-    with ats_col1:
-        st.markdown(
-            """
-            <div style="background-color: white; border: 1px solid #EAE8E4; border-radius: 16px; padding: 16px; text-align: center; min-height: 140px;">
-                <div style="font-weight: 800; font-size: 16px; color: #1F2937; margin-bottom: 8px;">Greenhouse</div>
-                <span style="background-color: #D1FADF; color: #065F46; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700;">CONNECTED</span>
-                <p style="margin: 12px 0 0 0; font-size: 11px; color: #6B7280;">Auto-syncs Top 10 shortlists daily.</p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-        st.button("Configure Greenhouse", key="cfg_greenhouse")
-    with ats_col2:
-        st.markdown(
-            """
-            <div style="background-color: white; border: 1px solid #EAE8E4; border-radius: 16px; padding: 16px; text-align: center; min-height: 140px;">
-                <div style="font-weight: 800; font-size: 16px; color: #1F2937; margin-bottom: 8px;">Lever</div>
-                <span style="background-color: #FEE2E2; color: #EF4444; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700;">DISCONNECTED</span>
-                <p style="margin: 12px 0 0 0; font-size: 11px; color: #6B7280;">Direct API integration via OAuth.</p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-        st.button("Connect Lever API", key="cfg_lever")
-    with ats_col3:
-        st.markdown(
-            """
-            <div style="background-color: white; border: 1px solid #EAE8E4; border-radius: 16px; padding: 16px; text-align: center; min-height: 140px;">
-                <div style="font-weight: 800; font-size: 16px; color: #1F2937; margin-bottom: 8px;">Workday</div>
-                <span style="background-color: #FEF3C7; color: #D97706; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700;">PENDING CONFIG</span>
-                <p style="margin: 12px 0 0 0; font-size: 11px; color: #6B7280;">Requires client ID and endpoint URL.</p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-        st.button("Verify Credentials", key="cfg_workday")
-
-    # 4. Team Activity Audit Trail
-    st.markdown("<br/>", unsafe_allow_html=True)
-    st.markdown("### 📜 Team Activity Audit Trail")
-    st.write("Track changes made to ranking configurations, weights, and comments.")
-    
-    audit_logs = [
-        {"time": "2026-06-16 16:15", "user": "Sarah Jenkins", "action": "Added review comment for CAND_1079361"},
-        {"time": "2026-06-16 14:48", "user": "Daksh Dawra", "action": "Modified Technical Depth weighting from 0.25 to 0.30"},
-        {"time": "2026-06-16 14:30", "user": "Daksh Dawra", "action": "Run pipeline on new custom dataset (150 candidates)"},
-        {"time": "2026-06-16 11:22", "user": "Sarah Jenkins", "action": "Downloaded candidate CSV shortlist for review"}
-    ]
-    
-    for log in audit_logs:
-        st.markdown(
-            f"""
-            <div style="border-left: 2px solid #6366F1; padding-left: 12px; margin-bottom: 8px; font-size: 12px;">
-                <span style="color: #6B7280; font-family: 'JetBrains Mono', monospace;">{log['time']}</span> • 
-                <strong>{log['user']}</strong>: <span style="color: #374151;">{log['action']}</span>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+        # 3. Team Activity Audit Trail
+        st.markdown("<br/>", unsafe_allow_html=True)
+        st.markdown("#### 📜 Team Activity Audit Trail")
+        st.write("Track changes made to ranking configurations, weights, and comments.")
+        
+        audit_logs = [
+            {"time": "2026-06-16 16:15", "user": "Sarah Jenkins", "action": "Added review comment for CAND_1079361"},
+            {"time": "2026-06-16 14:48", "user": "Daksh Dawra", "action": "Modified Technical Depth weighting from 0.25 to 0.30"},
+            {"time": "2026-06-16 14:30", "user": "Daksh Dawra", "action": "Run pipeline on new custom dataset (150 candidates)"},
+            {"time": "2026-06-16 11:22", "user": "Sarah Jenkins", "action": "Downloaded candidate CSV shortlist for review"}
+        ]
+        
+        for log in audit_logs:
+            st.markdown(
+                f"""
+                <div style="border-left: 2px solid #6366F1; padding-left: 12px; margin-bottom: 8px; font-size: 12px;">
+                    <span style="color: #6B7280; font-family: 'JetBrains Mono', monospace;">{log['time']}</span> • 
+                    <strong>{log['user']}</strong>: <span style="color: #374151;">{log['action']}</span>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+        
+    with tab_ats:
+        st.markdown("### 🔌 ATS Live Connectors")
+        st.write("Configure and sync candidate shortlists directly with your Applicant Tracking System.")
+        
+        ats_col1, ats_col2, ats_col3 = st.columns(3)
+        with ats_col1:
+            st.markdown(
+                """
+                <div style="background-color: white; border: 1px solid #EAE8E4; border-radius: 16px; padding: 16px; text-align: center; min-height: 140px;">
+                    <div style="font-weight: 800; font-size: 16px; color: #1F2937; margin-bottom: 8px;">Greenhouse</div>
+                    <span style="background-color: #D1FADF; color: #065F46; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700;">CONNECTED</span>
+                    <p style="margin: 12px 0 0 0; font-size: 11px; color: #6B7280;">Auto-syncs Top 10 shortlists daily.</p>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            st.button("Configure Greenhouse", key="cfg_greenhouse")
+        with ats_col2:
+            st.markdown(
+                """
+                <div style="background-color: white; border: 1px solid #EAE8E4; border-radius: 16px; padding: 16px; text-align: center; min-height: 140px;">
+                    <div style="font-weight: 800; font-size: 16px; color: #1F2937; margin-bottom: 8px;">Lever</div>
+                    <span style="background-color: #FEE2E2; color: #EF4444; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700;">DISCONNECTED</span>
+                    <p style="margin: 12px 0 0 0; font-size: 11px; color: #6B7280;">Direct API integration via OAuth.</p>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            st.button("Connect Lever API", key="cfg_lever")
+        with ats_col3:
+            st.markdown(
+                """
+                <div style="background-color: white; border: 1px solid #EAE8E4; border-radius: 16px; padding: 16px; text-align: center; min-height: 140px;">
+                    <div style="font-weight: 800; font-size: 16px; color: #1F2937; margin-bottom: 8px;">Workday</div>
+                    <span style="background-color: #FEF3C7; color: #D97706; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700;">PENDING CONFIG</span>
+                    <p style="margin: 12px 0 0 0; font-size: 11px; color: #6B7280;">Requires client ID and endpoint URL.</p>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            st.button("Verify Credentials", key="cfg_workday")
 
 elif nav_page == "🔬 Rank Robustness":
     st.markdown(
@@ -1919,6 +1915,6 @@ elif nav_page == "🚀 Product Roadmap":
 
     st.markdown("---")
     st.markdown("### 🛠️ Interactive Feature Preview")
-    st.info("💡 **Premium Features Sandbox**: Try the interactive **Candidate Arena** and **Team Workspace** pages from the sidebar to see these premium modules in action with the real dataset!")
+    st.info("💡 **Premium Features Sandbox**: Try the interactive **💎 Premium SaaS Workspace** page from the sidebar to see these premium modules in action with the real dataset!")
 
 
