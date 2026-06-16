@@ -1,7 +1,7 @@
 import os
 
-# Base paths
-WORKSPACE_DIR = r"c:\Users\HP\OneDrive\Documents\Track1"
+# Base paths — use relative paths so it works on any machine
+WORKSPACE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(WORKSPACE_DIR, "[PUB] India_runs_data_and_ai_challenge (1)", "[PUB] India_runs_data_and_ai_challenge", "India_runs_data_and_ai_challenge")
 CANDIDATES_FILE = os.path.join(DATA_DIR, "candidates.jsonl")
 
@@ -12,7 +12,8 @@ REQUIRED_SKILLS = {
     'computer vision', 'embeddings', 'faiss', 'pinecone', 'milvus', 
     'weaviate', 'vector search', 'hugging face', 'lora', 'peft', 
     'qlora', 'sentence transformers', 'recommendation systems', 
-    'information retrieval', 'xgboost', 'mlflow', 'weights & biases'
+    'information retrieval', 'xgboost', 'mlflow', 'weights & biases',
+    'langchain', 'openai', 'retrieval', 'ranking', 'embedding'
 }
 
 # Strong positive indicators for founding engineer mindset
@@ -34,11 +35,17 @@ NON_TECH_TITLES = {
     'business analyst', 'project manager', 'recruiter'
 }
 
+# AI/ML title keywords that signal a strong match for AI Engineer JD
+AI_TITLE_KEYWORDS = {
+    'ml', 'machine learning', 'ai', 'data scientist', 'nlp', 
+    'deep learning', 'research scientist', 'applied scientist',
+    'ml engineer', 'ai engineer', 'data engineer'
+}
+
 # Target locations (Noida/Pune preferred, hybrid cadence)
 PREFERRED_LOCATIONS = {'noida', 'pune', 'delhi ncr', 'mumbai', 'hyderabad'}
 
 # Notice Period Weight Table
-# Sub-30 days ideal, 30+ has higher bar, >90 penalized heavily
 def get_notice_period_weight(days):
     if days <= 30:
         return 1.0
@@ -49,11 +56,11 @@ def get_notice_period_weight(days):
     else:
         return 0.1
 
-# Weights for Multi-Persona Consensus Engine
+# Weights for Multi-Persona Consensus Engine (must sum to 1.0)
 PERSONA_WEIGHTS = {
-    'technical': 0.25,        # Deep technical skills + assessments + github
+    'technical': 0.30,        # Deep technical skills + assessments + github (INCREASED)
     'hiring_manager': 0.25,   # Career trajectory, product startup background, tenure
-    'culture_fit': 0.20,      # Tenure consistency, no pure consulting, no pure academic research
+    'culture_fit': 0.15,      # Tenure consistency, no pure consulting, no pure academic research
     'recruiter_ops': 0.15,    # Availability, response rate, saved by recruiters count
     'logistics': 0.10,        # Location, notice period, salary alignment
     'education': 0.05         # Field of study, university tier

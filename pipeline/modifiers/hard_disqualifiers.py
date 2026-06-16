@@ -54,9 +54,8 @@ def get_hard_disqualifier_multiplier(candidate):
     if has_cv and not has_nlp:
         return 0.01, "CV/Speech/Robotics pure background without NLP/IR"
 
-    # 4. Low external visibility (soft penalty, not hard disqualification)
-    github_score = float(signals.get('github_activity_score', -1))
-    if years_of_experience > 5.0 and github_score >= 0 and github_score < 5.0:
-        return 0.90, "Limited public code visibility for 5+ years experience"
+    # 4. Low GitHub (soft penalty only — many senior engineers work in proprietary codebases)
+    # Moved to soft modifier: handled via github_bonus in technical scorer
+    # No hard disqualification for low GitHub
         
     return 1.0, None
