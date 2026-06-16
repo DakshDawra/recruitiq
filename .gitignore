@@ -33,7 +33,7 @@ env/
 ENV/
 
 # Streamlit
-.streamlit/config.toml
+!.streamlit/config.toml
 .streamlit/secrets.toml
 
 # IDEs
