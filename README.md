@@ -1,11 +1,11 @@
 # RecruitIQ — AI-Powered Candidate Discovery & Ranking Engine
 
-> **Team AlphaBeta** | Daksh Dawra, Adhya Varshney, Chhavi  
+> **Team AlphaBeta** | Daksh Dawra, Adhya Varshney  
 > India Runs Data & AI Challenge 2026
 
 ## Overview
 
-RecruitIQ is a multi-persona consensus ranking engine that processes 100,000 candidate profiles to produce an optimally ranked top-100 shortlist for a Senior AI Engineer position. The system uses 5 virtual evaluators, 23 behavioral signals, TF-IDF semantic matching, and a 9-rule honeypot immune system — all running on CPU in under 60 seconds.
+RecruitIQ is a multi-persona consensus ranking engine that processes 100,000 candidate profiles to produce an optimally ranked top-100 shortlist for a Senior AI Engineer position. The system uses 5 virtual evaluators, 23 behavioral signals, TF-IDF semantic matching, a 9-rule honeypot immune system, and a diversity re-ranker — all running on CPU in under 60 seconds.
 
 ## Architecture
 
@@ -14,7 +14,7 @@ candidates.jsonl (100K)
     │
     ├── Honeypot Immune System (9 rules)
     │   ├── Timeline paradoxes
-    │   ├── Skill inflation (≥5 expert, 0 proof)
+    │   ├── Skill inflation (≥10 expert, 0 proof)
     │   ├── Impossible YoE vs graduation
     │   ├── Future dates
     │   ├── Unrealistic skill count (>40)
@@ -24,7 +24,7 @@ candidates.jsonl (100K)
     │   └── Remove non-tech profiles (Marketing, HR, Sales)
     │
     ├── Multi-Persona Scoring Engine (5 evaluators)
-    │   ├── Technical Interviewer (skills + assessments + GitHub + certs)
+    │   ├── Technical Interviewer (title relevance + skills + proficiency + assessments + GitHub + certs)
     │   ├── Hiring Manager (YoE + tenure + progression + company quality)
     │   ├── Culture Fit Assessor (stability + consulting penalty + academic check)
     │   ├── Recruiter Ops (all 23 redrob behavioral signals)
@@ -35,8 +35,10 @@ candidates.jsonl (100K)
     ├── Hard Disqualifier Modifiers
     │   ├── Pure consulting-only → 0.01x
     │   ├── Serial title-chasers → 0.01x
-    │   ├── CV/Robotics-only without NLP → 0.01x
-    │   └── Low GitHub with 5+ YoE → 0.90x (soft)
+    │   └── CV/Robotics-only without NLP → 0.01x
+    │
+    ├── Diversity Re-Ranking
+    │   └── Diminishing returns for same company+title clusters (>3 duplicates penalized)
     │
     └── Consensus Ranking → Top 100 with per-candidate reasoning
 ```
@@ -47,13 +49,14 @@ candidates.jsonl (100K)
 # 1. Install dependencies
 pip install -r requirements.txt
 
-# 2. Run ranking pipeline (produces submission.csv)
-python rank.py --candidates ./candidates.jsonl --out ./submission.csv
+# 2. Place candidates.jsonl in project root or use default data path
+# 3. Run ranking pipeline (produces submission.csv)
+python rank.py --out ./submission.csv
 
-# 3. Validate output
+# 4. Validate output
 python validate_submission.py submission.csv
 
-# 4. Launch interactive dashboard
+# 5. Launch interactive dashboard
 streamlit run app.py
 ```
 
@@ -74,7 +77,7 @@ streamlit run app.py
 ```
 Final Score = Persona Sum × Semantic Boost × Hard Disqualifier Multiplier
 
-Persona Sum = Technical × 0.25 + Hiring Manager × 0.25 + Culture Fit × 0.20 
+Persona Sum = Technical × 0.30 + Hiring Manager × 0.25 + Culture Fit × 0.15 
             + Recruiter Ops × 0.15 + Logistics/Education × 0.15
 ```
 
@@ -83,7 +86,7 @@ Persona Sum = Technical × 0.25 + Hiring Manager × 0.25 + Culture Fit × 0.20
 - **Platform**: Windows 11, Intel i5
 - **RAM**: 16 GB
 - **Python**: 3.11
-- **Runtime**: ~50 seconds (well within 5-minute budget)
+- **Runtime**: ~38 seconds (well within 5-minute budget)
 - **GPU**: None (CPU only)
 - **Network**: None during ranking
 
@@ -92,7 +95,7 @@ Persona Sum = Technical × 0.25 + Hiring Manager × 0.25 + Culture Fit × 0.20
 | File | Description |
 |------|-------------|
 | `rank.py` | CLI entry point — produces submission.csv |
-| `app.py` | Streamlit dashboard with innovative features |
+| `app.py` | Streamlit dashboard with 5 innovative features |
 | `config.py` | All weights, skill lists, constants |
 | `submission.csv` | Final top-100 ranking output |
 | `submission_metadata.yaml` | Team metadata |

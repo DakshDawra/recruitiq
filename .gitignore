@@ -42,30 +42,20 @@ ENV/
 *.swp
 *.swo
 
-# Project specific data files (Too large for GitHub)
-candidates.jsonl
-*.jsonl
+# Large data files (not for GitHub)
 *India_runs_data_and_ai_challenge*
-analyze_data.py
-detect_patterns.py
-test_candidates*.json
-test_jd*.txt
-test_job_description.txt
+candidates.jsonl
 
-# Intermediate output logs & details
-honeypots_caught.json
-stuffers_filtered.json
-pipeline_stats.json
-top_100_details.json
+# Temporary files from pipeline runs
+uploaded_temp_candidates.*
 active_jd_metadata.json
-submission.csv
+pipeline_stats.json
 
-# Temporary scratch scripts
+# Scratch / debug scripts
 scratch/
-extract_prompt.py
 last_input.txt
 last_prompt.txt
+
+# Markdown files except important ones
 *.md
 !README.md
-!walkthrough.md
-!audit_report.md
