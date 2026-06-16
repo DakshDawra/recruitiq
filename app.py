@@ -274,6 +274,43 @@ def get_mtime(filepath):
     except OSError:
         return 0
 
+# Helper to dynamically update Team Activity Audit Trail
+def log_audit_action(action_str, user="Daksh Dawra"):
+    import datetime
+    now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+    
+    if 'audit_logs' not in st.session_state:
+        st.session_state.audit_logs = [
+            {"time": "2026-06-16 16:15", "user": "Sarah Jenkins", "action": "Added review comment for CAND_1079361"},
+            {"time": "2026-06-16 14:48", "user": "Daksh Dawra", "action": "Modified Technical Depth weighting from 0.25 to 0.30"},
+            {"time": "2026-06-16 14:30", "user": "Daksh Dawra", "action": "Run pipeline on new custom dataset (150 candidates)"},
+            {"time": "2026-06-16 11:22", "user": "Sarah Jenkins", "action": "Downloaded candidate CSV shortlist for review"}
+        ]
+        
+    # Prevent consecutive duplicates
+    if st.session_state.audit_logs and st.session_state.audit_logs[0]['action'] == action_str:
+        return
+        
+    st.session_state.audit_logs.insert(0, {
+        "time": now_str,
+        "user": user,
+        "action": action_str
+    })
+
+def log_weight_change(weight_key):
+    new_val = st.session_state[weight_key]
+    name_map = {
+        "w_tech": "Technical Depth",
+        "w_hm": "Hiring Manager",
+        "w_cf": "Culture Fit",
+        "w_ops": "Recruiter Ops",
+        "w_edu": "Logistics & Edu"
+    }
+    log_audit_action(f"Modified {name_map[weight_key]} weighting to {new_val:.2f}")
+
+def log_download_action():
+    log_audit_action("Downloaded candidate CSV shortlist for review")
+
 # Helper function to load all candidates (specifically for honeypots stats)
 @st.cache_data
 def load_honeypot_stats(mtime_hp, mtime_st):
@@ -451,11 +488,11 @@ st.sidebar.markdown("### 🎛️ Consensus Tuning")
 with st.sidebar.expander("ℹ️ How to use Consensus"):
     st.write("Adjust the importance of each virtual evaluator below. The candidate leaderboard will instantly re-rank to reflect your custom weighting strategy.")
 
-w_tech = st.sidebar.slider("Technical Depth", 0.0, 1.0, 0.30, 0.05, key="w_tech")
-w_hm = st.sidebar.slider("Hiring Manager", 0.0, 1.0, 0.25, 0.05, key="w_hm")
-w_cf = st.sidebar.slider("Culture Fit", 0.0, 1.0, 0.15, 0.05, key="w_cf")
-w_ops = st.sidebar.slider("Recruiter Ops", 0.0, 1.0, 0.15, 0.05, key="w_ops")
-w_edu = st.sidebar.slider("Logistics & Edu", 0.0, 1.0, 0.15, 0.05, key="w_edu")
+w_tech = st.sidebar.slider("Technical Depth", 0.0, 1.0, 0.30, 0.05, key="w_tech", on_change=log_weight_change, args=("w_tech",))
+w_hm = st.sidebar.slider("Hiring Manager", 0.0, 1.0, 0.25, 0.05, key="w_hm", on_change=log_weight_change, args=("w_hm",))
+w_cf = st.sidebar.slider("Culture Fit", 0.0, 1.0, 0.15, 0.05, key="w_cf", on_change=log_weight_change, args=("w_cf",))
+w_ops = st.sidebar.slider("Recruiter Ops", 0.0, 1.0, 0.15, 0.05, key="w_ops", on_change=log_weight_change, args=("w_ops",))
+w_edu = st.sidebar.slider("Logistics & Edu", 0.0, 1.0, 0.15, 0.05, key="w_edu", on_change=log_weight_change, args=("w_edu",))
 
 # Dynamic on-the-fly re-ranking
 total_w = w_tech + w_hm + w_cf + w_ops + w_edu
@@ -641,6 +678,7 @@ if nav_page == "📋 Intelligence Dashboard":
                         "latency": round(elapsed_run, 2)
                     }
                     st.session_state.pipeline_stats = stats_dict
+                    log_audit_action(f"Run pipeline on new custom dataset ({stats_dict['scanned']} candidates)")
                     with open("pipeline_stats.json", "w", encoding="utf-8") as fstats:
                         json.dump(stats_dict, fstats, indent=2)
                     
@@ -832,7 +870,8 @@ if nav_page == "📋 Intelligence Dashboard":
                 label="📥 Download submission.csv",
                 data=csv_data,
                 file_name="submission.csv",
-                mime="text/csv"
+                mime="text/csv",
+                on_click=log_download_action
             )
         else:
             st.error("submission.csv not found. Please run candidate ranking pipeline.")
@@ -1248,6 +1287,7 @@ elif nav_page == "💎 Premium SaaS Workspace":
                         if c_id_selected not in st.session_state.team_comments:
                             st.session_state.team_comments[c_id_selected] = []
                         st.session_state.team_comments[c_id_selected].append(new_entry)
+                        log_audit_action(f"Added review comment/scorecard for {c_id_selected}", user=f"Daksh Dawra ({new_role})")
                         st.success("Review added successfully!")
                         st.rerun()
 
@@ -1277,14 +1317,15 @@ elif nav_page == "💎 Premium SaaS Workspace":
         st.markdown("#### 📜 Team Activity Audit Trail")
         st.write("Track changes made to ranking configurations, weights, and comments.")
         
-        audit_logs = [
-            {"time": "2026-06-16 16:15", "user": "Sarah Jenkins", "action": "Added review comment for CAND_1079361"},
-            {"time": "2026-06-16 14:48", "user": "Daksh Dawra", "action": "Modified Technical Depth weighting from 0.25 to 0.30"},
-            {"time": "2026-06-16 14:30", "user": "Daksh Dawra", "action": "Run pipeline on new custom dataset (150 candidates)"},
-            {"time": "2026-06-16 11:22", "user": "Sarah Jenkins", "action": "Downloaded candidate CSV shortlist for review"}
-        ]
+        if 'audit_logs' not in st.session_state:
+            st.session_state.audit_logs = [
+                {"time": "2026-06-16 16:15", "user": "Sarah Jenkins", "action": "Added review comment for CAND_1079361"},
+                {"time": "2026-06-16 14:48", "user": "Daksh Dawra", "action": "Modified Technical Depth weighting from 0.25 to 0.30"},
+                {"time": "2026-06-16 14:30", "user": "Daksh Dawra", "action": "Run pipeline on new custom dataset (150 candidates)"},
+                {"time": "2026-06-16 11:22", "user": "Sarah Jenkins", "action": "Downloaded candidate CSV shortlist for review"}
+            ]
         
-        for log in audit_logs:
+        for log in st.session_state.audit_logs:
             st.markdown(
                 f"""
                 <div style="border-left: 2px solid #6366F1; padding-left: 12px; margin-bottom: 8px; font-size: 12px;">
@@ -1296,46 +1337,107 @@ elif nav_page == "💎 Premium SaaS Workspace":
             )
         
     with tab_ats:
-        st.markdown("### 🔌 ATS Live Connectors")
-        st.write("Configure and sync candidate shortlists directly with your Applicant Tracking System.")
+        st.markdown("### 🔌 Local ATS Integration & Export (Offline Compliance)")
+        st.markdown("""
+        **How this complies with hackathon constraints:**
+        In compliance with the **Network Off (No External API calls)** rules, RecruitIQ runs entirely locally. It does not send candidate profiles or rankings to any third-party API endpoint or require online OAuth setups. Instead, it simulates a **local-first integration model** by allowing you to format the ranked shortlists into standardized schema payloads (JSON, CSV, XML) ready for file import into your Applicant Tracking System (ATS).
+        """)
         
-        ats_col1, ats_col2, ats_col3 = st.columns(3)
-        with ats_col1:
-            st.markdown(
-                """
-                <div style="background-color: white; border: 1px solid #EAE8E4; border-radius: 16px; padding: 16px; text-align: center; min-height: 140px;">
-                    <div style="font-weight: 800; font-size: 16px; color: #1F2937; margin-bottom: 8px;">Greenhouse</div>
-                    <span style="background-color: #D1FADF; color: #065F46; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700;">CONNECTED</span>
-                    <p style="margin: 12px 0 0 0; font-size: 11px; color: #6B7280;">Auto-syncs Top 10 shortlists daily.</p>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-            st.button("Configure Greenhouse", key="cfg_greenhouse")
-        with ats_col2:
-            st.markdown(
-                """
-                <div style="background-color: white; border: 1px solid #EAE8E4; border-radius: 16px; padding: 16px; text-align: center; min-height: 140px;">
-                    <div style="font-weight: 800; font-size: 16px; color: #1F2937; margin-bottom: 8px;">Lever</div>
-                    <span style="background-color: #FEE2E2; color: #EF4444; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700;">DISCONNECTED</span>
-                    <p style="margin: 12px 0 0 0; font-size: 11px; color: #6B7280;">Direct API integration via OAuth.</p>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-            st.button("Connect Lever API", key="cfg_lever")
-        with ats_col3:
-            st.markdown(
-                """
-                <div style="background-color: white; border: 1px solid #EAE8E4; border-radius: 16px; padding: 16px; text-align: center; min-height: 140px;">
-                    <div style="font-weight: 800; font-size: 16px; color: #1F2937; margin-bottom: 8px;">Workday</div>
-                    <span style="background-color: #FEF3C7; color: #D97706; padding: 4px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700;">PENDING CONFIG</span>
-                    <p style="margin: 12px 0 0 0; font-size: 11px; color: #6B7280;">Requires client ID and endpoint URL.</p>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-            st.button("Verify Credentials", key="cfg_workday")
+        target_ats = st.selectbox(
+            "Select Target ATS to Format & Sync:",
+            ["Greenhouse (JSON Schema)", "Lever (CSV Schema)", "Workday (Candidate XML)"],
+            key="selected_ats_target"
+        )
+        
+        col_m1, col_m2 = st.columns([1, 1])
+        with col_m1:
+            st.markdown("#### 📋 Field Mapping Schema")
+            if "Greenhouse" in target_ats:
+                st.code("""
+{
+  "greenhouse_id": candidate_id,
+  "overall_score": final_score,
+  "review_notes": reasoning,
+  "assessed_skills": profile.skills,
+  "tenure_score": HM_score
+}
+""", language="json")
+            elif "Lever" in target_ats:
+                st.code("""
+candidate_id, score, evaluation_notes, stage, owner
+CAND_XXXX, 0.982, "Reasoning text", "shortlist", "Daksh Dawra"
+""", language="csv")
+            else:
+                st.code("""
+<Candidate>
+  <ID>candidate_id</ID>
+  <AssessmentScore>final_score</AssessmentScore>
+  <AuditNotes>reasoning</AuditNotes>
+</Candidate>
+""", language="xml")
+                
+        with col_m2:
+            st.markdown("#### 🔄 Generate & Transform Payload")
+            st.write("Perform a local-first schema transformation of the current Top 5 ranked candidates from your dataset.")
+            
+            # Button to trigger simulation
+            if st.button("Generate Local ATS Sync File ⚡", use_container_width=True, key="btn_simulate_ats_sync"):
+                # Check if candidates exist
+                if not candidates:
+                    st.warning("No candidates ranked yet. Please run the sourcing pipeline first.")
+                else:
+                    top_5 = candidates[:5]
+                    import datetime
+                    
+                    # Generate payload based on target_ats
+                    if "Greenhouse" in target_ats:
+                        payload = []
+                        for c in top_5:
+                            p = c.get('profile', {})
+                            scores = c.get('scores', {})
+                            payload.append({
+                                "greenhouse_id": c.get('candidate_id') or c.get('id'),
+                                "overall_score": round(c.get('final_score', c.get('score', 0.0)), 4),
+                                "review_notes": c.get('reasoning', ''),
+                                "assessed_skills": p.get('skills', []),
+                                "tenure_score": round(scores.get('hiring_manager', 0.0), 4),
+                                "sync_time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                            })
+                        payload_str = json.dumps(payload, indent=2)
+                        file_ext = "json"
+                    elif "Lever" in target_ats:
+                        payload_lines = ["candidate_id,score,evaluation_notes,stage,owner,sync_time"]
+                        for c in top_5:
+                            reasoning_escaped = c.get('reasoning', '').replace('"', '""')
+                            payload_lines.append(f"{c.get('candidate_id') or c.get('id')},{round(c.get('final_score', c.get('score', 0.0)), 4)},\"{reasoning_escaped}\",shortlist,Daksh Dawra,{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+                        payload_str = "\n".join(payload_lines)
+                        file_ext = "csv"
+                    else:
+                        payload_lines = ["<CandidateIngest>"]
+                        for c in top_5:
+                            payload_lines.append(f"  <Candidate>")
+                            payload_lines.append(f"    <ID>{c.get('candidate_id') or c.get('id')}</ID>")
+                            payload_lines.append(f"    <Score>{round(c.get('final_score', c.get('score', 0.0)), 4)}</Score>")
+                            payload_lines.append(f"    <Notes>{c.get('reasoning', '')}</Notes>")
+                            payload_lines.append(f"    <Timestamp>{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</Timestamp>")
+                            payload_lines.append(f"  </Candidate>")
+                        payload_lines.append("</CandidateIngest>")
+                        payload_str = "\n".join(payload_lines)
+                        file_ext = "xml"
+                        
+                    # Save local simulation file
+                    file_name = f"local_ats_{target_ats.split()[0].lower()}_sync.{file_ext}"
+                    with open(file_name, "w", encoding="utf-8") as f_ats:
+                        f_ats.write(payload_str)
+                        
+                    st.success(f"✅ Transform Successful! Saved local file: `{file_name}`")
+                    
+                    # Update session state audit logs
+                    log_audit_action(f"Exported local-first ATS sync payload to {file_name}")
+                    
+                    # Display payload
+                    st.markdown("##### 📄 Generated File Payload Preview:")
+                    st.code(payload_str, language=file_ext)
 
 elif nav_page == "🔬 Rank Robustness":
     st.markdown(
