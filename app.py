@@ -1473,16 +1473,15 @@ elif nav_page == "🔍 Keyword Stuffing Rules":
             )
 
 elif nav_page == "🚀 Product Roadmap":
-    st.markdown(
+    render_html(
         """
         <h1 style="margin-bottom: 4px; font-size: 32px;">🚀 RecruitIQ Product Roadmap & Monetization</h1>
         <p style="color: #6B7280; font-size: 14px; margin-top: 0;">Enterprise-ready features designed to scale recruitment pipelines, monetize intelligence, and empower recruiting teams.</p>
         <div style="height: 1px; background-color: #EAE8E4; margin: 20px 0;"></div>
-        """,
-        unsafe_allow_html=True
+        """
     )
     
-    st.markdown(
+    render_html(
         """
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
             <div class="stat-card" style="border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
@@ -1530,8 +1529,7 @@ elif nav_page == "🚀 Product Roadmap":
         </div>
         
         <h3 style="margin-top: 32px; margin-bottom: 16px;">🛠️ Premium Features Interactive Sandbox</h3>
-        """,
-        unsafe_allow_html=True
+        """
     )
     
     # Showcase some visual mockups of these features
