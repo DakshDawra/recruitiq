@@ -381,7 +381,8 @@ st.sidebar.markdown("### Navigation")
 nav_page = st.sidebar.radio(
     "Navigation",
     ["Intelligence Dashboard", "🔬 Rank Robustness", "🧬 Skill Ecosystem", "📊 Pipeline X-Ray", "Honeypot Audit Logs", "Keyword Stuffing Rules"],
-    label_visibility="collapsed"
+    label_visibility="collapsed",
+    key="nav_page"
 )
 
 # Persona Consensus Weights Tuner (Out-of-the-box Interactive Feature)
@@ -654,12 +655,13 @@ if nav_page == "Intelligence Dashboard":
                 "Scope",
                 ["Top 10 Picks", "All 100 Shortlist"],
                 index=0,
-                label_visibility="collapsed"
+                label_visibility="collapsed",
+                key="view_scope"
             )
         
         with col_list_filters:
             # Search / Filter panel
-            search_query = st.text_input("Search", label_visibility="collapsed", placeholder="Search name/skills...")
+            search_query = st.text_input("Search", label_visibility="collapsed", placeholder="Search name/skills...", key="search_query")
             
         st.markdown('<div style="height: 1px; background-color: #EAE8E4; margin: 16px 0;"></div>', unsafe_allow_html=True)
         
