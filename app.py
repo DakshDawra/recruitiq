@@ -380,7 +380,7 @@ st.sidebar.markdown(
 st.sidebar.markdown("### Navigation")
 nav_page = st.sidebar.radio(
     "Navigation",
-    ["📋 Intelligence Dashboard", "🔬 Rank Robustness", "🧬 Skill Ecosystem", "📊 Pipeline X-Ray", "🛡️ Honeypot Audit Logs", "🔍 Keyword Stuffing Rules"],
+    ["📋 Intelligence Dashboard", "🔬 Rank Robustness", "🧬 Skill Ecosystem", "📊 Pipeline X-Ray", "🛡️ Honeypot Audit Logs", "🔍 Keyword Stuffing Rules", "🚀 Product Roadmap"],
     label_visibility="collapsed",
     key="nav_page"
 )
@@ -1471,3 +1471,165 @@ elif nav_page == "🔍 Keyword Stuffing Rules":
                 """,
                 unsafe_allow_html=True
             )
+
+elif nav_page == "🚀 Product Roadmap":
+    st.markdown(
+        """
+        <h1 style="margin-bottom: 4px; font-size: 32px;">🚀 RecruitIQ Product Roadmap & Monetization</h1>
+        <p style="color: #6B7280; font-size: 14px; margin-top: 0;">Enterprise-ready features designed to scale recruitment pipelines, monetize intelligence, and empower recruiting teams.</p>
+        <div style="height: 1px; background-color: #EAE8E4; margin: 20px 0;"></div>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    st.markdown(
+        """
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+            <div class="stat-card" style="border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                <div style="font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 4px;">RecruitIQ Free</div>
+                <div style="font-size: 14px; color: #6B7280; margin-bottom: 16px;">For individual recruiters / basic sorting</div>
+                <div style="font-size: 24px; font-weight: 800; color: #111827; margin-bottom: 16px;">₹0 <span style="font-size: 14px; font-weight: 400; color: #6B7280;">/ forever</span></div>
+                <hr style="border: 0; border-top: 1px solid #E5E7EB; margin-bottom: 16px;"/>
+                <ul style="padding-left: 20px; font-size: 13px; color: #4B5563; line-height: 1.6; margin: 0;">
+                    <li>100K Candidate Batch Upload</li>
+                    <li>Consensus Weight Tuner</li>
+                    <li>Honeypot Audit Shield</li>
+                    <li>Keyword Stuffing Rules</li>
+                    <li>CSV Results Export</li>
+                </ul>
+            </div>
+            
+            <div class="stat-card" style="border: 2px solid #3B82F6; border-radius: 12px; padding: 20px; background: #EFF6FF; box-shadow: 0 10px 15px -3px rgba(59,130,246,0.1);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                    <span style="font-size: 20px; font-weight: 700; color: #1E3A8A;">RecruitIQ Pro</span>
+                    <span style="background: #3B82F6; color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 9999px;">POPULAR</span>
+                </div>
+                <div style="font-size: 14px; color: #2563EB; margin-bottom: 16px;">For power recruiters & hiring managers</div>
+                <div style="font-size: 24px; font-weight: 800; color: #1E3A8A; margin-bottom: 16px;">₹2,999 <span style="font-size: 14px; font-weight: 400; color: #2563EB;">/ month</span></div>
+                <hr style="border: 0; border-top: 1px solid #BFDBFE; margin-bottom: 16px;"/>
+                <ul style="padding-left: 20px; font-size: 13px; color: #1E40AF; line-height: 1.6; margin: 0;">
+                    <li><b>Candidate Comparison Arena</b> (Interactive side-by-side radar analysis)</li>
+                    <li><b>Smart JD Analyzer</b> (Extract skills, experience levels, and disqualifiers automatically)</li>
+                    <li><b>Personalized AI Outreach</b> (One-click tailored recruiter outreach drafts)</li>
+                    <li>PDF Summary Reports</li>
+                </ul>
+            </div>
+            
+            <div class="stat-card" style="border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px; background: white; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                <div style="font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 4px;">RecruitIQ Team</div>
+                <div style="font-size: 14px; color: #6B7280; margin-bottom: 16px;">For collaborative talent acquisition teams</div>
+                <div style="font-size: 24px; font-weight: 800; color: #111827; margin-bottom: 16px;">₹9,999 <span style="font-size: 14px; font-weight: 400; color: #6B7280;">/ month</span></div>
+                <hr style="border: 0; border-top: 1px solid #E5E7EB; margin-bottom: 16px;"/>
+                <ul style="padding-left: 20px; font-size: 13px; color: #4B5563; line-height: 1.6; margin: 0;">
+                    <li><b>Multi-JD Pipeline</b> (Evaluate candidate pool against multiple roles simultaneously)</li>
+                    <li><b>Historical Audit Trail</b> (Track rank improvements when profiles/GitHub update)</li>
+                    <li><b>Team Collaboration</b> (Recruiter sharing, comments, and rating reviews)</li>
+                    <li>Custom ATS Integrations (Greenhouse, Lever)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3 style="margin-top: 32px; margin-bottom: 16px;">🛠️ Premium Features Interactive Sandbox</h3>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    # Showcase some visual mockups of these features
+    st.markdown("#### 📊 1. Candidate Comparison Arena (Pro feature)")
+    st.write("Compare shortlisted candidates across multiple dimensional strengths. This live sandbox demonstrates how recruiters can run side-by-side comparisons of technical fit, manager alignment, culture fit, and logistic readiness.")
+    
+    # Render a dummy radar/bar chart comparison using Plotly
+    import plotly.graph_objects as go
+    
+    categories = ['Technical Depth', 'Hiring Manager Fit', 'Culture Fit', 'Recruiter Ops', 'Logistics/Edu']
+    
+    fig = go.Figure()
+    fig.add_trace(go.Scatterpolar(
+        r=[0.85, 0.78, 0.90, 0.80, 0.75],
+        theta=categories,
+        fill='toself',
+        name='TEST_PERFECT_AI (Senior ML @ Google DeepMind)'
+    ))
+    fig.add_trace(go.Scatterpolar(
+        r=[0.64, 0.70, 0.55, 0.60, 0.80],
+        theta=categories,
+        fill='toself',
+        name='TEST_JUNIOR_ML (ML Engineer @ Haptik)'
+    ))
+    fig.add_trace(go.Scatterpolar(
+        r=[0.55, 0.50, 0.65, 0.70, 0.60],
+        theta=categories,
+        fill='toself',
+        name='TEST_BACKEND_PYSKILL (Backend @ Razorpay)'
+    ))
+    
+    fig.update_layout(
+        polar=dict(
+            radialaxis=dict(
+                visible=True,
+                range=[0, 1]
+            )
+        ),
+        showlegend=True,
+        margin=dict(l=40, r=40, t=20, b=20),
+        height=350
+    )
+    st.plotly_chart(fig, use_container_width=True)
+    
+    st.markdown("#### ✉️ 2. Personalized AI Outreach Drafts (Pro feature)")
+    st.write("Draft hyper-personalized, context-aware emails based on candidate profile evidence, and copy/send them with one click.")
+    
+    # Interactive demo of outreach generator
+    demo_candidate = st.selectbox(
+        "Select candidate to generate draft for:",
+        ["TEST_PERFECT_AI (Senior ML @ Google DeepMind)", "TEST_JUNIOR_ML (ML Engineer @ Haptik)", "TEST_BACKEND_PYSKILL (Backend @ Razorpay)"]
+    )
+    
+    if "PERFECT" in demo_candidate:
+        outreach_email = """Subject: Senior AI Engineer Role @ AlphaBeta (Your DeepMind work!)
+
+Hi Senior ML Engineer,
+
+I came across your profile and was highly impressed by your work at Google DeepMind, specifically your deep expertise in ML Engineering. We are building our core AI ranking engine here at AlphaBeta, and your strong logistics, culture fit, and technical background would make you an outstanding fit for our Senior AI Engineer role.
+
+Let me know if you have 15 minutes for a quick chat this week!
+
+Best,
+Daksh Dawra
+Lead Recruiter, AlphaBeta"""
+    elif "JUNIOR" in demo_candidate:
+        outreach_email = """Subject: ML Engineering Opportunity @ AlphaBeta
+
+Hi ML Engineer,
+
+I saw your profile and was impressed by your work as an ML Engineer at Haptik. We are looking for talented AI builders at AlphaBeta. Your experience with ML systems and strong team communication skills stood out to us. 
+
+Would you be open to a brief chat about our open ML Engineer roles?
+
+Best,
+Daksh Dawra
+Lead Recruiter, AlphaBeta"""
+    else:
+        outreach_email = """Subject: Technical Growth Opportunity @ AlphaBeta
+
+Hi Senior Backend Engineer,
+
+I was reviewing your backend engineering background at Razorpay and was impressed by your software architecture skills. We are expanding our team at AlphaBeta and believe your technical capabilities and execution focus could be a great fit for our systems engineering role.
+
+Let me know if you are open to exploring new career steps!
+
+Best,
+Daksh Dawra
+Lead Recruiter, AlphaBeta"""
+        
+    st.code(outreach_email, language="text")
+    
+    st.markdown("#### 💡 3. Smart JD Analyzer (Pro feature)")
+    st.write("Understand exact hiring parameters extracted by the AI parser before you run the pipeline.")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        st.info("💡 **Required Technical Skills Extracted:**\\n- machine learning, pytorch, tensorflow, deep learning, python, transformers, large language models, kubernetes, system design")
+    with col2:
+        st.warning("⚠️ **Hard Disqualifiers Active:**\\n- consulting_only (TCS, Infosys, Wipro, Cognizant, Accenture, Capgemini)\\n- title_chasing (frequent job hopping)")
+
