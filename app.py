@@ -380,7 +380,7 @@ st.sidebar.markdown(
 st.sidebar.markdown("### Navigation")
 nav_page = st.sidebar.radio(
     "Navigation",
-    ["Intelligence Dashboard", "🔬 Rank Robustness", "🧬 Skill Ecosystem", "📊 Pipeline X-Ray", "Honeypot Audit Logs", "Keyword Stuffing Rules"],
+    ["📋 Intelligence Dashboard", "🔬 Rank Robustness", "🧬 Skill Ecosystem", "📊 Pipeline X-Ray", "🛡️ Honeypot Audit Logs", "🔍 Keyword Stuffing Rules"],
     label_visibility="collapsed",
     key="nav_page"
 )
@@ -392,9 +392,9 @@ st.sidebar.markdown("### 🎛️ Consensus Tuning")
 with st.sidebar.expander("ℹ️ How to use Consensus"):
     st.write("Adjust the importance of each virtual evaluator below. The candidate leaderboard will instantly re-rank to reflect your custom weighting strategy.")
 
-w_tech = st.sidebar.slider("Technical Depth", 0.0, 1.0, 0.25, 0.05, key="w_tech")
+w_tech = st.sidebar.slider("Technical Depth", 0.0, 1.0, 0.30, 0.05, key="w_tech")
 w_hm = st.sidebar.slider("Hiring Manager", 0.0, 1.0, 0.25, 0.05, key="w_hm")
-w_cf = st.sidebar.slider("Culture Fit", 0.0, 1.0, 0.20, 0.05, key="w_cf")
+w_cf = st.sidebar.slider("Culture Fit", 0.0, 1.0, 0.15, 0.05, key="w_cf")
 w_ops = st.sidebar.slider("Recruiter Ops", 0.0, 1.0, 0.15, 0.05, key="w_ops")
 w_edu = st.sidebar.slider("Logistics & Edu", 0.0, 1.0, 0.15, 0.05, key="w_edu")
 
@@ -415,7 +415,7 @@ if total_w > 0 and candidates:
         
         # Apply TF-IDF semantic boost
         boost = c.get('semantic_boost', 1.0)
-        mult = 0.0 if c.get('hard_disqualified_reason') else 1.0
+        mult = c.get('hard_disqualifier_multiplier', 0.01) if c.get('hard_disqualified_reason') else 1.0
         
         c_new = c.copy()
         c_new['final_score'] = round(float(new_persona_sum * boost * mult), 4)
@@ -430,7 +430,7 @@ if total_w > 0 and candidates:
         recomputed.append(c_new)
         
     # Sort and re-rank
-    recomputed.sort(key=lambda x: (-x['final_score'], x.get('candidate_id', '')))
+    recomputed.sort(key=lambda x: (-x['final_score'], x.get('candidate_id') or x.get('id') or ''))
     for idx, c in enumerate(recomputed):
         c['rank'] = idx + 1
         
@@ -438,11 +438,11 @@ if total_w > 0 and candidates:
 
 # Default selection
 if candidates and 'selected_candidate_id' not in st.session_state:
-    st.session_state.selected_candidate_id = candidates[0]['candidate_id']
+    st.session_state.selected_candidate_id = candidates[0].get('candidate_id') or candidates[0].get('id')
 
 # Sidebar footer removed
 
-if nav_page == "Intelligence Dashboard":
+if nav_page == "📋 Intelligence Dashboard":
     # Header Area
     col_hdr_left, col_hdr_right = st.columns([3, 1])
     with col_hdr_left:
@@ -487,7 +487,7 @@ if nav_page == "Intelligence Dashboard":
     with col_f1:
         uploaded_cand = st.file_uploader("Candidates Database (JSON/JSONL)", type=["json", "jsonl"], key="main_cand")
     with col_f2:
-        uploaded_jd = st.file_uploader("Job Description Text (TXT)", type=["txt"], key="main_jd")
+        uploaded_jd = st.file_uploader("Job Description (TXT/DOCX)", type=["txt", "docx"], key="main_jd")
     with col_f3:
         st.markdown('<div style="height: 28px;"></div>', unsafe_allow_html=True)
         run_btn = st.button("Run Engine ⚡", key="main_run", use_container_width=True)
@@ -505,8 +505,17 @@ if nav_page == "Intelligence Dashboard":
                 with open(temp_cand_name, "wb") as f:
                     f.write(uploaded_cand.getbuffer())
                     
-                # Read JD text
-                jd_text = uploaded_jd.read().decode("utf-8")
+                # Read JD text — handle both .txt and .docx uploads
+                if uploaded_jd.name.endswith('.docx'):
+                    import tempfile
+                    with tempfile.NamedTemporaryFile(suffix='.docx', delete=False) as tmp:
+                        tmp.write(uploaded_jd.getbuffer())
+                        tmp_path = tmp.name
+                    from pipeline.jd_parser import JDParser
+                    jd_text = JDParser(tmp_path).raw_text
+                    os.remove(tmp_path)
+                else:
+                    jd_text = uploaded_jd.read().decode("utf-8")
                 
                 # Import pipeline modules dynamically to save memory
                 from pipeline.ranker import rank_candidates
@@ -603,8 +612,8 @@ if nav_page == "Intelligence Dashboard":
     if not p_stats:
         p_stats = {}
         
-    n_scanned = p_stats.get('scanned', 100000)
-    latency = p_stats.get('latency', 52.45)
+    n_scanned = p_stats.get('scanned', 0)
+    latency = p_stats.get('latency', 0)
     hp_rate = round(n_honeypots / max(n_scanned, 1) * 100, 2)
     st_rate = round(n_stuffers / max(n_scanned, 1) * 100, 2)
 
@@ -685,7 +694,7 @@ if nav_page == "Intelligence Dashboard":
             # Render Candidate List Rows
             st.markdown('<div class="leaderboard-list">', unsafe_allow_html=True)
             for idx, c in enumerate(filtered_candidates):
-                c_id = c['candidate_id']
+                c_id = c.get('candidate_id') or c.get('id')
                 profile = c['profile']
                 scores = c['scores']
                 name = profile['anonymized_name']
@@ -707,11 +716,14 @@ if nav_page == "Intelligence Dashboard":
                 
                 # Row Container
                 row_col1, row_col2, row_col3 = st.columns([3.6, 1.8, 1.6])
+                
                 with row_col1:
                     # Render avatar initial & details
                     avatar_bg = "FEEAD1" if idx % 3 == 0 else ("EBE3FF" if idx % 3 == 1 else "D1FADF")
                     avatar_txt = "C2410C" if idx % 3 == 0 else ("4338CA" if idx % 3 == 1 else "065F46")
                     initials = "".join([w[0] for w in name.split()[:2]]).upper()
+                    name_display = name
+                    title_display = f"{title} • {format_yoe(profile.get('years_of_experience', 0))}"
                     
                     st.markdown(
                         f"""
@@ -720,8 +732,8 @@ if nav_page == "Intelligence Dashboard":
                                 {initials}
                             </div>
                             <div>
-                                <h4 style="margin: 0; font-size: 14px; color: #1F2937;">{name}</h4>
-                                <p style="margin: 0; font-size: 11px; color: #6B7280;">{title} • {format_yoe(profile.get('years_of_experience', 0))}</p>
+                                <h4 style="margin: 0; font-size: 14px; color: #1F2937;">{name_display}</h4>
+                                <p style="margin: 0; font-size: 11px; color: #6B7280;">{title_display}</p>
                             </div>
                         </div>
                         """,
@@ -743,6 +755,7 @@ if nav_page == "Intelligence Dashboard":
                         st.rerun()
                         
                 st.markdown('<div style="height: 8px;"></div>', unsafe_allow_html=True)
+                    
             st.markdown('</div>', unsafe_allow_html=True)
             
         st.markdown('</div>', unsafe_allow_html=True)
@@ -769,7 +782,7 @@ if nav_page == "Intelligence Dashboard":
 
     with col_right:
         # Spotlight Card
-        selected_cand = next((c for c in candidates if c['candidate_id'] == st.session_state.selected_candidate_id), None)
+        selected_cand = next((c for c in candidates if (c.get('candidate_id') or c.get('id')) == st.session_state.selected_candidate_id), None)
         if selected_cand:
             profile = selected_cand['profile']
             scores = selected_cand['scores']
@@ -989,7 +1002,7 @@ elif nav_page == "🔬 Rank Robustness":
         import random
         random.seed(42)
         n_sims = 500
-        rank_distributions = {c['candidate_id']: [] for c in candidates}
+        rank_distributions = {(c.get('candidate_id') or c.get('id')): [] for c in candidates}
         
         for _ in range(n_sims):
             # Random weight perturbation
@@ -1007,7 +1020,7 @@ elif nav_page == "🔬 Rank Robustness":
                     scores.get('recruiter_ops', 0) * weights[3] +
                     scores.get('logistics_education', 0) * weights[4]
                 )
-                sim_scores.append((c['candidate_id'], s))
+                sim_scores.append(((c.get('candidate_id') or c.get('id')), s))
             
             sim_scores.sort(key=lambda x: -x[1])
             for rank_idx, (cid, _) in enumerate(sim_scores):
@@ -1016,7 +1029,7 @@ elif nav_page == "🔬 Rank Robustness":
         # Calculate stats
         robustness_data = []
         for c in candidates:
-            cid = c['candidate_id']
+            cid = c.get('candidate_id') or c.get('id')
             ranks = rank_distributions[cid]
             mean_rank = sum(ranks) / len(ranks)
             std_rank = (sum((r - mean_rank)**2 for r in ranks) / len(ranks)) ** 0.5
@@ -1369,7 +1382,7 @@ elif nav_page == "📊 Pipeline X-Ray":
             unsafe_allow_html=True
         )
 
-elif nav_page == "Honeypot Audit Logs":
+elif nav_page == "🛡️ Honeypot Audit Logs":
 
     st.markdown(
         """
@@ -1416,7 +1429,7 @@ elif nav_page == "Honeypot Audit Logs":
                 unsafe_allow_html=True
             )
 
-elif nav_page == "Keyword Stuffing Rules":
+elif nav_page == "🔍 Keyword Stuffing Rules":
     st.markdown(
         """
         <h1 style="margin-bottom: 4px; font-size: 32px;">Adversarial Robustness Layer</h1>
