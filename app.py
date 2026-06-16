@@ -341,18 +341,35 @@ st.sidebar.markdown(
     unsafe_allow_html=True
 )
 
+# Helper function to load JD metadata
+def load_jd_metadata():
+    if os.path.exists("active_jd_metadata.json"):
+        try:
+            with open("active_jd_metadata.json", "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {
+        "title": "Senior AI Engineer",
+        "role": "Series A Founding AI/ML Lead",
+        "skills": "LLMs, RAG, PyTorch, Vector DBs, Embedding Search",
+        "disqualifiers": "Pure Consulting, Title-Chasers, Academic-only CVs"
+    }
+
+jd_meta = load_jd_metadata()
+
 # Sidebar Sourcing Target Profile
 st.sidebar.markdown("### Sourcing Requirements")
 st.sidebar.markdown(
-    """
+    f"""
     <div class="insights-box" style="margin-bottom: 20px;">
         <div class="insights-title">
-            <span class="material-symbols-outlined" style="font-size: 14px;">work</span> Senior AI Engineer
+            <span class="material-symbols-outlined" style="font-size: 14px;">work</span> {jd_meta['title']}
         </div>
         <p style="font-size: 12px; color: #4B5563; margin: 0; line-height: 1.4;">
-            <b>Role:</b> Series A Founding AI/ML Lead<br/>
-            <b>Skills:</b> LLMs, RAG, PyTorch, Vector DBs, Embedding Search<br/>
-            <b>Disqualifiers:</b> Pure Consulting, Title-Chasers, Academic-only CVs.
+            <b>Role:</b> {jd_meta['role']}<br/>
+            <b>Skills:</b> {jd_meta['skills']}<br/>
+            <b>Disqualifiers:</b> {jd_meta['disqualifiers']}
         </p>
     </div>
     """,

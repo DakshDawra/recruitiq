@@ -48,12 +48,16 @@ candidates.jsonl
 *India_runs_data_and_ai_challenge*
 analyze_data.py
 detect_patterns.py
+test_candidates*.json
+test_jd*.txt
+test_job_description.txt
 
 # Intermediate output logs & details
 honeypots_caught.json
 stuffers_filtered.json
 pipeline_stats.json
 top_100_details.json
+active_jd_metadata.json
 submission.csv
 
 # Temporary scratch scripts

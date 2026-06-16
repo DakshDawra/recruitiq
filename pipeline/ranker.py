@@ -9,12 +9,81 @@ from pipeline.scorers.logistics_education import calculate_logistics_education_s
 from pipeline.modifiers.semantic_similarity import apply_semantic_similarity
 from pipeline.modifiers.hard_disqualifiers import get_hard_disqualifier_multiplier
 
+import json
+import re
+
+def extract_jd_metadata(jd_text):
+    metadata = {
+        "title": "Senior AI Engineer",
+        "role": "Series A Founding AI/ML Lead",
+        "skills": "LLMs, RAG, PyTorch, Vector DBs, Embedding Search",
+        "disqualifiers": "Pure Consulting, Title-Chasers, Academic-only CVs"
+    }
+    
+    if not jd_text:
+        return metadata
+        
+    lines = [line.strip() for line in jd_text.split("\n") if line.strip()]
+    
+    # Try to find Title
+    for line in lines:
+        if line.lower().startswith("job title:") or line.lower().startswith("job description:"):
+            title_part = line.split(":", 1)[1].strip()
+            if "—" in title_part:
+                title_part = title_part.split("—", 1)[0].strip()
+            metadata["title"] = title_part
+            break
+            
+    # Try to find Company/Role
+    for line in lines:
+        if line.lower().startswith("company:"):
+            comp_part = line.split(":", 1)[1].strip()
+            if "(" in comp_part:
+                comp_part = comp_part.split("(", 1)[0].strip()
+            metadata["role"] = f"Hiring at {comp_part}"
+            break
+            
+    # Parse skills
+    skills_found = []
+    vocab = [
+        "Ray", "Triton", "CUDA", "PyTorch", "TensorFlow", "FAISS", "Milvus", "Qdrant",
+        "SQL", "Spark", "Airflow", "dbt", "Snowflake", "BigQuery", "LLMs", "RAG",
+        "Transformers", "LangChain", "PEFT", "LoRA", "Python"
+    ]
+    for word in vocab:
+        if re.search(r'\b' + re.escape(word) + r'\b', jd_text, re.IGNORECASE):
+            skills_found.append(word)
+            
+    if skills_found:
+        metadata["skills"] = ", ".join(skills_found[:6])
+        
+    # Parse disqualifiers
+    disq_found = []
+    if "consulting" in jd_text.lower() or "tcs" in jd_text.lower():
+        disq_found.append("Pure Consulting")
+    if "title-chasers" in jd_text.lower() or "job hopping" in jd_text.lower() or "hopping" in jd_text.lower():
+        disq_found.append("Title-Chasers")
+    if "research" in jd_text.lower() or "academic" in jd_text.lower():
+        disq_found.append("Academic-only CVs")
+        
+    if disq_found:
+        metadata["disqualifiers"] = ", ".join(disq_found)
+        
+    return metadata
+
 def rank_candidates(candidates_generator, jd_text):
     """
     Core pipeline coordinator. Runs ingestion, honeypot filters, coarse filters,
     calculates persona scores, computes semantic similarity boosts, sorts and ranks candidates.
     Returns the top 100 ranked candidates and pipeline statistics.
     """
+    # Save JD metadata for the sidebar dynamically
+    try:
+        metadata = extract_jd_metadata(jd_text)
+        with open("active_jd_metadata.json", "w", encoding="utf-8") as fmeta:
+            json.dump(metadata, fmeta, indent=2)
+    except Exception:
+        pass
     scored_candidates = []
     honeypot_details = []
     stuffer_details = []
