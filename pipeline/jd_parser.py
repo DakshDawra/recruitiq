@@ -33,10 +33,57 @@ class JDParser:
                 return ""
 
     def get_disqualifiers(self):
-        """Returns hardcoded regex/patterns matching JD exclusions."""
-        return {
+        """
+        Dynamically extracts disqualifier patterns from the JD text.
+        Falls back to sensible defaults if extraction fails.
+        """
+        text = self.raw_text.lower()
+        
+        # Start with defaults
+        disqualifiers = {
             'consulting_only': ['tcs', 'wipro', 'infosys', 'accenture', 'cognizant', 'capgemini'],
             'non_tech': ['marketing', 'hr', 'sales', 'graphic', 'support', 'writer', 'accountant'],
             'academic_only': ['research lab', 'postdoc', 'academic researcher', 'publication only'],
-            'adjacent_fields': ['speech recognition', 'computer vision', 'robotics', 'audio processing']
+            'adjacent_fields': []
         }
+        
+        # Dynamically detect consulting companies mentioned in JD
+        consulting_keywords = [
+            'tcs', 'wipro', 'infosys', 'accenture', 'cognizant', 'capgemini',
+            'hcl', 'tech mahindra', 'deloitte', 'kpmg', 'ey', 'pwc'
+        ]
+        found_consulting = [c for c in consulting_keywords if c in text]
+        if found_consulting:
+            disqualifiers['consulting_only'] = found_consulting
+        
+        # Dynamically detect "do NOT want" patterns from JD
+        adjacent = []
+        adjacent_keywords = [
+            'speech recognition', 'computer vision', 'robotics', 
+            'audio processing', 'image processing', 'autonomous driving',
+            'hardware', 'embedded systems'
+        ]
+        # Only flag adjacent fields if JD explicitly mentions them as NOT wanted
+        not_want_section = False
+        for line in self.raw_text.split('\n'):
+            line_lower = line.lower().strip()
+            if 'do not want' in line_lower or 'not looking for' in line_lower or 'disqualif' in line_lower:
+                not_want_section = True
+            elif not_want_section and line_lower == '':
+                not_want_section = False
+            
+            if not_want_section:
+                for kw in adjacent_keywords:
+                    if kw in line_lower and kw not in adjacent:
+                        adjacent.append(kw)
+        
+        # Also check for explicit mentions of "pure research" or "academic only" disqualifiers
+        if 'pure research' in text or 'research-only' in text or 'academic labs' in text:
+            if 'research lab' not in disqualifiers['academic_only']:
+                disqualifiers['academic_only'].append('research lab')
+        
+        if adjacent:
+            disqualifiers['adjacent_fields'] = adjacent
+            
+        return disqualifiers
+

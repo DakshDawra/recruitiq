@@ -11,7 +11,15 @@ from config import CANDIDATES_FILE, DATA_DIR
 
 def main():
     parser = argparse.ArgumentParser(description="RecruitIQ Candidate Discovery & Ranking Engine")
-    parser.add_argument('--candidates', type=str, default=CANDIDATES_FILE, help="Path to candidates JSONL file")
+    
+    # Smart default: check current directory first, then fall back to DATA_DIR
+    default_cand = CANDIDATES_FILE
+    for local_name in ['candidates.jsonl', 'candidates.json']:
+        if os.path.exists(local_name):
+            default_cand = local_name
+            break
+    
+    parser.add_argument('--candidates', type=str, default=default_cand, help="Path to candidates JSONL file")
     parser.add_argument('--jd', type=str, default=None, help="Path to job description file (.docx or .txt)")
     parser.add_argument('--out', type=str, default='submission.csv', help="Output CSV path")
     args = parser.parse_args()

@@ -72,7 +72,7 @@ def is_honeypot(candidate):
         if prof == 'expert' and endorsements == 0 and duration == 0:
             expert_no_proof += 1
             
-    if expert_no_proof >= 5:
+    if expert_no_proof >= 10:
         return True
 
     # Rule 5: Impossible YoE relative to college graduation
@@ -87,26 +87,26 @@ def is_honeypot(candidate):
             if years_of_experience > max_possible_yoe and years_of_experience > 5:
                 return True
 
-    # Rule 6: Extreme Career Entry Duration (e.g. 8 years at a single company while total career is short)
-    # A single job duration is longer than the time elapsed since their earliest recorded education or first job.
+    # Rule 6: Timeline Plausibility
+    # Check if a single job's duration exceeds the maximum possible timeline since graduation
+    # or exceeds their own stated years of experience.
+    if education:
+        edu_end_years = [edu.get('end_year') for edu in education if edu.get('end_year')]
+        if edu_end_years:
+            min_edu_end = min(edu_end_years)
+            max_possible_months = (2026 - min_edu_end + 2) * 12
+            for job in career_history:
+                duration_months = job.get('duration_months', 0)
+                if duration_months > max_possible_months:
+                    return True
+
     for job in career_history:
         duration_months = job.get('duration_months', 0)
-        if duration_months >= 84: # 7+ years
-            if education:
-                edu_end_years = [edu.get('end_year') for edu in education if edu.get('end_year')]
-                if edu_end_years:
-                    min_edu_end = min(edu_end_years)
-                    # Time from graduation to 2026 in months
-                    max_possible_months = ((2026 - min_edu_end) + 2) * 12
-                    if duration_months > max_possible_months:
-                        return True
-            
-            # Also check if duration_months exceeds their own total stated years of experience
-            if years_of_experience > 0 and duration_months > (years_of_experience * 12 + 12):
-                return True
+        if years_of_experience > 0 and duration_months > (years_of_experience * 12 + 12):
+            return True
 
     # Rule 7: Future dates (start or end date after reference)
-    ref = datetime.datetime(2026, 6, 1)
+    ref = datetime.datetime(2026, 6, 9)
     for job in career_history:
         start = parse_date(job.get('start_date'))
         if start and start > ref and not job.get('is_current'):
