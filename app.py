@@ -398,7 +398,7 @@ st.sidebar.markdown(
 st.sidebar.markdown("### Navigation")
 nav_page = st.sidebar.radio(
     "Navigation",
-    ["📋 Intelligence Dashboard", "📊 Candidate Arena", "👥 Team Workspace", "🔬 Rank Robustness", "🧬 Skill Ecosystem", "📊 Pipeline X-Ray", "🛡️ Honeypot Audit Logs", "🔍 Keyword Stuffing Rules", "🚀 Product Roadmap"],
+    ["📋 Intelligence Dashboard", "🔬 Rank Robustness", "🧬 Skill Ecosystem", "📊 Pipeline X-Ray", "🛡️ Honeypot Audit Logs", "🔍 Keyword Stuffing Rules", "💎 Premium SaaS Workspace", "🚀 Product Roadmap"],
     label_visibility="collapsed",
     key="nav_page"
 )
