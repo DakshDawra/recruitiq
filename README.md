@@ -60,6 +60,9 @@ python validate_submission.py submission.csv
 streamlit run app.py
 ```
 
+> [!NOTE]
+> The interactive dashboard uses Tailwind CSS and Google Fonts via CDN for the premium visual experience. A local fallback stylesheet is embedded so the app remains fully functional and structured when offline, but an active internet connection is recommended for the best experience.
+
 ## Innovative Features
 
 1. **Ranking Robustness Score** — Monte Carlo simulation (500 runs) showing rank stability under random weight perturbations. "Safe Bet" vs "Weight-Sensitive" candidates.

@@ -255,6 +255,50 @@ div[data-testid="stColumn"]:has(.plan-card):hover .plan-card {
     box-shadow: 0 12px 24px -10px rgba(99, 102, 241, 0.25) !important;
     border-color: #818CF8 !important;
 }
+
+/* Fallback utility classes for offline/Tailwind CDN failure */
+.flex { display: flex !important; }
+.flex-col { flex-direction: column !important; }
+.flex-row { flex-direction: row !important; }
+.items-center { align-items: center !important; }
+.justify-between { justify-content: space-between !important; }
+.justify-center { justify-content: center !important; }
+.grid { display: grid !important; }
+.gap-6 { gap: 24px !important; }
+.gap-4 { gap: 16px !important; }
+.gap-2 { gap: 8px !important; }
+.w-full { width: 100% !important; }
+.h-full { height: 100% !important; }
+.p-6 { padding: 24px !important; }
+.p-4 { padding: 16px !important; }
+.px-4 { padding-left: 16px !important; padding-right: 16px !important; }
+.py-2 { padding-top: 8px !important; padding-bottom: 8px !important; }
+.mb-4 { margin-bottom: 16px !important; }
+.mb-2 { margin-bottom: 8px !important; }
+.mr-2 { margin-right: 8px !important; }
+.font-semibold { font-weight: 600 !important; }
+.font-bold { font-weight: 700 !important; }
+.font-medium { font-weight: 500 !important; }
+.text-xs { font-size: 12px !important; }
+.text-sm { font-size: 14px !important; }
+.text-base { font-size: 16px !important; }
+.text-lg { font-size: 18px !important; }
+.text-xl { font-size: 20px !important; }
+.text-2xl { font-size: 24px !important; }
+.text-gray-500 { color: #6B7280 !important; }
+.text-gray-600 { color: #4B5563 !important; }
+.text-gray-700 { color: #374151 !important; }
+.text-gray-900 { color: #111827 !important; }
+.border-b { border-bottom: 1px solid #EAE8E4 !important; }
+.border { border: 1px solid #EAE8E4 !important; }
+.rounded-xl { border-radius: 12px !important; }
+.rounded-lg { border-radius: 8px !important; }
+.rounded-full { border-radius: 9999px !important; }
+.bg-white { background-color: #FFFFFF !important; }
+.bg-gray-50 { background-color: #F9FAFB !important; }
+.bg-gray-100 { background-color: #F3F4F6 !important; }
+.shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important; }
+.shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1) !important; }
 """
 st.markdown(f"<style>{''.join(css_code.splitlines())}</style>", unsafe_allow_html=True)
 

@@ -11,7 +11,7 @@ team_members:
     email: "adhyavarshney@gmail.com"
     role: "Member"
 github_repo: "https://github.com/dakshdawra/recruitiq"
-sandbox_link: ""
+sandbox_link: "https://recruitiq-web.streamlit.app/"
 reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
 compute:
   platform: "Windows 11, Intel i5"
