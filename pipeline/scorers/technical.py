@@ -50,23 +50,54 @@ def calculate_technical_score(candidate):
     
     career_ai_boost = min(ai_role_count * 0.15, 0.30)  # up to 0.30 boost for multiple AI roles
     
-    # 2. Gather text content to find evidence of skills
+    # 2. Gather text content to find evidence of skills and map mentions to durations
     text_corpus = (
         str(profile.get('summary', '')) + " " +
         str(profile.get('headline', ''))
     ).lower()
+    
+    skill_job_durations = {}
+    
     for job in career_history:
-        text_corpus += " " + str(job.get('description', '')).lower()
+        desc = str(job.get('description', '')).lower()
+        text_corpus += " " + desc
+        dur = float(job.get('duration_months', 0))
+        for req in REQUIRED_SKILLS:
+            if req in desc:
+                skill_job_durations[req] = skill_job_durations.get(req, 0.0) + dur
         
     # 3. Score each skill listed in the profile
     proven_skills_scores = []
     matched_required_count = 0
+    explicit_reqs = set()
     
     for s in skills:
         name = str(s.get('name', '')).lower()
-        is_required = any(req in name for req in REQUIRED_SKILLS)
+        
+        # Find which required keyword matched
+        matched_req = None
+        for req in REQUIRED_SKILLS:
+            if req in name:
+                matched_req = req
+                explicit_reqs.add(req)
+                break
+                
+        is_required = matched_req is not None
         
         in_desc = 1.0 if name in text_corpus else 0.0
+        
+        # Proof of Competence: Cross-validate duration claimed vs duration in job descriptions
+        if is_required:
+            if matched_req in skill_job_durations:
+                job_dur_sum = skill_job_durations[matched_req]
+                claimed_dur = float(s.get('duration_months', 0))
+                if claimed_dur > 0:
+                    ratio = min(job_dur_sum / claimed_dur, 1.0)
+                    # Downscale in_desc if the career history doesn't support the claimed duration
+                    in_desc = in_desc * (0.70 + 0.30 * ratio)
+            else:
+                # Claimed skill has zero mention in any job description (keyword stuffing warning)
+                in_desc = in_desc * 0.70
         
         assess_val = 0.0
         for ass_name, score in assessment_scores.items():
@@ -78,7 +109,7 @@ def calculate_technical_score(candidate):
         duration = float(s.get('duration_months', 0))
         proficiency = str(s.get('proficiency', '')).lower()
         
-        # Proficiency multiplier (NEW — differentiates expert vs intermediate)
+        # Proficiency multiplier (differentiates expert vs intermediate)
         prof_mult = {'expert': 1.0, 'advanced': 0.85, 'intermediate': 0.60, 'beginner': 0.30}.get(proficiency, 0.50)
         
         # Evidence formula with proficiency weighting
@@ -94,7 +125,29 @@ def calculate_technical_score(candidate):
             matched_required_count += 1
             proven_skills_scores.append(evidence_score)
             
-    # 4. Overall Skill score
+    # 4. Discover Hidden Gems: Required skills mentioned in career history but NOT explicitly listed in skills list
+    for req, job_dur in skill_job_durations.items():
+        if req not in explicit_reqs and job_dur > 0:
+            # Candidate has proven experience with 'req' via career history description
+            in_desc = 1.0
+            assess_val = 0.0
+            endorsements = 0.0
+            duration = job_dur
+            proficiency = 'intermediate'  # default fallback for implicit skills
+            prof_mult = 0.60
+            
+            evidence_score = (
+                0.30 * in_desc +
+                0.25 * assess_val +
+                0.15 * min(endorsements / 20.0, 1.0) +
+                0.15 * min(duration / 36.0, 1.0) +
+                0.15 * prof_mult
+            )
+            
+            matched_required_count += 1
+            proven_skills_scores.append(evidence_score)
+            
+    # 5. Overall Skill score
     if proven_skills_scores:
         skill_score = sum(proven_skills_scores) / len(proven_skills_scores)
     else:

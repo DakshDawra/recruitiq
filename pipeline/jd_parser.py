@@ -3,9 +3,12 @@ import zipfile
 import xml.etree.ElementTree as ET
 
 class JDParser:
-    def __init__(self, file_path):
+    def __init__(self, file_path=None, jd_text=None):
         self.file_path = file_path
-        self.raw_text = self._load_jd()
+        if jd_text is not None:
+            self.raw_text = jd_text
+        else:
+            self.raw_text = self._load_jd()
         
     def _load_jd(self):
         """Loads docx or txt job description."""

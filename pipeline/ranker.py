@@ -8,6 +8,7 @@ from pipeline.scorers.recruiter_ops import calculate_recruiter_ops_score
 from pipeline.scorers.logistics_education import calculate_logistics_education_score
 from pipeline.modifiers.semantic_similarity import apply_semantic_similarity
 from pipeline.modifiers.hard_disqualifiers import get_hard_disqualifier_multiplier
+from pipeline.jd_parser import JDParser
 
 import json
 import re
@@ -172,11 +173,15 @@ def rank_candidates(candidates_generator, jd_text):
     # 4. Apply TF-IDF Semantic similarity re-ranking on the high-potential pool
     scored_candidates = apply_semantic_similarity(scored_candidates, jd_text)
     
+    # Parse JD for disqualifiers dynamically
+    jd_parser = JDParser(jd_text=jd_text)
+    jd_disqualifiers = jd_parser.get_disqualifiers()
+    
     # 5. Calculate Final Composite Scores
     for c in scored_candidates:
         persona_sum = c['scores']['persona_sum']
         boost = c.get('semantic_boost', 1.0)
-        mult, reason = get_hard_disqualifier_multiplier(c)
+        mult, reason = get_hard_disqualifier_multiplier(c, jd_disqualifiers=jd_disqualifiers)
         
         c['final_score'] = round(float(persona_sum * boost * mult), 4)
         if mult < 1.0:

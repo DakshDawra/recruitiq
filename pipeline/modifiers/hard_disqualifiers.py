@@ -1,4 +1,4 @@
-def get_hard_disqualifier_multiplier(candidate):
+def get_hard_disqualifier_multiplier(candidate, jd_disqualifiers=None):
     """
     Evaluates narrative JD disqualifiers. 
     If a candidate hits any of these hard red flags, returns a near-zero multiplier (0.01)
@@ -12,9 +12,11 @@ def get_hard_disqualifier_multiplier(candidate):
     years_of_experience = profile.get('years_of_experience', 0)
     
     # 1. Pure Consulting-Only
-    # Check if ALL career entries belong to companies in a predefined consulting blacklist
+    # Check if ALL career entries belong to companies in a predefined/dynamic consulting blacklist
     consulting_blacklist = {'tcs', 'infosys', 'wipro', 'accenture', 'cognizant', 'capgemini', 'tech mahindra', 'hcl'}
-    
+    if jd_disqualifiers and 'consulting_only' in jd_disqualifiers:
+        consulting_blacklist = consulting_blacklist.union(set(jd_disqualifiers['consulting_only']))
+        
     has_consulting = False
     has_product = False
     for job in career_history:

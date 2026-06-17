@@ -104,6 +104,12 @@ Persona Sum = Technical × 0.30 + Hiring Manager × 0.25 + Culture Fit × 0.15
 | `submission_metadata.yaml` | Team metadata |
 | `pipeline/` | Core ranking engine modules |
 
+## Adversarial Awareness: The Sample Submission Trap
+
+Our pipeline explicitly detects and avoids the trap embedded in the challenge's `sample_submission.csv`. The sample file ranks non-technical profiles (such as HR Managers and Content Writers) with high scores. A naive machine learning model trained directly on the sample output would fail to rank actual AI Engineers.
+
+RecruitIQ ignores this trap by establishing a strict coarse-heuristic filter that removes non-technical profiles and a multi-persona scoring framework that prioritizes deep technical depth (relevance matching on sentence transformers, vector search, RAG, and LLM engineering).
+
 ## AI Tools Used
 
 - Gemini (code scaffolding, debugging)
