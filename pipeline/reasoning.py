@@ -130,7 +130,7 @@ def generate_candidate_reasoning(candidate):
     
     if concerns and rank > 50:
         concern_str = " Gaps: " + "; ".join(concerns[:2]) + "."
-    elif concerns and rank > 15:
+    elif concerns:
         concern_str = " Notes: " + "; ".join(concerns[:2]) + "."
     else:
         concern_str = ""

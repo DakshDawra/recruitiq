@@ -12,7 +12,7 @@ team_members:
     role: "Member"
 github_repo: "https://github.com/dakshdawra/recruitiq"
 sandbox_link: ""
-reproduce_command: "python rank.py --out ./submission.csv"
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
 compute:
   platform: "Windows 11, Intel i5"
   cpu_cores: 4
