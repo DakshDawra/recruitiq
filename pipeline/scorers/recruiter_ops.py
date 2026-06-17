@@ -97,6 +97,15 @@ def calculate_recruiter_ops_score(candidate):
     if signals.get('linkedin_connected'): verified += 1
     trust_multiplier = 0.85 + (verified / 3.0) * 0.15  # 0.85 to 1.0
 
+    # 10. Behavioral Twins Shield (Ghost Candidate Penalty)
+    # If candidate is inactive for more than 6 months (180 days) AND has a response rate < 10%,
+    # they are a "ghost" profile and receive a severe penalty (0.25x).
+    ghost_multiplier = 1.0
+    if last_active:
+        delta_days = max((ref_date - last_active).days, 0)
+        if delta_days > 180 and response_rate < 0.10:
+            ghost_multiplier = 0.25
+
     # Combined Recruiter Ops Score (all 23 signals factored in)
     raw_score = (
         0.22 * engagement_score +
@@ -109,5 +118,5 @@ def calculate_recruiter_ops_score(candidate):
         0.07 * offer_score +
         0.08 * platform_tenure
     )
-    final_score = raw_score * trust_multiplier
+    final_score = raw_score * trust_multiplier * ghost_multiplier
     return min(final_score, 1.0)
