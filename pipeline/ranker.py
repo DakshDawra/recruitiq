@@ -1,5 +1,5 @@
 from config import PERSONA_WEIGHTS
-from pipeline.honeypot import is_honeypot
+from pipeline.honeypot import is_honeypot, get_honeypot_reasons
 from pipeline.coarse_filter import is_coarse_match
 from pipeline.scorers.technical import calculate_technical_score
 from pipeline.scorers.hiring_manager import calculate_hiring_manager_score
@@ -121,13 +121,15 @@ def rank_candidates(candidates_generator, jd_text):
         profile = candidate.get('profile', {})
         
         # 1. Honeypot check
-        if is_honeypot(candidate):
+        reasons = get_honeypot_reasons(candidate)
+        if reasons:
             stats['honeypots_blocked'] += 1
             honeypot_details.append({
                 'id': candidate.get('candidate_id', ''),
                 'name': profile.get('anonymized_name', 'Anonymous'),
                 'title': profile.get('current_title', ''),
-                'yoe': profile.get('years_of_experience', 0)
+                'yoe': profile.get('years_of_experience', 0),
+                'reasons': "; ".join(reasons)
             })
             continue
             

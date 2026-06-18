@@ -555,7 +555,7 @@ if total_w > 0 and candidates:
         
         # Apply TF-IDF semantic boost
         boost = c.get('semantic_boost', 1.0)
-        mult = c.get('hard_disqualifier_multiplier', 0.01) if c.get('hard_disqualified_reason') else 1.0
+        mult = c.get('hard_disqualifier_multiplier', 0.0) if c.get('hard_disqualified_reason') else 1.0
         
         c_new = c.copy()
         c_new['final_score'] = round(float(new_persona_sum * boost * mult), 4)
@@ -583,6 +583,24 @@ if candidates and 'selected_candidate_id' not in st.session_state:
 # Sidebar footer removed
 
 if nav_page == "📋 Intelligence Dashboard":
+    # Load dynamic stats first so they are available
+    hp_data, st_data = load_honeypot_stats(get_mtime("honeypots_caught.json"), get_mtime("stuffers_filtered.json"))
+    n_honeypots = len(hp_data)
+    n_stuffers = len(st_data)
+    p_stats = st.session_state.get('pipeline_stats')
+    if not p_stats and os.path.exists("pipeline_stats.json"):
+        try:
+            with open("pipeline_stats.json", "r", encoding="utf-8") as f:
+                p_stats = json.load(f)
+        except Exception:
+            pass
+    if not p_stats:
+        p_stats = {}
+    n_scanned = p_stats.get('scanned', 0)
+    latency = p_stats.get('latency', 0)
+    hp_rate = round(n_honeypots / max(n_scanned, 1) * 100, 2)
+    st_rate = round(n_stuffers / max(n_scanned, 1) * 100, 2)
+
     # Header Area
     col_hdr_left, col_hdr_right = st.columns([3, 1])
     with col_hdr_left:
@@ -603,7 +621,6 @@ if nav_page == "📋 Intelligence Dashboard":
             """,
             unsafe_allow_html=True
         )
-        pass
 
     # Success Banner if pipeline was run
     if 'pipeline_stats' in st.session_state:
@@ -621,7 +638,16 @@ if nav_page == "📋 Intelligence Dashboard":
         st.markdown('<h3 style="margin: 0 0 4px 0; font-size: 18px; color: #1F2937; font-weight: 700;">🔄 Run Sourcing Pipeline</h3>', unsafe_allow_html=True)
         st.markdown('<p style="font-size: 12px; color: #6B7280; margin: 0 0 16px 0;">Upload a custom candidates list (JSON/JSONL) and Job Description to rank dynamically on CPU.</p>', unsafe_allow_html=True)
     with col_u2:
-        pass
+        st.markdown(
+            f"""
+            <div style="background-color: #F9FAFB; padding: 10px 14px; border: 1px solid #EAE8E4; border-radius: 12px; margin-top: -8px;">
+                <span style="font-size: 10px; font-weight: 700; color: #4F46E5; text-transform: uppercase;">Active Engine State</span>
+                <div style="margin-top: 4px; font-size: 12px; font-weight: 700; color: #1F2937; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{jd_meta.get('title', 'Senior AI Engineer')}</div>
+                <div style="font-size: 11px; color: #6B7280;">Pool: {n_scanned:,} profiles</div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
         
     col_f1, col_f2, col_f3 = st.columns([2.5, 2.5, 1.2])
     with col_f1:
@@ -737,26 +763,7 @@ if nav_page == "📋 Intelligence Dashboard":
                     
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # Dynamic Stats Row
-    hp_data, st_data = load_honeypot_stats(get_mtime("honeypots_caught.json"), get_mtime("stuffers_filtered.json"))
-    n_honeypots = len(hp_data)
-    n_stuffers = len(st_data)
-    # Load saved pipeline stats or default
-    p_stats = st.session_state.get('pipeline_stats')
-    if not p_stats and os.path.exists("pipeline_stats.json"):
-        try:
-            with open("pipeline_stats.json", "r", encoding="utf-8") as f:
-                p_stats = json.load(f)
-        except Exception:
-            pass
-            
-    if not p_stats:
-        p_stats = {}
-        
-    n_scanned = p_stats.get('scanned', 0)
-    latency = p_stats.get('latency', 0)
-    hp_rate = round(n_honeypots / max(n_scanned, 1) * 100, 2)
-    st_rate = round(n_stuffers / max(n_scanned, 1) * 100, 2)
+    # Stats variables already loaded at the top of the page in scope
 
     st.markdown(
         f"""
@@ -843,10 +850,13 @@ if nav_page == "📋 Intelligence Dashboard":
                 score_out_100 = round(c['final_score'] * 100, 1)
                 
                 # Determine tag based on rank
-                if idx < 3:
+                rank_val = c.get('rank') or (idx + 1)
+                if rank_val <= 3:
                     tag_html = '<span class="badge-peach">Perfect Fit</span>'
-                elif c.get('semantic_similarity_score', 0) > 0.40 and len(c.get('skills', [])) < 8:
+                elif c.get('semantic_boost', 1.0) > 1.10 and rank_val <= 50:
                     tag_html = '<span class="badge-lilac">Hidden Gem</span>'
+                elif c.get('scores', {}).get('technical', 0) > 0.75:
+                    tag_html = '<span class="badge-indigo">Tech Star</span>'
                 else:
                     tag_html = '<span class="badge-mint">Behavioral Match</span>'
                 

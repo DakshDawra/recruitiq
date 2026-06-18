@@ -28,7 +28,7 @@ def get_hard_disqualifier_multiplier(candidate, jd_disqualifiers=None):
             has_product = True
             
     if has_consulting and not has_product and len(career_history) > 0:
-        return 0.01, "Pure Consulting-Only Career"
+        return 0.0, "Pure Consulting-Only Career"
 
     # 2. Title-Chaser
     # Detect if a candidate has >= 3 jobs, each lasting < 18 months, with title progressions
@@ -38,7 +38,7 @@ def get_hard_disqualifier_multiplier(candidate, jd_disqualifiers=None):
             short_jobs += 1
             
     if short_jobs >= 3 and len(career_history) >= 3 and short_jobs == len(career_history):
-        return 0.01, "Serial Title-Chaser (Frequent job hopping)"
+        return 0.0, "Serial Title-Chaser (Frequent job hopping)"
 
     # 3. CV/Speech/Robotics without NLP
     cv_keywords = {'computer vision', 'image processing', 'object detection', 'speech recognition', 'robotics'}
@@ -54,7 +54,7 @@ def get_hard_disqualifier_multiplier(candidate, jd_disqualifiers=None):
             has_nlp = True
             
     if has_cv and not has_nlp:
-        return 0.01, "CV/Speech/Robotics pure background without NLP/IR"
+        return 0.0, "CV/Speech/Robotics pure background without NLP/IR"
 
     # 4. Low GitHub (soft penalty only — many senior engineers work in proprietary codebases)
     # Moved to soft modifier: handled via github_bonus in technical scorer
