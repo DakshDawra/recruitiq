@@ -28,7 +28,7 @@ ai_tools_used:
   - "Claude"
   - "Cursor"
 ai_usage_summary: "Used AI assistants for code scaffolding, debugging, and documentation. All ranking logic, scoring formulas, and architectural decisions were designed and validated by the team. The pipeline runs fully offline with no AI API calls during ranking."
-methodology_summary: "Multi-persona consensus ranking engine with 5 virtual evaluators (Technical Interviewer, Hiring Manager, Culture-Fit Assessor, Recruiter Ops, Logistics/Education). Pipeline: JSONL streaming ingestion -> 9-rule honeypot immune system -> coarse heuristic filter -> per-persona scoring using all 23 redrob behavioral signals -> TF-IDF semantic similarity boost -> hard disqualifier modifiers -> diversity re-ranking -> weighted consensus ranking. Produces top-100 with per-candidate explainable reasoning. Runs in ~38s on CPU, well within 5-minute budget."
+methodology_summary: "Multi-persona consensus ranking engine with 5 virtual evaluators (Technical Interviewer, Hiring Manager, Culture-Fit Assessor, Recruiter Ops, Logistics/Education). Pipeline: JSONL streaming ingestion -> 9-rule honeypot immune system -> coarse heuristic filter -> per-persona scoring using all 23 redrob behavioral signals -> TF-IDF semantic similarity boost -> hard disqualifier modifiers -> diversity re-ranking -> weighted consensus ranking. Produces top-100 with per-candidate explainable reasoning. Runs in ~66s on CPU, well within 5-minute budget."
 declarations:
   read_submission_spec: true
   code_is_original_work: true

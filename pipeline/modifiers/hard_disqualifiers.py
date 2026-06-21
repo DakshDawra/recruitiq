@@ -1,7 +1,7 @@
 def get_hard_disqualifier_multiplier(candidate, jd_disqualifiers=None):
     """
     Evaluates narrative JD disqualifiers. 
-    If a candidate hits any of these hard red flags, returns a near-zero multiplier (0.01)
+    If a candidate hits any of these hard red flags, returns a zero multiplier (0.0)
     and the reason. Otherwise returns (1.0, None).
     """
     profile = candidate.get('profile', {})

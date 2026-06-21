@@ -5,7 +5,7 @@
 
 ## Overview
 
-RecruitIQ is a multi-persona consensus ranking engine that processes 100,000 candidate profiles to produce an optimally ranked top-100 shortlist for a Senior AI Engineer position. The system uses 5 virtual evaluators, 23 behavioral signals, TF-IDF semantic matching, a 9-rule honeypot immune system, and a diversity re-ranker — all running on CPU in under 60 seconds (approx. 54 seconds).
+RecruitIQ is a multi-persona consensus ranking engine that processes 100,000 candidate profiles to produce an optimally ranked top-100 shortlist for a Senior AI Engineer position. The system uses 5 virtual evaluators, 23 behavioral signals, TF-IDF semantic matching, a 9-rule honeypot immune system, and a diversity re-ranker — all running on CPU in under 70 seconds.
 
 ## Architecture
 
@@ -33,9 +33,9 @@ candidates.jsonl (100K)
     ├── TF-IDF Semantic Similarity Boost (0.82x – 1.25x)
     │
     ├── Hard Disqualifier Modifiers
-    │   ├── Pure consulting-only → 0.01x
-    │   ├── Serial title-chasers → 0.01x
-    │   └── CV/Robotics-only without NLP → 0.01x
+    │   ├── Pure consulting-only → 0.0x
+    │   ├── Serial title-chasers → 0.0x
+    │   └── CV/Robotics-only without NLP → 0.0x
     │
     ├── Diversity Re-Ranking
     │   └── Diminishing returns for same company+title clusters (>3 duplicates penalized)
@@ -51,7 +51,7 @@ pip install -r requirements.txt
 
 # 2. Place candidates.jsonl in project root or use default data path
 # 3. Run ranking pipeline (produces submission.csv)
-python rank.py --out ./submission.csv
+python rank.py --candidates ./candidates.jsonl --out ./submission.csv
 
 # 4. Validate output
 python validate_submission.py submission.csv
@@ -89,7 +89,7 @@ Persona Sum = Technical × 0.30 + Hiring Manager × 0.25 + Culture Fit × 0.15
 - **Platform**: Windows 11, Intel i5
 - **RAM**: 16 GB
 - **Python**: 3.11
-- **Runtime**: ~54 seconds (well within 5-minute budget)
+- **Runtime**: ~66 seconds (well within 5-minute budget)
 - **GPU**: None (CPU only)
 - **Network**: None during ranking
 

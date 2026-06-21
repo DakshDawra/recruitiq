@@ -1,5 +1,5 @@
 from config import PERSONA_WEIGHTS
-from pipeline.honeypot import is_honeypot, get_honeypot_reasons
+from pipeline.honeypot import get_honeypot_reasons
 from pipeline.coarse_filter import is_coarse_match
 from pipeline.scorers.technical import calculate_technical_score
 from pipeline.scorers.hiring_manager import calculate_hiring_manager_score
