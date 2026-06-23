@@ -2,8 +2,19 @@ import os
 
 # Base paths — use relative paths so it works on any machine
 WORKSPACE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(WORKSPACE_DIR, "[PUB] India_runs_data_and_ai_challenge (1)", "[PUB] India_runs_data_and_ai_challenge", "India_runs_data_and_ai_challenge")
-CANDIDATES_FILE = os.path.join(DATA_DIR, "candidates.jsonl")
+nested_data_dir = os.path.join(WORKSPACE_DIR, "[PUB] India_runs_data_and_ai_challenge (1)", "[PUB] India_runs_data_and_ai_challenge", "India_runs_data_and_ai_challenge")
+if os.path.exists(nested_data_dir):
+    DATA_DIR = nested_data_dir
+else:
+    DATA_DIR = WORKSPACE_DIR
+
+# Determine candidates file fallback
+if os.path.exists(os.path.join(DATA_DIR, "candidates.jsonl")):
+    CANDIDATES_FILE = os.path.join(DATA_DIR, "candidates.jsonl")
+elif os.path.exists(os.path.join(WORKSPACE_DIR, "candidates.jsonl")):
+    CANDIDATES_FILE = os.path.join(WORKSPACE_DIR, "candidates.jsonl")
+else:
+    CANDIDATES_FILE = "candidates.jsonl"
 
 # JD Specific Requirements (extracted from job_description.docx)
 REQUIRED_SKILLS = {
@@ -33,13 +44,6 @@ NON_TECH_TITLES = {
     'customer support', 'graphic designer', 'content writer', 
     'civil engineer', 'mechanical engineer', 'operations manager', 
     'business analyst', 'project manager', 'recruiter'
-}
-
-# AI/ML title keywords that signal a strong match for AI Engineer JD
-AI_TITLE_KEYWORDS = {
-    'ml', 'machine learning', 'ai', 'data scientist', 'nlp', 
-    'deep learning', 'research scientist', 'applied scientist',
-    'ml engineer', 'ai engineer', 'data engineer'
 }
 
 # Target locations (Noida/Pune preferred, hybrid cadence)

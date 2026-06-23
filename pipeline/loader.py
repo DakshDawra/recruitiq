@@ -30,4 +30,7 @@ def stream_candidates(file_path):
             for line in f:
                 line = line.strip()
                 if line:
-                    yield json.loads(line)
+                    try:
+                        yield json.loads(line)
+                    except json.JSONDecodeError as e:
+                        print(f"Warning: Skipped malformed JSON line: {e}")

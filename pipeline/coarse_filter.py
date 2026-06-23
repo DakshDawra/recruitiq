@@ -17,9 +17,6 @@ def is_coarse_match(candidate):
         'architect', 'coding', 'coder', 'systems'
     }
     
-    title_words = set(current_title.replace('/', ' ').replace('-', ' ').split())
-    headline_words = set(headline.replace('/', ' ').replace('-', ' ').split())
-    
     is_tech_title = any(kw in current_title for kw in tech_keywords)
     is_tech_headline = any(kw in headline for kw in tech_keywords)
     

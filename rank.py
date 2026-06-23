@@ -7,7 +7,7 @@ from pipeline.loader import stream_candidates
 from pipeline.jd_parser import JDParser
 from pipeline.ranker import rank_candidates
 from pipeline.reasoning import generate_candidate_reasoning
-from config import CANDIDATES_FILE, DATA_DIR
+from config import CANDIDATES_FILE, DATA_DIR, WORKSPACE_DIR
 
 def main():
     parser = argparse.ArgumentParser(description="RecruitIQ Candidate Discovery & Ranking Engine")
@@ -27,35 +27,62 @@ def main():
     start_time = time.time()
     
     # 1. Load Job Description
-    if args.jd and os.path.exists(args.jd):
-        jd_path = args.jd
-    else:
-        jd_doc_path = os.path.join(DATA_DIR, "job_description.docx")
-        jd_txt_path = os.path.join(DATA_DIR, "job_description.txt")
-        jd_path = jd_doc_path if os.path.exists(jd_doc_path) else (jd_txt_path if os.path.exists(jd_txt_path) else None)
-        if not jd_path:
-            if os.path.exists("jd.txt"):
-                jd_path = "jd.txt"
-            elif os.path.exists("job_description.txt"):
-                jd_path = "job_description.txt"
+    jd_text = None
+    jd_path = None
+    
+    if args.jd:
+        if os.path.exists(args.jd):
+            jd_path = args.jd
+        else:
+            # Check relative to WORKSPACE_DIR if not found in CWD
+            candidate_path = os.path.join(WORKSPACE_DIR, args.jd)
+            if os.path.exists(candidate_path):
+                jd_path = candidate_path
                 
     if not jd_path:
-        print("Error: Job description file not found. Use --jd flag.")
-        return
+        # Check standard locations in DATA_DIR
+        jd_doc_path = os.path.join(DATA_DIR, "job_description.docx")
+        jd_txt_path = os.path.join(DATA_DIR, "job_description.txt")
         
-    print(f"Loading Job Description from: {jd_path}")
-    
-    # Handle both .docx and .txt
-    if jd_path.endswith('.txt'):
-        with open(jd_path, 'r', encoding='utf-8') as f:
-            jd_text = f.read()
-    else:
-        jd_parser = JDParser(jd_path)
-        jd_text = jd_parser.raw_text
+        # Check standard locations in WORKSPACE_DIR
+        local_jd_doc = os.path.join(WORKSPACE_DIR, "job_description.docx")
+        local_jd_txt = os.path.join(WORKSPACE_DIR, "job_description.txt")
+        local_jd_txt_2 = os.path.join(WORKSPACE_DIR, "jd.txt")
         
+        # Check standard locations in CWD
+        cwd_jd_txt = "jd.txt"
+        cwd_jd_txt_2 = "job_description.txt"
+        
+        for p in [jd_doc_path, jd_txt_path, local_jd_doc, local_jd_txt, local_jd_txt_2, cwd_jd_txt, cwd_jd_txt_2]:
+            if p and os.path.exists(p):
+                jd_path = p
+                break
+                
+    if jd_path:
+        print(f"Loading Job Description from: {jd_path}")
+        if jd_path.endswith('.txt'):
+            try:
+                with open(jd_path, 'r', encoding='utf-8') as f:
+                    jd_text = f.read()
+            except Exception as e:
+                print(f"Warning: Failed to read text JD: {e}")
+        else:
+            try:
+                jd_parser = JDParser(jd_path)
+                jd_text = jd_parser.raw_text
+            except Exception as e:
+                print(f"Warning: Failed to parse docx JD: {e}")
+                
     if not jd_text:
-        print("Error: Job description text is empty.")
-        return
+        print("Warning: Job description file not found or empty. Falling back to default Redrob Senior AI Engineer JD.")
+        jd_text = """Job Description: Senior AI Engineer — Founding Team
+Company: Redrob AI (Series A AI-native talent intelligence platform)
+Location: Pune/Noida, India (Hybrid — flexible cadence)
+Experience Required: 5–9 years
+
+We are looking for a Senior AI Engineer to own the intelligence layer of Redrob's product (ranking, retrieval, matching systems).
+Skills Needed: PyTorch, NLP, LLMs, RAG, Fine-tuning, Vector DBs (FAISS, Pinecone, Milvus), Evaluation frameworks (NDCG).
+Disqualifiers: Pure Consulting (TCS, Infosys, Wipro, Accenture, Cognizant, Capgemini), Job-hopping / Title-chasers, CV/Robotics without NLP."""
         
     print(f"Streaming candidates from: {args.candidates}")
     

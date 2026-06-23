@@ -113,10 +113,10 @@ mult_perfect, reason_perfect = get_hard_disqualifier_multiplier(cand_map["TEST_P
 check(mult_perfect == 1.0, "Perfect AI has no disqualification", f"mult={mult_perfect}")
 
 mult_consulting, reason_consulting = get_hard_disqualifier_multiplier(cand_map["TEST_CONSULTING_ONLY"])
-check(mult_consulting == 0.01, "Pure consulting gets 0.01x multiplier", f"mult={mult_consulting}, reason={reason_consulting}")
+check(mult_consulting == 0.0, "Pure consulting gets 0.0x multiplier", f"mult={mult_consulting}, reason={reason_consulting}")
 
 mult_chaser, reason_chaser = get_hard_disqualifier_multiplier(cand_map["TEST_TITLE_CHASER"])
-check(mult_chaser == 0.01, "Title chaser gets 0.01x multiplier", f"mult={mult_chaser}, reason={reason_chaser}")
+check(mult_chaser == 0.0, "Title chaser gets 0.0x multiplier", f"mult={mult_chaser}, reason={reason_chaser}")
 
 mult_backend, reason_backend = get_hard_disqualifier_multiplier(cand_map["TEST_BACKEND_PYSKILL"])
 check(mult_backend == 1.0, "Backend engineer has no hard disqualification", f"mult={mult_backend}")

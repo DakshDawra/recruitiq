@@ -3,8 +3,6 @@ import json
 import os
 import csv
 import math
-import numpy as np
-import plotly.express as px
 import plotly.graph_objects as go
 
 # Set Page Config
@@ -1041,7 +1039,7 @@ if nav_page == "📋 Intelligence Dashboard":
                 paper_bgcolor='rgba(0,0,0,0)',
                 plot_bgcolor='rgba(0,0,0,0)'
             )
-            st.plotly_chart(fig, width='stretch', config={'displayModeBar': False})
+            st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
             
             # Skill bars
             st.markdown('<h4 style="margin: 16px 0 12px 0; font-size: 14px;">Top Profile Skills</h4>', unsafe_allow_html=True)
@@ -1599,7 +1597,7 @@ elif nav_page == "🔬 Rank Robustness":
             xaxis=dict(tickangle=-45),
             margin=dict(b=100)
         )
-        st.plotly_chart(fig_rob, width='stretch', config={'displayModeBar': False})
+        st.plotly_chart(fig_rob, use_container_width=True, config={'displayModeBar': False})
         
         # Detailed table
         st.markdown(f'<h3 style="margin: 24px 0 12px 0; font-size: 18px;">Detailed Robustness Table — Top {num_candidates}</h3>', unsafe_allow_html=True)
@@ -1723,7 +1721,7 @@ elif nav_page == "🧬 Skill Ecosystem":
             yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
             font=dict(family='Inter')
         )
-        st.plotly_chart(fig_net, width='stretch', config={'displayModeBar': False})
+        st.plotly_chart(fig_net, use_container_width=True, config={'displayModeBar': False})
         
         # Skill frequency bar chart
         st.markdown('<h3 style="margin: 24px 0 12px 0; font-size: 18px;">Top Skills by Frequency in Top 100</h3>', unsafe_allow_html=True)
@@ -1748,7 +1746,7 @@ elif nav_page == "🧬 Skill Ecosystem":
             xaxis=dict(tickangle=-45),
             margin=dict(b=100)
         )
-        st.plotly_chart(fig_bar, width='stretch', config={'displayModeBar': False})
+        st.plotly_chart(fig_bar, use_container_width=True, config={'displayModeBar': False})
         
         # Persona Disagreement Heatmap
         num_heatmap = st.slider("Number of Candidates in Heatmap", 10, 100, 50, key="heat_slider")
@@ -1783,7 +1781,7 @@ elif nav_page == "🧬 Skill Ecosystem":
             font=dict(family='Inter'),
             margin=dict(l=150)
         )
-        st.plotly_chart(fig_heat, width='stretch', config={'displayModeBar': False})
+        st.plotly_chart(fig_heat, use_container_width=True, config={'displayModeBar': False})
     else:
         st.warning("No candidate data available.")
 
@@ -1847,7 +1845,7 @@ elif nav_page == "📊 Pipeline X-Ray":
         height=450,
         paper_bgcolor='rgba(0,0,0,0)'
     )
-    st.plotly_chart(fig_sankey, width='stretch', config={'displayModeBar': False})
+    st.plotly_chart(fig_sankey, use_container_width=True, config={'displayModeBar': False})
     
     # Pipeline stage breakdown
     stages = [
