@@ -869,7 +869,7 @@ if nav_page == "📋 Intelligence Dashboard":
                 border_color = "#4F46E5" if is_selected else "transparent"
                 
                 # Row Container
-                row_col1, row_col2, row_col3 = st.columns([3.6, 2.2, 1.2])
+                row_col1, row_col2, row_col3 = st.columns([4.0, 2.2, 1.8])
                 
                 with row_col1:
                     # Render avatar initial & details
