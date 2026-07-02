@@ -186,6 +186,7 @@ def rank_candidates(candidates_generator, jd_text):
         mult, reason = get_hard_disqualifier_multiplier(c, jd_disqualifiers=jd_disqualifiers)
         
         c['final_score'] = round(float(persona_sum * boost * mult), 4)
+        c['hard_disqualifier_multiplier'] = mult
         if mult < 1.0:
             c['hard_disqualified_reason'] = reason
 

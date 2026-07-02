@@ -136,18 +136,7 @@ def generate_candidate_reasoning(candidate):
     if cand_num == 0:
         cand_num = hash(cand_id_str)
         
-    # Ensure every candidate has at least one minor caveat/note for honest evaluation
-    if not concerns:
-        fallbacks = [
-            "focused primarily on proprietary enterprise systems",
-            "reliance on direct career track rather than certification badges",
-            "requires hybrid relocation/travel coordination to Noida/Pune",
-            "no recent public-facing research publications",
-            "limited public open-source repository contributions",
-            "standard notice period required for transition"
-        ]
-        fb_idx = abs(cand_num) % len(fallbacks)
-        concerns.append(fallbacks[fb_idx])
+    # No forced fallback concerns. If a candidate is perfect, they get no caveats.
         
     template_idx = abs(cand_num) % 3
     

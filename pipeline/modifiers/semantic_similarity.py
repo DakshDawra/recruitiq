@@ -55,7 +55,7 @@ def apply_semantic_similarity(candidates, jd_text):
         for idx, c in enumerate(candidates):
             sim_score = float(similarities[idx])
             c['semantic_similarity_score'] = sim_score
-            # Apply a safe multiplicative modifier: 0.90 baseline to 1.15 boost for highly similar text
+            # Apply a safe multiplicative modifier: 0.82 baseline to 1.25 boost for highly similar text
             c['semantic_boost'] = 0.82 + (sim_score * 0.43)
             
     except Exception:

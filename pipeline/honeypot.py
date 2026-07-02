@@ -1,12 +1,6 @@
 import datetime
-
-def parse_date(date_str):
-    if not date_str:
-        return None
-    try:
-        return datetime.datetime.strptime(date_str, "%Y-%m-%d")
-    except ValueError:
-        return None
+from config import REFERENCE_DATE
+from pipeline.utils import parse_date
 
 def get_honeypot_reasons(candidate):
     """
@@ -42,7 +36,7 @@ def get_honeypot_reasons(candidate):
         start = parse_date(job.get('start_date'))
         end = parse_date(job.get('end_date'))
         if not end and job.get('is_current'):
-            end = datetime.datetime(2026, 6, 9) # Reference date for hackathon
+            end = REFERENCE_DATE
         if start and end:
             intervals.append((start, end))
             
@@ -87,7 +81,7 @@ def get_honeypot_reasons(candidate):
             
     if years:
         earliest_activity = min(years)
-        max_possible_yoe = (2026 - earliest_activity) + 2
+        max_possible_yoe = (REFERENCE_DATE.year - earliest_activity) + 2
         if years_of_experience > max_possible_yoe and years_of_experience > 5:
             reasons.append(f"Impossible Stated YoE ({years_of_experience} yrs vs max possible {max_possible_yoe} yrs since earliest activity in {earliest_activity})")
 
@@ -96,7 +90,7 @@ def get_honeypot_reasons(candidate):
         edu_end_years = [edu.get('end_year') for edu in education if edu.get('end_year')]
         if edu_end_years:
             min_edu_end = min(edu_end_years)
-            max_possible_months = (2026 - min_edu_end + 2) * 12
+            max_possible_months = (REFERENCE_DATE.year - min_edu_end + 2) * 12
             for job in career_history:
                 duration_months = job.get('duration_months', 0)
                 if duration_months > max_possible_months:
@@ -109,10 +103,9 @@ def get_honeypot_reasons(candidate):
             break
 
     # Rule 7: Future dates (start date after reference)
-    ref = datetime.datetime(2026, 6, 9)
     for job in career_history:
         start = parse_date(job.get('start_date'))
-        if start and start > ref and not job.get('is_current'):
+        if start and start > REFERENCE_DATE and not job.get('is_current'):
             reasons.append(f"Future dates detected (job starts {job.get('start_date')})")
             break
 

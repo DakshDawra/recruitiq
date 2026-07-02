@@ -16,7 +16,7 @@ Real-world hiring is never a single opinion. It is a collaborative committee dec
 To solve this, **RecruitIQ** rejects simple keyword frequency. Instead, we model a **5-Persona Consensus Committee** that evaluates candidates from multiple dimensions.
 
 ### 3. The Solution: Multi-Persona Consensus Engine with Honeypot Immunity
-Our pipeline runs completely offline on CPU in under 70 seconds and implements the following stages:
+Our pipeline runs completely offline on CPU in ~92 seconds and implements the following stages:
 
 ```
 [100,000 Candidate Profiles (JSONL)]
@@ -84,6 +84,22 @@ The consensus weights were carefully calibrated based on the Series A Founding A
 - **Recruiter Ops (15%):** Availability and responsiveness are critical for immediate onboarding.
 - **Logistics & Education (15%):** Heavy preference for hybrid candidates located in Noida/Pune with short notice periods (<30 days).
 
+### 📡 The 23 Redrob Behavioral Signals (Mapping)
+Our pipeline uses 100% of the 23 provided `redrob_signals` across the evaluation personas:
+| Signal Name | Persona Scorer | Weight Impact |
+|:---|:---|:---|
+| `last_active_date`, `signup_date` | Recruiter Ops | 18% / 8% (Platform tenure & recency) |
+| `recruiter_response_rate`, `interview_completion_rate` | Recruiter Ops | 22% (Engagement score) |
+| `open_to_work_flag`, `applications_submitted_30d` | Recruiter Ops | 22% / 5% (Active seeking) |
+| `saved_by_recruiters_30d`, `search_appearance_30d`, `profile_views_received_30d` | Recruiter Ops | 13% (Recruiter PageRank) |
+| `profile_completeness_score`, `avg_response_time_hours` | Recruiter Ops | 10% / 10% |
+| `connection_count`, `endorsements_received` | Recruiter Ops | 7% (Network score) |
+| `offer_acceptance_rate` | Recruiter Ops | 7% (Offer reliability) |
+| `verified_email`, `verified_phone`, `linkedin_connected` | Recruiter Ops | Trust Multiplier (0.85x - 1.0x) |
+| `notice_period_days`, `willing_to_relocate`, `preferred_work_mode` | Logistics/Edu | Primary Notice & Location scores |
+| `expected_salary_range_inr_lpa` | Logistics/Edu | Salary match scoring |
+| `github_activity_score`, `skill_assessment_scores` | Technical Depth | GitHub (0.90x penalty if 0), Verified assessment boosts |
+
 ---
 
 ## 🚀 How to Reproduce Submission
@@ -95,7 +111,7 @@ Follow these steps to run the pipeline and launch the dashboard locally:
 pip install -r requirements.txt
 
 # 2. Run ranking pipeline (takes candidates.jsonl in CWD or dynamic fallback)
-# Produces submission.csv in ~66 seconds on CPU
+# Produces submission.csv in ~92 seconds on CPU
 python rank.py --candidates ./candidates.jsonl --out ./submission.csv
 
 # 3. Validate compliance with official validator
@@ -110,4 +126,6 @@ streamlit run app.py
 ## 🛠️ Tech Stack & Compute Budget
 - **Core:** Python 3.11, Streamlit 1.45.1, Pandas 2.2.3, Scikit-learn 1.6.1, Plotly 6.1.2, NumPy 2.2.6
 - **Compute:** CPU-only (no GPU required), fully offline (no external LLM API calls or network requests during ranking).
-- **Latency:** **65.75 seconds** to stream, clean, score, re-rank, and generate reasoning for 100,000 candidates (average of ~0.65ms per candidate).
+- **Latency:** **91.52 seconds** to stream, clean, score, re-rank, and generate reasoning for 100,000 candidates (average of ~0.92ms per candidate).
+
+> **Note on Dashboard UI**: The `rank.py` engine is strictly offline and network-free. The `app.py` Streamlit dashboard, however, loads Tailwind CSS and Google Fonts via external CDNs for premium styling. The "Upgrade to Premium" paywall is a non-functional mock UI designed exclusively to demonstrate how Redrob could monetize this product in the future.

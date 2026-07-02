@@ -4,6 +4,7 @@ import os
 import csv
 import math
 import plotly.graph_objects as go
+from config import REFERENCE_DATE
 
 # Set Page Config
 st.set_page_config(
@@ -390,7 +391,7 @@ def load_honeypot_stats(mtime_hp, mtime_st):
                 
                 # Check rule 1
                 for job in career_history:
-                    from pipeline.honeypot import parse_date
+                    from pipeline.utils import parse_date
                     start = parse_date(job.get('start_date'))
                     end = parse_date(job.get('end_date'))
                     if start and end and start > end:
@@ -407,7 +408,7 @@ def load_honeypot_stats(mtime_hp, mtime_st):
                         
                 # Check rule 4
                 expert_no_proof = sum(1 for s in skills if str(s.get('proficiency', '')).lower() == 'expert' and s.get('endorsements', 0) == 0 and s.get('duration_months', 0) == 0)
-                if expert_no_proof >= 5:
+                if expert_no_proof >= 10:
                     reasons.append(f"Skill Endorsement Fraud ({expert_no_proof} expert skills with 0 proof)")
                     
                 # Check rule 5
@@ -416,7 +417,7 @@ def load_honeypot_stats(mtime_hp, mtime_st):
                     edu_end_years = [edu.get('end_year') for edu in education if edu.get('end_year')]
                     if edu_end_years:
                         min_edu_end = min(edu_end_years)
-                        max_possible_yoe = (2026 - min_edu_end) + 2
+                        max_possible_yoe = (REFERENCE_DATE.year - min_edu_end) + 2
                         if years_of_experience > max_possible_yoe and years_of_experience > 5:
                             reasons.append(f"Impossible Experience Bound ({years_of_experience} YoE vs graduation in {min_edu_end})")
                 

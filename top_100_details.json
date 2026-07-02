@@ -180,8 +180,9 @@
     "semantic_similarity_score": 0.5078730711909294,
     "semantic_boost": 1.0383854206120997,
     "final_score": 0.8933,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 1,
-    "reasoning": "A Senior NLP Engineer currently at Niramai (7.8 yrs), located in Indore, Madhya Pradesh. Highlights: JD-aligned expertise in TensorFlow (56mo, expert), FAISS (42mo, advanced), PEFT (48mo, expert); verified assessments (TensorFlow: 78/100); career trajectory: Senior NLP Engineer at Niramai (52mo); Senior Machine Learning Engineer at Krutrim (40mo). Caveats: standard notice period required for transition."
+    "reasoning": "A Senior NLP Engineer currently at Niramai (7.8 yrs), located in Indore, Madhya Pradesh. Highlights: JD-aligned expertise in TensorFlow (56mo, expert), FAISS (42mo, advanced), PEFT (48mo, expert); verified assessments (TensorFlow: 78/100); career trajectory: Senior NLP Engineer at Niramai (52mo); Senior Machine Learning Engineer at Krutrim (40mo)."
   },
   {
     "candidate_id": "CAND_0002025",
@@ -419,8 +420,9 @@
     "semantic_similarity_score": 0.5369248164397007,
     "semantic_boost": 1.0508776710690713,
     "final_score": 0.8814,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 2,
-    "reasoning": "Senior AI Engineer at Apple with 5.9 yrs, based in Trivandrum, Kerala. Strengths: JD-aligned expertise in FAISS (86mo, expert), TensorFlow (85mo, expert), Weaviate (37mo, advanced); career trajectory: Senior AI Engineer at Apple (42mo); Lead AI Engineer at Aganitha (28mo); active GitHub (score: 97/100). Notes: no recent public-facing research publications."
+    "reasoning": "Senior AI Engineer at Apple with 5.9 yrs, based in Trivandrum, Kerala. Strengths: JD-aligned expertise in FAISS (86mo, expert), TensorFlow (85mo, expert), Weaviate (37mo, advanced); career trajectory: Senior AI Engineer at Apple (42mo); Lead AI Engineer at Aganitha (28mo); active GitHub (score: 97/100)."
   },
   {
     "candidate_id": "CAND_0071974",
@@ -654,18 +656,19 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.7486303167420814,
+      "technical": 0.7486424369747899,
       "hiring_manager": 0.91,
       "culture_fit": 0.9999999999999999,
       "recruiter_ops": 0.7373149581441965,
       "logistics_education": 0.825,
-      "persona_sum": 0.8364363387442538
+      "persona_sum": 0.8364399748140664
     },
     "semantic_similarity_score": 0.5345793743659895,
     "semantic_boost": 1.0498691309773753,
-    "final_score": 0.8781,
+    "final_score": 0.8782,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 3,
-    "reasoning": "Based in Vizag, Andhra Pradesh, this candidate is a Senior AI Engineer at Netflix with 7.8 yrs of experience. Key strengths include: JD-aligned expertise in LoRA (41mo, advanced), Weaviate (60mo, expert), PEFT (43mo, advanced); verified assessments (LoRA: 87/100; PEFT: 86/100); career trajectory: Senior AI Engineer at Netflix (50mo); Staff Machine Learning Engineer at Meta (28mo). Considerations: limited public open-source repository contributions."
+    "reasoning": "Based in Vizag, Andhra Pradesh, this candidate is a Senior AI Engineer at Netflix with 7.8 yrs of experience. Key strengths include: JD-aligned expertise in LoRA (41mo, advanced), Weaviate (60mo, expert), PEFT (43mo, advanced); verified assessments (LoRA: 87/100; PEFT: 86/100); career trajectory: Senior AI Engineer at Netflix (50mo); Staff Machine Learning Engineer at Meta (28mo)."
   },
   {
     "candidate_id": "CAND_0018499",
@@ -894,18 +897,19 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.7070781094977099,
+      "technical": 0.7081528640078572,
       "hiring_manager": 0.91,
       "culture_fit": 0.8999999999999999,
       "recruiter_ops": 0.7481810944969248,
       "logistics_education": 0.937,
-      "persona_sum": 0.8274005970238517
+      "persona_sum": 0.827723023376896
     },
     "semantic_similarity_score": 0.5419696850713519,
     "semantic_boost": 1.0530469645806813,
-    "final_score": 0.8713,
+    "final_score": 0.8716,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 4,
-    "reasoning": "Based in Noida, Uttar Pradesh, this candidate is a Senior Machine Learning Engineer at Zomato with 7.2 yrs of experience. Key strengths include: JD-aligned expertise in Deep Learning (53mo, expert), Weaviate (60mo, expert), Recommendation Systems (46mo, expert); verified assessments (Deep Learning: 94/100; Weaviate: 72/100); career trajectory: Senior Machine Learning Engineer at Zomato (26mo); Staff Machine Learning Engineer at Google (18mo). Considerations: reliance on direct career track ra..."
+    "reasoning": "Based in Noida, Uttar Pradesh, this candidate is a Senior Machine Learning Engineer at Zomato with 7.2 yrs of experience. Key strengths include: JD-aligned expertise in Deep Learning (53mo, expert), Weaviate (60mo, expert), Recommendation Systems (46mo, expert); verified assessments (Deep Learning: 94/100; Weaviate: 72/100); career trajectory: Senior Machine Learning Engineer at Zomato (26mo); Staff Machine Learning Engineer at Google (18mo)."
   },
   {
     "candidate_id": "CAND_0081846",
@@ -1125,18 +1129,19 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.6843720647773278,
+      "technical": 0.685466917293233,
       "hiring_manager": 1.0,
       "culture_fit": 0.8999999999999999,
       "recruiter_ops": 0.7807617207517619,
       "logistics_education": 0.9404999999999999,
-      "persona_sum": 0.8485008775459626
+      "persona_sum": 0.8488293333007342
     },
     "semantic_similarity_score": 0.47367474618809696,
     "semantic_boost": 1.0236801408608815,
-    "final_score": 0.8686,
+    "final_score": 0.8689,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 5,
-    "reasoning": "Lead AI Engineer at Razorpay with 6.7 yrs, based in Jaipur, Rajasthan. Strengths: JD-aligned expertise in Information Retrieval (93mo, expert), PyTorch (27mo, advanced), Vector Search (79mo, expert); verified assessments (LlamaIndex: 68/100; Information Retrieval: 65/100); career trajectory: Lead AI Engineer at Razorpay (27mo); Senior Machine Learning Engineer at Paytm (52mo). Notes: focused primarily on proprietary enterprise systems."
+    "reasoning": "Lead AI Engineer at Razorpay with 6.7 yrs, based in Jaipur, Rajasthan. Strengths: JD-aligned expertise in Information Retrieval (93mo, expert), PyTorch (27mo, advanced), Vector Search (79mo, expert); verified assessments (LlamaIndex: 68/100; Information Retrieval: 65/100); career trajectory: Lead AI Engineer at Razorpay (27mo); Senior Machine Learning Engineer at Paytm (52mo)."
   },
   {
     "candidate_id": "CAND_0086022",
@@ -1370,8 +1375,210 @@
     "semantic_similarity_score": 0.5254818075396419,
     "semantic_boost": 1.045957177242046,
     "final_score": 0.8632,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 6,
-    "reasoning": "Senior Applied Scientist at Sarvam AI with 5.3 yrs, based in Kolkata, West Bengal. Strengths: JD-aligned expertise in Vector Search (36mo, advanced), MLflow (46mo, advanced), Recommendation Systems (53mo, advanced); verified assessments (Vector Search: 93/100; pgvector: 89/100); career trajectory: Senior Applied Scientist at Sarvam AI (25mo); Senior ML Engineer — Search & Ranking at Uber (38mo). Notes: focused primarily on proprietary enterprise systems."
+    "reasoning": "Senior Applied Scientist at Sarvam AI with 5.3 yrs, based in Kolkata, West Bengal. Strengths: JD-aligned expertise in Vector Search (36mo, advanced), MLflow (46mo, advanced), Recommendation Systems (53mo, advanced); verified assessments (Vector Search: 93/100; pgvector: 89/100); career trajectory: Senior Applied Scientist at Sarvam AI (25mo); Senior ML Engineer — Search & Ranking at Uber (38mo)."
+  },
+  {
+    "candidate_id": "CAND_0007411",
+    "profile": {
+      "anonymized_name": "Rahul Bansal",
+      "headline": "Senior Machine Learning Engineer | Production ML at scale | 8.0+ yrs",
+      "summary": "Senior AI engineer with 8.0 years of hands-on experience building production ML systems, with a focus on search, retrieval, and ranking. Most recently, I owned the offline-online evaluation harness — NDCG/MRR/recall calibrated to live A/B metrics, handling peak QPS of 8K with sub-200ms p95. My day-to-day work spans embedding model selection and fine-tuning, hybrid retrieval architecture, learning-to-rank, behavioral-signal integration, and the offline/online evaluation that ties it all together. I've shipped systems in both early-stage product companies and at larger scale, and I've spent enough time on both that I know which tradeoffs apply where. I care more about shipping a working system in 6 weeks than a theoretically perfect one in 6 months. Currently exploring my next move — looking for senior IC or tech-lead roles where I can own the intelligence layer end-to-end.",
+      "location": "Kochi, Kerala",
+      "country": "India",
+      "years_of_experience": 8.0,
+      "current_title": "Senior Machine Learning Engineer",
+      "current_company": "Amazon",
+      "current_company_size": "10001+",
+      "current_industry": "Internet"
+    },
+    "career_history": [
+      {
+        "company": "Amazon",
+        "title": "Senior Machine Learning Engineer",
+        "start_date": "2023-04-13",
+        "end_date": null,
+        "duration_months": 38,
+        "is_current": true,
+        "industry": "Internet",
+        "company_size": "10001+",
+        "description": "Owned the end-to-end ranking pipeline at a recommendations-heavy consumer product: candidate sourcing → embedding generation (using a fine-tuned BGE-large) → Pinecone retrieval → learning-to-rank re-scoring (XGBoost) → behavioral-signal integration. The hardest part wasn't the ML — it was the evaluation: building offline metrics that actually predicted what the recommendation would do to live engagement. After three iterations we landed on a calibration approach using simulated A/B tests that has held up over the last 18 months."
+      },
+      {
+        "company": "Yellow.ai",
+        "title": "Senior Machine Learning Engineer",
+        "start_date": "2018-08-07",
+        "end_date": "2023-04-13",
+        "duration_months": 57,
+        "is_current": false,
+        "industry": "AI/ML",
+        "company_size": "201-500",
+        "description": "Fine-tuned LLaMA-2-7B and Mistral-7B variants using LoRA and QLoRA for domain-specific candidate-JD matching. Built the data curation pipeline that generated 200K high-quality preference pairs from recruiter labels, plus the eval harness using both ranking metrics and human-quality scores. Deployed the model via BentoML on Kubernetes with sub-200ms p95 latency by quantizing to INT8 and batching at the request level. Cost per inference dropped from $0.04 with GPT-3.5-fallback to under $0.001."
+      }
+    ],
+    "education": [
+      {
+        "institution": "IIT Roorkee",
+        "degree": "B.Tech",
+        "field_of_study": "Information Technology",
+        "start_year": 2011,
+        "end_year": 2014,
+        "grade": "7.84 CGPA",
+        "tier": "tier_1"
+      }
+    ],
+    "skills": [
+      {
+        "name": "OpenSearch",
+        "proficiency": "expert",
+        "endorsements": 43,
+        "duration_months": 86
+      },
+      {
+        "name": "Prompt Engineering",
+        "proficiency": "expert",
+        "endorsements": 53,
+        "duration_months": 50
+      },
+      {
+        "name": "Fine-tuning LLMs",
+        "proficiency": "advanced",
+        "endorsements": 43,
+        "duration_months": 40
+      },
+      {
+        "name": "Vector Search",
+        "proficiency": "advanced",
+        "endorsements": 55,
+        "duration_months": 41
+      },
+      {
+        "name": "Data Science",
+        "proficiency": "intermediate",
+        "endorsements": 8,
+        "duration_months": 18
+      },
+      {
+        "name": "BM25",
+        "proficiency": "expert",
+        "endorsements": 4,
+        "duration_months": 84
+      },
+      {
+        "name": "PyTorch",
+        "proficiency": "expert",
+        "endorsements": 5,
+        "duration_months": 73
+      },
+      {
+        "name": "Information Retrieval",
+        "proficiency": "expert",
+        "endorsements": 57,
+        "duration_months": 46
+      },
+      {
+        "name": "Pinecone",
+        "proficiency": "expert",
+        "endorsements": 35,
+        "duration_months": 42
+      },
+      {
+        "name": "TensorFlow",
+        "proficiency": "advanced",
+        "endorsements": 51,
+        "duration_months": 39
+      },
+      {
+        "name": "Accounting",
+        "proficiency": "intermediate",
+        "endorsements": 13,
+        "duration_months": 11
+      },
+      {
+        "name": "Computer Vision",
+        "proficiency": "advanced",
+        "endorsements": 21,
+        "duration_months": 50
+      },
+      {
+        "name": "Learning to Rank",
+        "proficiency": "advanced",
+        "endorsements": 47,
+        "duration_months": 57
+      },
+      {
+        "name": "Deep Learning",
+        "proficiency": "advanced",
+        "endorsements": 2,
+        "duration_months": 60
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Deep Learning Specialization",
+        "issuer": "Coursera/DeepLearning.AI",
+        "year": 2025
+      }
+    ],
+    "languages": [
+      {
+        "language": "English",
+        "proficiency": "native"
+      },
+      {
+        "language": "Hindi",
+        "proficiency": "conversational"
+      }
+    ],
+    "redrob_signals": {
+      "profile_completeness_score": 58.9,
+      "signup_date": "2024-10-25",
+      "last_active_date": "2025-12-02",
+      "open_to_work_flag": false,
+      "profile_views_received_30d": 113,
+      "applications_submitted_30d": 12,
+      "recruiter_response_rate": 0.12,
+      "avg_response_time_hours": 215.1,
+      "skill_assessment_scores": {
+        "OpenSearch": 63.4,
+        "Prompt Engineering": 62.0,
+        "Fine-tuning LLMs": 75.8,
+        "Vector Search": 91.3,
+        "BM25": 86.6
+      },
+      "connection_count": 1285,
+      "endorsements_received": 224,
+      "notice_period_days": 15,
+      "expected_salary_range_inr_lpa": {
+        "min": 30.2,
+        "max": 59.6
+      },
+      "preferred_work_mode": "hybrid",
+      "willing_to_relocate": true,
+      "github_activity_score": 89.5,
+      "search_appearance_30d": 1490,
+      "saved_by_recruiters_30d": 3,
+      "interview_completion_rate": 0.8,
+      "offer_acceptance_rate": 0.65,
+      "verified_email": true,
+      "verified_phone": true,
+      "linkedin_connected": true
+    },
+    "scores": {
+      "technical": 0.7499051020408164,
+      "hiring_manager": 0.955,
+      "culture_fit": 0.9999999999999999,
+      "recruiter_ops": 0.518579203827686,
+      "logistics_education": 0.9615,
+      "persona_sum": 0.8357334111863979
+    },
+    "semantic_similarity_score": 0.4718307292632939,
+    "semantic_boost": 1.0228872135832163,
+    "final_score": 0.8549,
+    "hard_disqualifier_multiplier": 1.0,
+    "rank": 7,
+    "reasoning": "Based in Kochi, Kerala, this candidate is a Senior Machine Learning Engineer at Amazon with 8.0 yrs of experience. Key strengths include: JD-aligned expertise in Fine-tuning LLMs (40mo, advanced), Vector Search (41mo, advanced), PyTorch (73mo, expert); verified assessments (Vector Search: 91/100; BM25: 87/100); career trajectory: Senior Machine Learning Engineer at Amazon (38mo); Senior Machine Learning Engineer at Yellow.ai (57mo). Considerations: low response rate (12%); incomplete profile ..."
   },
   {
     "candidate_id": "CAND_0046064",
@@ -1592,208 +1799,9 @@
     "semantic_similarity_score": 0.541281526814204,
     "semantic_boost": 1.0527510565301077,
     "final_score": 0.8549,
-    "rank": 7,
-    "reasoning": "A Senior NLP Engineer currently at Salesforce (8.9 yrs), located in Coimbatore, Tamil Nadu. Highlights: JD-aligned expertise in Pinecone (60mo, expert), PEFT (48mo, expert), Deep Learning (42mo, advanced); verified assessments (Python: 64/100); career trajectory: Senior NLP Engineer at Salesforce (36mo); Lead AI Engineer at Verloop.io (34mo). Caveats: requires hybrid relocation/travel coordination to Noida/Pune."
-  },
-  {
-    "candidate_id": "CAND_0007411",
-    "profile": {
-      "anonymized_name": "Rahul Bansal",
-      "headline": "Senior Machine Learning Engineer | Production ML at scale | 8.0+ yrs",
-      "summary": "Senior AI engineer with 8.0 years of hands-on experience building production ML systems, with a focus on search, retrieval, and ranking. Most recently, I owned the offline-online evaluation harness — NDCG/MRR/recall calibrated to live A/B metrics, handling peak QPS of 8K with sub-200ms p95. My day-to-day work spans embedding model selection and fine-tuning, hybrid retrieval architecture, learning-to-rank, behavioral-signal integration, and the offline/online evaluation that ties it all together. I've shipped systems in both early-stage product companies and at larger scale, and I've spent enough time on both that I know which tradeoffs apply where. I care more about shipping a working system in 6 weeks than a theoretically perfect one in 6 months. Currently exploring my next move — looking for senior IC or tech-lead roles where I can own the intelligence layer end-to-end.",
-      "location": "Kochi, Kerala",
-      "country": "India",
-      "years_of_experience": 8.0,
-      "current_title": "Senior Machine Learning Engineer",
-      "current_company": "Amazon",
-      "current_company_size": "10001+",
-      "current_industry": "Internet"
-    },
-    "career_history": [
-      {
-        "company": "Amazon",
-        "title": "Senior Machine Learning Engineer",
-        "start_date": "2023-04-13",
-        "end_date": null,
-        "duration_months": 38,
-        "is_current": true,
-        "industry": "Internet",
-        "company_size": "10001+",
-        "description": "Owned the end-to-end ranking pipeline at a recommendations-heavy consumer product: candidate sourcing → embedding generation (using a fine-tuned BGE-large) → Pinecone retrieval → learning-to-rank re-scoring (XGBoost) → behavioral-signal integration. The hardest part wasn't the ML — it was the evaluation: building offline metrics that actually predicted what the recommendation would do to live engagement. After three iterations we landed on a calibration approach using simulated A/B tests that has held up over the last 18 months."
-      },
-      {
-        "company": "Yellow.ai",
-        "title": "Senior Machine Learning Engineer",
-        "start_date": "2018-08-07",
-        "end_date": "2023-04-13",
-        "duration_months": 57,
-        "is_current": false,
-        "industry": "AI/ML",
-        "company_size": "201-500",
-        "description": "Fine-tuned LLaMA-2-7B and Mistral-7B variants using LoRA and QLoRA for domain-specific candidate-JD matching. Built the data curation pipeline that generated 200K high-quality preference pairs from recruiter labels, plus the eval harness using both ranking metrics and human-quality scores. Deployed the model via BentoML on Kubernetes with sub-200ms p95 latency by quantizing to INT8 and batching at the request level. Cost per inference dropped from $0.04 with GPT-3.5-fallback to under $0.001."
-      }
-    ],
-    "education": [
-      {
-        "institution": "IIT Roorkee",
-        "degree": "B.Tech",
-        "field_of_study": "Information Technology",
-        "start_year": 2011,
-        "end_year": 2014,
-        "grade": "7.84 CGPA",
-        "tier": "tier_1"
-      }
-    ],
-    "skills": [
-      {
-        "name": "OpenSearch",
-        "proficiency": "expert",
-        "endorsements": 43,
-        "duration_months": 86
-      },
-      {
-        "name": "Prompt Engineering",
-        "proficiency": "expert",
-        "endorsements": 53,
-        "duration_months": 50
-      },
-      {
-        "name": "Fine-tuning LLMs",
-        "proficiency": "advanced",
-        "endorsements": 43,
-        "duration_months": 40
-      },
-      {
-        "name": "Vector Search",
-        "proficiency": "advanced",
-        "endorsements": 55,
-        "duration_months": 41
-      },
-      {
-        "name": "Data Science",
-        "proficiency": "intermediate",
-        "endorsements": 8,
-        "duration_months": 18
-      },
-      {
-        "name": "BM25",
-        "proficiency": "expert",
-        "endorsements": 4,
-        "duration_months": 84
-      },
-      {
-        "name": "PyTorch",
-        "proficiency": "expert",
-        "endorsements": 5,
-        "duration_months": 73
-      },
-      {
-        "name": "Information Retrieval",
-        "proficiency": "expert",
-        "endorsements": 57,
-        "duration_months": 46
-      },
-      {
-        "name": "Pinecone",
-        "proficiency": "expert",
-        "endorsements": 35,
-        "duration_months": 42
-      },
-      {
-        "name": "TensorFlow",
-        "proficiency": "advanced",
-        "endorsements": 51,
-        "duration_months": 39
-      },
-      {
-        "name": "Accounting",
-        "proficiency": "intermediate",
-        "endorsements": 13,
-        "duration_months": 11
-      },
-      {
-        "name": "Computer Vision",
-        "proficiency": "advanced",
-        "endorsements": 21,
-        "duration_months": 50
-      },
-      {
-        "name": "Learning to Rank",
-        "proficiency": "advanced",
-        "endorsements": 47,
-        "duration_months": 57
-      },
-      {
-        "name": "Deep Learning",
-        "proficiency": "advanced",
-        "endorsements": 2,
-        "duration_months": 60
-      }
-    ],
-    "certifications": [
-      {
-        "name": "Deep Learning Specialization",
-        "issuer": "Coursera/DeepLearning.AI",
-        "year": 2025
-      }
-    ],
-    "languages": [
-      {
-        "language": "English",
-        "proficiency": "native"
-      },
-      {
-        "language": "Hindi",
-        "proficiency": "conversational"
-      }
-    ],
-    "redrob_signals": {
-      "profile_completeness_score": 58.9,
-      "signup_date": "2024-10-25",
-      "last_active_date": "2025-12-02",
-      "open_to_work_flag": false,
-      "profile_views_received_30d": 113,
-      "applications_submitted_30d": 12,
-      "recruiter_response_rate": 0.12,
-      "avg_response_time_hours": 215.1,
-      "skill_assessment_scores": {
-        "OpenSearch": 63.4,
-        "Prompt Engineering": 62.0,
-        "Fine-tuning LLMs": 75.8,
-        "Vector Search": 91.3,
-        "BM25": 86.6
-      },
-      "connection_count": 1285,
-      "endorsements_received": 224,
-      "notice_period_days": 15,
-      "expected_salary_range_inr_lpa": {
-        "min": 30.2,
-        "max": 59.6
-      },
-      "preferred_work_mode": "hybrid",
-      "willing_to_relocate": true,
-      "github_activity_score": 89.5,
-      "search_appearance_30d": 1490,
-      "saved_by_recruiters_30d": 3,
-      "interview_completion_rate": 0.8,
-      "offer_acceptance_rate": 0.65,
-      "verified_email": true,
-      "verified_phone": true,
-      "linkedin_connected": true
-    },
-    "scores": {
-      "technical": 0.7490901098901099,
-      "hiring_manager": 0.955,
-      "culture_fit": 0.9999999999999999,
-      "recruiter_ops": 0.518579203827686,
-      "logistics_education": 0.9615,
-      "persona_sum": 0.8354889135411858
-    },
-    "semantic_similarity_score": 0.4718307292632939,
-    "semantic_boost": 1.0228872135832163,
-    "final_score": 0.8546,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 8,
-    "reasoning": "Based in Kochi, Kerala, this candidate is a Senior Machine Learning Engineer at Amazon with 8.0 yrs of experience. Key strengths include: JD-aligned expertise in Fine-tuning LLMs (40mo, advanced), Vector Search (41mo, advanced), PyTorch (73mo, expert); verified assessments (Vector Search: 91/100; BM25: 87/100); career trajectory: Senior Machine Learning Engineer at Amazon (38mo); Senior Machine Learning Engineer at Yellow.ai (57mo). Considerations: low response rate (12%); incomplete profile ..."
+    "reasoning": "A Senior NLP Engineer currently at Salesforce (8.9 yrs), located in Coimbatore, Tamil Nadu. Highlights: JD-aligned expertise in Pinecone (60mo, expert), PEFT (48mo, expert), Deep Learning (42mo, advanced); verified assessments (Python: 64/100); career trajectory: Senior NLP Engineer at Salesforce (36mo); Lead AI Engineer at Verloop.io (34mo)."
   },
   {
     "candidate_id": "CAND_0046525",
@@ -2009,18 +2017,19 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.6314384615384615,
+      "technical": 0.632004761904762,
       "hiring_manager": 0.955,
       "culture_fit": 0.8999999999999999,
       "recruiter_ops": 0.7627354777280435,
       "logistics_education": 0.9159999999999999,
-      "persona_sum": 0.8149918601207449
+      "persona_sum": 0.8151617502306352
     },
     "semantic_similarity_score": 0.5307671533274345,
     "semantic_boost": 1.0482298759307969,
-    "final_score": 0.8543,
+    "final_score": 0.8545,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 9,
-    "reasoning": "Based in Pune, Maharashtra, this candidate is a Senior Machine Learning Engineer at Genpact AI with 6.1 yrs of experience. Key strengths include: JD-aligned expertise in LangChain (27mo, advanced), Machine Learning (70mo, expert), Information Retrieval (59mo, advanced); verified assessments (LangChain: 96/100; LlamaIndex: 96/100); career trajectory: Senior Machine Learning Engineer at Genpact AI (48mo); Senior Machine Learning Engineer at LinkedIn (25mo). Considerations: reliance on direct ca..."
+    "reasoning": "Based in Pune, Maharashtra, this candidate is a Senior Machine Learning Engineer at Genpact AI with 6.1 yrs of experience. Key strengths include: JD-aligned expertise in LangChain (27mo, advanced), Machine Learning (70mo, expert), Information Retrieval (59mo, advanced); verified assessments (LangChain: 96/100; LlamaIndex: 96/100); career trajectory: Senior Machine Learning Engineer at Genpact AI (48mo); Senior Machine Learning Engineer at LinkedIn (25mo)."
   },
   {
     "candidate_id": "CAND_0037980",
@@ -2274,8 +2283,9 @@
     "semantic_similarity_score": 0.4284747756356947,
     "semantic_boost": 1.0042441535233486,
     "final_score": 0.8414,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 10,
-    "reasoning": "Senior Applied Scientist at Niramai with 9.0 yrs, based in Kolkata, West Bengal. Strengths: JD-aligned expertise in LoRA (48mo, expert), PyTorch (63mo, expert), NLP (54mo, expert); verified assessments (LoRA: 74/100; Vector Search: 72/100); career trajectory: Senior Applied Scientist at Niramai (38mo); Senior ML Engineer — Search & Ranking at Verloop.io (38mo). Notes: focused primarily on proprietary enterprise systems."
+    "reasoning": "Senior Applied Scientist at Niramai with 9.0 yrs, based in Kolkata, West Bengal. Strengths: JD-aligned expertise in LoRA (48mo, expert), PyTorch (63mo, expert), NLP (54mo, expert); verified assessments (LoRA: 74/100; Vector Search: 72/100); career trajectory: Senior Applied Scientist at Niramai (38mo); Senior ML Engineer — Search & Ranking at Verloop.io (38mo)."
   },
   {
     "candidate_id": "CAND_0055905",
@@ -2471,16 +2481,17 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.6199323076923077,
+      "technical": 0.6200085714285715,
       "hiring_manager": 0.91,
       "culture_fit": 0.8999999999999999,
       "recruiter_ops": 0.7912091717674716,
       "logistics_education": 0.867,
-      "persona_sum": 0.7972110680728131
+      "persona_sum": 0.7972339471936921
     },
     "semantic_similarity_score": 0.5358544714755247,
     "semantic_boost": 1.0504174227344756,
     "final_score": 0.8374,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 11,
     "reasoning": "Senior Machine Learning Engineer at Flipkart with 8.1 yrs, based in London. Strengths: JD-aligned expertise in Hugging Face Transformers (33mo, advanced), LangChain (70mo, expert), LLMs (43mo, advanced); verified assessments (Elasticsearch: 83/100; ASR: 70/100); career trajectory: Senior Machine Learning Engineer at Flipkart (14mo); Senior AI Engineer at Uber (37mo). Notes: no public GitHub activity; incomplete profile (57% filled)."
   },
@@ -2719,6 +2730,7 @@
     "semantic_similarity_score": 0.5487768880504711,
     "semantic_boost": 1.0559740618617024,
     "final_score": 0.8371,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 12,
     "reasoning": "A Lead AI Engineer currently at Sarvam AI (6.4 yrs), located in Delhi, Delhi. Highlights: JD-aligned expertise in Deep Learning (44mo, expert), PEFT (48mo, expert), Machine Learning (68mo, expert); career trajectory: Lead AI Engineer at Sarvam AI (25mo); Staff Machine Learning Engineer at Verloop.io (45mo); product-company background (AI/ML). Caveats: no public GitHub activity."
   },
@@ -2935,6 +2947,7 @@
     "semantic_similarity_score": 0.46538849074612776,
     "semantic_boost": 1.0201170510208348,
     "final_score": 0.833,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 13,
     "reasoning": "Based in Mumbai, Maharashtra, this candidate is a Lead AI Engineer at Meta with 8.6 yrs of experience. Key strengths include: JD-aligned expertise in Hugging Face Transformers (72mo, expert), Fine-tuning LLMs (65mo, expert), Vector Search (41mo, expert); verified assessments (Prompt Engineering: 81/100; Hugging Face Transformers: 80/100); career trajectory: Lead AI Engineer at Meta (32mo); Senior NLP Engineer at Apple (28mo). Considerations: low response rate (11%); incomplete profile (59% fi..."
   },
@@ -3147,8 +3160,9 @@
     "semantic_similarity_score": 0.49736457168798714,
     "semantic_boost": 1.0338667658258345,
     "final_score": 0.83,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 14,
-    "reasoning": "Staff Machine Learning Engineer at LinkedIn with 8.0 yrs, based in Noida, Uttar Pradesh. Strengths: JD-aligned expertise in PEFT (33mo, advanced), Machine Learning (61mo, expert), Information Retrieval Systems (58mo, advanced); verified assessments (Haystack: 70/100; PEFT: 70/100); career trajectory: Staff Machine Learning Engineer at LinkedIn (43mo); Senior Applied Scientist at Yellow.ai (52mo). Notes: no recent public-facing research publications."
+    "reasoning": "Staff Machine Learning Engineer at LinkedIn with 8.0 yrs, based in Noida, Uttar Pradesh. Strengths: JD-aligned expertise in PEFT (33mo, advanced), Machine Learning (61mo, expert), Information Retrieval Systems (58mo, advanced); verified assessments (Haystack: 70/100; PEFT: 70/100); career trajectory: Staff Machine Learning Engineer at LinkedIn (43mo); Senior Applied Scientist at Yellow.ai (52mo)."
   },
   {
     "candidate_id": "CAND_0080766",
@@ -3400,18 +3414,19 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.5976878787878789,
+      "technical": 0.599038888888889,
       "hiring_manager": 0.865,
       "culture_fit": 0.9999999999999999,
       "recruiter_ops": 0.7200247254357593,
       "logistics_education": 0.9684999999999999,
-      "persona_sum": 0.7988350724517276
+      "persona_sum": 0.7992403754820306
     },
     "semantic_similarity_score": 0.4979939560419389,
     "semantic_boost": 1.0341374010980338,
-    "final_score": 0.8261,
+    "final_score": 0.8265,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 15,
-    "reasoning": "Staff Machine Learning Engineer at Salesforce with 8.8 yrs, based in Coimbatore, Tamil Nadu. Strengths: JD-aligned expertise in LoRA (48mo, expert), MLflow (40mo, advanced), Information Retrieval Systems (28mo, advanced); verified assessments (Weaviate: 84/100); career trajectory: Staff Machine Learning Engineer at Salesforce (38mo); Staff Machine Learning Engineer at Aganitha (12mo). Notes: focused primarily on proprietary enterprise systems."
+    "reasoning": "Staff Machine Learning Engineer at Salesforce with 8.8 yrs, based in Coimbatore, Tamil Nadu. Strengths: JD-aligned expertise in LoRA (48mo, expert), MLflow (40mo, advanced), Information Retrieval Systems (28mo, advanced); verified assessments (Weaviate: 84/100); career trajectory: Staff Machine Learning Engineer at Salesforce (38mo); Staff Machine Learning Engineer at Aganitha (12mo)."
   },
   {
     "candidate_id": "CAND_0005260",
@@ -3614,16 +3629,17 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.6182669252738285,
+      "technical": 0.617390716325698,
       "hiring_manager": 0.91,
       "culture_fit": 0.8999999999999999,
       "recruiter_ops": 0.7099134375902502,
       "logistics_education": 0.8775,
-      "persona_sum": 0.786092093220686
+      "persona_sum": 0.785829230536247
     },
     "semantic_similarity_score": 0.5361785939754846,
     "semantic_boost": 1.0505567954094583,
-    "final_score": 0.8258,
+    "final_score": 0.8256,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 16,
     "reasoning": "Based in Chennai, Tamil Nadu, this candidate is a Senior NLP Engineer at Netflix with 5.2 yrs of experience. Key strengths include: JD-aligned expertise in Information Retrieval (45mo, advanced), Deep Learning (53mo, expert), NLP (60mo, expert); verified assessments (Prompt Engineering: 81/100); career trajectory: Senior NLP Engineer at Netflix (34mo); Senior NLP Engineer at Yellow.ai (27mo). Considerations: no public GitHub activity."
   },
@@ -3870,6 +3886,7 @@
     "semantic_similarity_score": 0.46972623296645105,
     "semantic_boost": 1.0219822801755738,
     "final_score": 0.8221,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 17,
     "reasoning": "Senior AI Engineer at Meta with 7.9 yrs, based in Noida, Uttar Pradesh. Strengths: JD-aligned expertise in NLP (22mo, advanced), Ranking Systems (60mo, advanced), Recommendation Systems (26mo, advanced); verified assessments (scikit-learn: 90/100; Fine-tuning LLMs: 89/100); career trajectory: Senior AI Engineer at Meta (26mo); Senior Applied Scientist at Razorpay (49mo). Notes: incomplete profile (59% filled)."
   },
@@ -4102,6 +4119,7 @@
     "semantic_similarity_score": 0.5088556179148888,
     "semantic_boost": 1.038807915703402,
     "final_score": 0.8204,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 18,
     "reasoning": "A Staff Machine Learning Engineer currently at Yellow.ai (8.6 yrs), located in Jaipur, Rajasthan. Highlights: JD-aligned expertise in Pinecone (49mo, advanced), QLoRA (48mo, expert), LLMs (71mo, expert); verified assessments (Pinecone: 94/100; QLoRA: 87/100); career trajectory: Staff Machine Learning Engineer at Yellow.ai (45mo); Staff Machine Learning Engineer at Niramai (44mo). Caveats: extended notice (90d)."
   },
@@ -4316,16 +4334,17 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.7635416666666668,
+      "technical": 0.7638916666666667,
       "hiring_manager": 0.955,
       "culture_fit": 0.8999999999999999,
       "recruiter_ops": 0.6666384720370925,
       "logistics_education": 0.8760000000000001,
-      "persona_sum": 0.8342082708055639
+      "persona_sum": 0.834313270805564
     },
     "semantic_similarity_score": 0.366202480975759,
     "semantic_boost": 0.9774670668195763,
-    "final_score": 0.8154,
+    "final_score": 0.8155,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 19,
     "reasoning": "A Senior Data Scientist currently at Flipkart (6.5 yrs), located in Delhi, Delhi. Highlights: JD-aligned expertise in PyTorch (90mo, expert), NLP (88mo, expert), RAG (60mo, expert); verified assessments (YOLO: 83/100; NLP: 83/100); career trajectory: Senior Data Scientist at Flipkart (36mo); Machine Learning Engineer at Observe.AI (42mo). Caveats: incomplete profile (53% filled)."
   },
@@ -4575,18 +4594,19 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.7101424963924965,
+      "technical": 0.7106944444444445,
       "hiring_manager": 0.8049999999999999,
       "culture_fit": 0.8999999999999999,
       "recruiter_ops": 0.8011138441930589,
       "logistics_education": 0.819,
-      "persona_sum": 0.7923098255467078
+      "persona_sum": 0.7924754099622923
     },
     "semantic_similarity_score": 0.4835418952927404,
     "semantic_boost": 1.0279230149758782,
-    "final_score": 0.8144,
+    "final_score": 0.8146,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 20,
-    "reasoning": "Staff Machine Learning Engineer at Paytm with 7.0 yrs, based in Kochi, Kerala. Strengths: JD-aligned expertise in QLoRA (47mo, expert), Pinecone (24mo, advanced), Information Retrieval (61mo, expert); verified assessments (Semantic Search: 63/100); career trajectory: Staff Machine Learning Engineer at Paytm (19mo); Senior NLP Engineer at Razorpay (14mo). Notes: no recent public-facing research publications."
+    "reasoning": "Staff Machine Learning Engineer at Paytm with 7.0 yrs, based in Kochi, Kerala. Strengths: JD-aligned expertise in QLoRA (47mo, expert), Pinecone (24mo, advanced), Information Retrieval (61mo, expert); verified assessments (Semantic Search: 63/100); career trajectory: Staff Machine Learning Engineer at Paytm (19mo); Senior NLP Engineer at Razorpay (14mo)."
   },
   {
     "candidate_id": "CAND_0033861",
@@ -4841,16 +4861,17 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.6394979166666667,
+      "technical": 0.6385577777777778,
       "hiring_manager": 0.9550000000000001,
       "culture_fit": 0.8999999999999999,
       "recruiter_ops": 0.5452753717753065,
       "logistics_education": 0.867,
-      "persona_sum": 0.777440680766296
+      "persona_sum": 0.7771586390996293
     },
     "semantic_similarity_score": 0.5212249213830799,
     "semantic_boost": 1.0441267161947243,
-    "final_score": 0.8117,
+    "final_score": 0.8115,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 21,
     "reasoning": "Senior NLP Engineer at Mad Street Den with 8.0 yrs, based in Vizag, Andhra Pradesh. Strengths: JD-aligned expertise in Weaviate (42mo, expert), LoRA (23mo, advanced), LLMs (78mo, expert); verified assessments (Reinforcement Learning: 90/100; Weaviate: 80/100); career trajectory: Senior NLP Engineer at Mad Street Den (30mo); Senior NLP Engineer at Sarvam AI (39mo). Notes: low response rate (16%)."
   },
@@ -5071,16 +5092,17 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.702278407557355,
+      "technical": 0.7038513784461154,
       "hiring_manager": 0.91,
       "culture_fit": 0.9999999999999999,
       "recruiter_ops": 0.7369582994108596,
       "logistics_education": 0.63,
-      "persona_sum": 0.7932272671788354
+      "persona_sum": 0.7936991584454636
     },
     "semantic_similarity_score": 0.45922583790046356,
     "semantic_boost": 1.0174671102971993,
-    "final_score": 0.8071,
+    "final_score": 0.8076,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 22,
     "reasoning": "Based in Kolkata, West Bengal, this candidate is a Senior NLP Engineer at Ola with 7.8 yrs of experience. Key strengths include: JD-aligned expertise in Weights & Biases (19mo, advanced), Sentence Transformers (96mo, expert), NLP (41mo, expert); verified assessments (Learning to Rank: 78/100); career trajectory: Senior NLP Engineer at Ola (25mo); Senior ML Engineer — Search & Ranking at Zomato (46mo). Considerations: extended notice (90d); incomplete profile (57% filled)."
   },
@@ -5306,6 +5328,7 @@
     "semantic_similarity_score": 0.4252128674025256,
     "semantic_boost": 1.002841532983086,
     "final_score": 0.8069,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 23,
     "reasoning": "A AI Engineer currently at Mad Street Den (4.6 yrs), located in Bhubaneswar, Odisha. Highlights: JD-aligned expertise in LoRA (44mo, expert), RAG (52mo, advanced), FAISS (58mo, expert); verified assessments (LoRA: 69/100); career trajectory: AI Engineer at Mad Street Den (33mo); Machine Learning Engineer at upGrad (21mo). Caveats: below target YoE (4.6 vs 5-9yr)."
   },
@@ -5535,6 +5558,7 @@
     "semantic_similarity_score": 0.375412844628641,
     "semantic_boost": 0.9814275231903156,
     "final_score": 0.8023,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 24,
     "reasoning": "Senior Data Scientist at Vedantu with 4.9 yrs, based in Jaipur, Rajasthan. Strengths: JD-aligned expertise in Vector Search (65mo, expert), Machine Learning (73mo, expert), QLoRA (48mo, advanced); verified assessments (Vector Search: 92/100; Machine Learning: 91/100); career trajectory: Senior Data Scientist at Vedantu (37mo); Applied ML Engineer at PolicyBazaar (21mo). Notes: below target YoE (4.9 vs 5-9yr)."
   },
@@ -5757,8 +5781,9 @@
     "semantic_similarity_score": 0.43772599688642494,
     "semantic_boost": 1.0082221786611627,
     "final_score": 0.8016,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 25,
-    "reasoning": "Based in Bangalore, Karnataka, this candidate is a Senior Machine Learning Engineer at Niramai with 7.9 yrs of experience. Key strengths include: JD-aligned expertise in Ranking Systems (77mo, expert), TensorFlow (54mo, expert), Information Retrieval Systems (76mo, expert); verified assessments (Learning to Rank: 87/100; Sentence Transformers: 73/100); career trajectory: Senior Machine Learning Engineer at Niramai (44mo); Lead AI Engineer at Netflix (50mo). Considerations: reliance on direct ..."
+    "reasoning": "Based in Bangalore, Karnataka, this candidate is a Senior Machine Learning Engineer at Niramai with 7.9 yrs of experience. Key strengths include: JD-aligned expertise in Ranking Systems (77mo, expert), TensorFlow (54mo, expert), Information Retrieval Systems (76mo, expert); verified assessments (Learning to Rank: 87/100; Sentence Transformers: 73/100); career trajectory: Senior Machine Learning Engineer at Niramai (44mo); Lead AI Engineer at Netflix (50mo)."
   },
   {
     "candidate_id": "CAND_0030468",
@@ -5980,8 +6005,9 @@
     "semantic_similarity_score": 0.41045905432914265,
     "semantic_boost": 0.9964973933615313,
     "final_score": 0.7967,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 26,
-    "reasoning": "Senior Applied Scientist at Swiggy with 5.4 yrs, based in Indore, Madhya Pradesh. Strengths: JD-aligned expertise in Information Retrieval Systems (24mo, advanced), TensorFlow (38mo, advanced), Machine Learning (67mo, expert); verified assessments (Sentence Transformers: 97/100; RAG: 80/100); career trajectory: Senior Applied Scientist at Swiggy (14mo); Senior Applied Scientist at CRED (18mo). Notes: focused primarily on proprietary enterprise systems."
+    "reasoning": "Senior Applied Scientist at Swiggy with 5.4 yrs, based in Indore, Madhya Pradesh. Strengths: JD-aligned expertise in Information Retrieval Systems (24mo, advanced), TensorFlow (38mo, advanced), Machine Learning (67mo, expert); verified assessments (Sentence Transformers: 97/100; RAG: 80/100); career trajectory: Senior Applied Scientist at Swiggy (14mo); Senior Applied Scientist at CRED (18mo)."
   },
   {
     "candidate_id": "CAND_0096142",
@@ -6184,6 +6210,7 @@
     "semantic_similarity_score": 0.3704578778118001,
     "semantic_boost": 0.979296887459074,
     "final_score": 0.7919,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 27,
     "reasoning": "Based in Hyderabad, Telangana, this candidate is a Applied ML Engineer at upGrad with 5.0 yrs of experience. Key strengths include: JD-aligned expertise in LoRA (48mo, advanced), Weaviate (58mo, advanced), Pinecone (60mo, expert); verified assessments (LoRA: 92/100; Weaviate: 86/100); career trajectory: Applied ML Engineer at upGrad (42mo); Applied ML Engineer at BYJU'S (18mo). Considerations: extended notice (120d)."
   },
@@ -6432,6 +6459,7 @@
     "semantic_similarity_score": 0.42826370959190935,
     "semantic_boost": 1.004153395124521,
     "final_score": 0.7901,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 28,
     "reasoning": "Senior AI Engineer at Adobe with 5.9 yrs, based in Kolkata, West Bengal. Strengths: JD-aligned expertise in Deep Learning (82mo, expert), QLoRA (48mo, advanced), PyTorch (74mo, expert); verified assessments (Embeddings: 93/100); career trajectory: Senior AI Engineer at Adobe (15mo); Lead AI Engineer at Locobuzz (30mo). Notes: extended notice (90d)."
   },
@@ -6660,6 +6688,7 @@
     "semantic_similarity_score": 0.32048394762285737,
     "semantic_boost": 0.9578080974778286,
     "final_score": 0.7892,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 29,
     "reasoning": "A Applied ML Engineer currently at Meesho (7.1 yrs), located in Gurgaon, Haryana. Highlights: JD-aligned expertise in FAISS (67mo, expert), Recommendation Systems (24mo, advanced), Hugging Face Transformers (58mo, expert); verified assessments (Hugging Face Transformers: 86/100; Recommendation Systems: 65/100); career trajectory: Applied ML Engineer at Meesho (34mo); Machine Learning Engineer at Swiggy (13mo). Caveats: extended notice (90d)."
   },
@@ -6872,8 +6901,9 @@
     "semantic_similarity_score": 0.27980501505967736,
     "semantic_boost": 0.9403161564756612,
     "final_score": 0.7887,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 30,
-    "reasoning": "A NLP Engineer currently at Aganitha (6.6 yrs), located in Vizag, Andhra Pradesh. Highlights: JD-aligned expertise in QLoRA (48mo, expert), FAISS (76mo, expert), PyTorch (43mo, expert); verified assessments (QLoRA: 66/100; Semantic Search: 53/100); career trajectory: NLP Engineer at Aganitha (46mo); NLP Engineer at Salesforce (32mo). Caveats: requires hybrid relocation/travel coordination to Noida/Pune."
+    "reasoning": "A NLP Engineer currently at Aganitha (6.6 yrs), located in Vizag, Andhra Pradesh. Highlights: JD-aligned expertise in QLoRA (48mo, expert), FAISS (76mo, expert), PyTorch (43mo, expert); verified assessments (QLoRA: 66/100; Semantic Search: 53/100); career trajectory: NLP Engineer at Aganitha (46mo); NLP Engineer at Salesforce (32mo)."
   },
   {
     "candidate_id": "CAND_0076163",
@@ -7095,8 +7125,9 @@
     "semantic_similarity_score": 0.3245100562512265,
     "semantic_boost": 0.9595393241880273,
     "final_score": 0.7882,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 31,
-    "reasoning": "A NLP Engineer currently at Ola (6.9 yrs), located in Chandigarh, Chandigarh. Highlights: JD-aligned expertise in Weaviate (18mo, advanced), LangChain (75mo, expert), PyTorch (38mo, advanced); verified assessments (BM25: 92/100; Weaviate: 78/100); career trajectory: NLP Engineer at Ola (46mo); NLP Engineer at Zoho (36mo). Caveats: standard notice period required for transition."
+    "reasoning": "A NLP Engineer currently at Ola (6.9 yrs), located in Chandigarh, Chandigarh. Highlights: JD-aligned expertise in Weaviate (18mo, advanced), LangChain (75mo, expert), PyTorch (38mo, advanced); verified assessments (BM25: 92/100; Weaviate: 78/100); career trajectory: NLP Engineer at Ola (46mo); NLP Engineer at Zoho (36mo)."
   },
   {
     "candidate_id": "CAND_0083879",
@@ -7278,6 +7309,7 @@
     "semantic_similarity_score": 0.3695747131020791,
     "semantic_boost": 0.978917126633894,
     "final_score": 0.7838,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 32,
     "reasoning": "A Machine Learning Engineer currently at Ola (7.1 yrs), located in Noida, Uttar Pradesh. Highlights: JD-aligned expertise in Fine-tuning LLMs (90mo, expert), Milvus (47mo, advanced), Hugging Face Transformers (38mo, expert); verified assessments (Fine-tuning LLMs: 63/100); career trajectory: Machine Learning Engineer at Ola (19mo); Search Engineer at PhonePe (46mo). Caveats: no public GitHub activity; incomplete profile (60% filled)."
   },
@@ -7483,16 +7515,17 @@
       "linkedin_connected": false
     },
     "scores": {
-      "technical": 0.6229333333333333,
+      "technical": 0.6275484848484849,
       "hiring_manager": 0.9099999999999999,
       "culture_fit": 0.8999999999999999,
       "recruiter_ops": 0.6740817211189657,
       "logistics_education": 0.9615,
-      "persona_sum": 0.7947172581678449
+      "persona_sum": 0.7961018036223904
     },
     "semantic_similarity_score": 0.38172806392037295,
     "semantic_boost": 0.9841430674857603,
-    "final_score": 0.7821,
+    "final_score": 0.7835,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 33,
     "reasoning": "AI Engineer at Google with 7.3 yrs, based in Kochi, Kerala. Strengths: JD-aligned expertise in Pinecone (37mo, expert), Vector Search (75mo, expert), RAG (30mo, advanced); career trajectory: AI Engineer at Google (37mo); NLP Engineer at Dream11 (50mo); active GitHub (score: 53/100). Notes: incomplete profile (57% filled)."
   },
@@ -7688,8 +7721,9 @@
     "semantic_similarity_score": 0.34327598664264264,
     "semantic_boost": 0.9676086742563363,
     "final_score": 0.7772,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 34,
-    "reasoning": "Senior Data Scientist at Razorpay with 5.3 yrs, based in Chandigarh, Chandigarh. Strengths: JD-aligned expertise in Milvus (60mo, expert), Embeddings (61mo, expert), Recommendation Systems (42mo, advanced); verified assessments (Milvus: 75/100); career trajectory: Senior Data Scientist at Razorpay (27mo); Search Engineer at Flipkart (19mo). Notes: focused primarily on proprietary enterprise systems."
+    "reasoning": "Senior Data Scientist at Razorpay with 5.3 yrs, based in Chandigarh, Chandigarh. Strengths: JD-aligned expertise in Milvus (60mo, expert), Embeddings (61mo, expert), Recommendation Systems (42mo, advanced); verified assessments (Milvus: 75/100); career trajectory: Senior Data Scientist at Razorpay (27mo); Search Engineer at Flipkart (19mo)."
   },
   {
     "candidate_id": "CAND_0044222",
@@ -7915,8 +7949,9 @@
     "semantic_similarity_score": 0.3368141760160733,
     "semantic_boost": 0.9648300956869115,
     "final_score": 0.7722,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 35,
-    "reasoning": "A AI Engineer currently at PolicyBazaar (7.7 yrs), located in Vizag, Andhra Pradesh. Highlights: JD-aligned expertise in Vector Search (34mo, advanced), Weaviate (18mo, advanced), NLP (27mo, advanced); verified assessments (LlamaIndex: 85/100; Vector Search: 52/100); career trajectory: AI Engineer at PolicyBazaar (49mo); AI Engineer at InMobi (43mo). Caveats: requires hybrid relocation/travel coordination to Noida/Pune."
+    "reasoning": "A AI Engineer currently at PolicyBazaar (7.7 yrs), located in Vizag, Andhra Pradesh. Highlights: JD-aligned expertise in Vector Search (34mo, advanced), Weaviate (18mo, advanced), NLP (27mo, advanced); verified assessments (LlamaIndex: 85/100; Vector Search: 52/100); career trajectory: AI Engineer at PolicyBazaar (49mo); AI Engineer at InMobi (43mo)."
   },
   {
     "candidate_id": "CAND_0050454",
@@ -8137,6 +8172,7 @@
     "semantic_similarity_score": 0.30467665542122047,
     "semantic_boost": 0.9510109618311248,
     "final_score": 0.7714,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 36,
     "reasoning": "AI Engineer at Rephrase.ai with 6.8 yrs, based in Delhi, Delhi. Strengths: JD-aligned expertise in PyTorch (56mo, expert), LangChain (36mo, expert), QLoRA (48mo, expert); verified assessments (PyTorch: 59/100); career trajectory: AI Engineer at Rephrase.ai (30mo); Machine Learning Engineer at Uber (20mo). Notes: no public GitHub activity."
   },
@@ -8357,8 +8393,9 @@
     "semantic_similarity_score": 0.3160540704313317,
     "semantic_boost": 0.9559032502854725,
     "final_score": 0.7713,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 37,
-    "reasoning": "Based in Seattle, this candidate is a Machine Learning Engineer at PharmEasy with 5.1 yrs of experience. Key strengths include: JD-aligned expertise in MLflow (39mo, advanced), Milvus (50mo, advanced), Vector Search (48mo, expert); verified assessments (Milvus: 74/100; Vector Search: 72/100); career trajectory: Machine Learning Engineer at PharmEasy (12mo); AI Engineer at Razorpay (22mo). Considerations: reliance on direct career track rather than certification badges."
+    "reasoning": "Based in Seattle, this candidate is a Machine Learning Engineer at PharmEasy with 5.1 yrs of experience. Key strengths include: JD-aligned expertise in MLflow (39mo, advanced), Milvus (50mo, advanced), Vector Search (48mo, expert); verified assessments (Milvus: 74/100; Vector Search: 72/100); career trajectory: Machine Learning Engineer at PharmEasy (12mo); AI Engineer at Razorpay (22mo)."
   },
   {
     "candidate_id": "CAND_0060072",
@@ -8604,6 +8641,7 @@
     "semantic_similarity_score": 0.45216749414330143,
     "semantic_boost": 1.0144320224816195,
     "final_score": 0.7705,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 38,
     "reasoning": "Staff Machine Learning Engineer at Amazon with 5.7 yrs, based in Indore, Madhya Pradesh. Strengths: JD-aligned expertise in Deep Learning (49mo, advanced), Sentence Transformers (60mo, expert), PyTorch (51mo, advanced); verified assessments (Deep Learning: 81/100; Sentence Transformers: 62/100); career trajectory: Staff Machine Learning Engineer at Amazon (37mo); Senior Applied Scientist at Wysa (31mo). Notes: extended notice (90d); low response rate (10%)."
   },
@@ -8792,6 +8830,7 @@
     "semantic_similarity_score": 0.34990802702826357,
     "semantic_boost": 0.9704604516221533,
     "final_score": 0.7694,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 39,
     "reasoning": "AI Engineer at Mad Street Den with 6.4 yrs, based in Jaipur, Rajasthan. Strengths: JD-aligned expertise in TensorFlow (84mo, expert), Weaviate (18mo, advanced), FAISS (59mo, advanced); verified assessments (TensorFlow: 90/100); career trajectory: AI Engineer at Mad Street Den (31mo); Recommendation Systems Engineer at Zomato (24mo). Notes: no public GitHub activity."
   },
@@ -9010,6 +9049,7 @@
     "semantic_similarity_score": 0.3117787579293282,
     "semantic_boost": 0.954064865909611,
     "final_score": 0.7671,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 40,
     "reasoning": "Senior Data Scientist at Microsoft with 7.0 yrs, based in Coimbatore, Tamil Nadu. Strengths: JD-aligned expertise in Milvus (60mo, advanced), RAG (49mo, advanced), Information Retrieval (70mo, expert); verified assessments (Information Retrieval: 88/100; Learning to Rank: 83/100); career trajectory: Senior Data Scientist at Microsoft (48mo); NLP Engineer at Observe.AI (36mo). Notes: extended notice (90d)."
   },
@@ -9211,8 +9251,9 @@
     "semantic_similarity_score": 0.2974793388802368,
     "semantic_boost": 0.9479161157185018,
     "final_score": 0.7664,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 41,
-    "reasoning": "A AI Engineer currently at Ola (5.3 yrs), located in Toronto. Highlights: JD-aligned expertise in LangChain (48mo, advanced), Embeddings (21mo, advanced), Milvus (51mo, advanced); verified assessments (LangChain: 90/100); career trajectory: AI Engineer at Ola (38mo); AI Engineer at Swiggy (25mo). Caveats: standard notice period required for transition."
+    "reasoning": "A AI Engineer currently at Ola (5.3 yrs), located in Toronto. Highlights: JD-aligned expertise in LangChain (48mo, advanced), Embeddings (21mo, advanced), Milvus (51mo, advanced); verified assessments (LangChain: 90/100); career trajectory: AI Engineer at Ola (38mo); AI Engineer at Swiggy (25mo)."
   },
   {
     "candidate_id": "CAND_0079387",
@@ -9462,18 +9503,19 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.6731577777777777,
+      "technical": 0.6743285714285714,
       "hiring_manager": 0.8049999999999999,
       "culture_fit": 0.9999999999999999,
       "recruiter_ops": 0.7288782994108596,
       "logistics_education": 0.9299999999999999,
-      "persona_sum": 0.8020290782449622
+      "persona_sum": 0.8023803163402001
     },
     "semantic_similarity_score": 0.3104786447941404,
     "semantic_boost": 0.9535058172614803,
-    "final_score": 0.7647,
+    "final_score": 0.7651,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 42,
-    "reasoning": "Based in Trivandrum, Kerala, this candidate is a AI Engineer at Microsoft with 6.9 yrs of experience. Key strengths include: JD-aligned expertise in Recommendation Systems (59mo, advanced), Sentence Transformers (72mo, expert), Vector Search (83mo, expert); verified assessments (Sentence Transformers: 86/100; Recommendation Systems: 84/100); career trajectory: AI Engineer at Microsoft (22mo); NLP Engineer at upGrad (22mo). Considerations: reliance on direct career track rather than certificat..."
+    "reasoning": "Based in Trivandrum, Kerala, this candidate is a AI Engineer at Microsoft with 6.9 yrs of experience. Key strengths include: JD-aligned expertise in Recommendation Systems (59mo, advanced), Sentence Transformers (72mo, expert), Vector Search (83mo, expert); verified assessments (Sentence Transformers: 86/100; Recommendation Systems: 84/100); career trajectory: AI Engineer at Microsoft (22mo); NLP Engineer at upGrad (22mo)."
   },
   {
     "candidate_id": "CAND_0087630",
@@ -9711,8 +9753,9 @@
     "semantic_similarity_score": 0.27710335456373825,
     "semantic_boost": 0.9391544424624074,
     "final_score": 0.7639,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 43,
-    "reasoning": "AI Engineer at Vedantu with 7.2 yrs, based in Gurgaon, Haryana. Strengths: JD-aligned expertise in NLP (49mo, expert), Deep Learning (47mo, advanced), QLoRA (48mo, expert); verified assessments (pgvector: 78/100; ASR: 68/100); career trajectory: AI Engineer at Vedantu (15mo); Applied ML Engineer at Haptik (27mo). Notes: focused primarily on proprietary enterprise systems."
+    "reasoning": "AI Engineer at Vedantu with 7.2 yrs, based in Gurgaon, Haryana. Strengths: JD-aligned expertise in NLP (49mo, expert), Deep Learning (47mo, advanced), QLoRA (48mo, expert); verified assessments (pgvector: 78/100; ASR: 68/100); career trajectory: AI Engineer at Vedantu (15mo); Applied ML Engineer at Haptik (27mo)."
   },
   {
     "candidate_id": "CAND_0010257",
@@ -9928,6 +9971,7 @@
     "semantic_similarity_score": 0.3234048514600778,
     "semantic_boost": 0.9590640861278334,
     "final_score": 0.7635,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 44,
     "reasoning": "Senior Data Scientist at Google with 6.5 yrs, based in Noida, Uttar Pradesh. Strengths: JD-aligned expertise in Milvus (60mo, expert), TensorFlow (53mo, expert), MLflow (50mo, advanced); verified assessments (OpenSearch: 90/100; Milvus: 82/100); career trajectory: Senior Data Scientist at Google (37mo); Search Engineer at PharmEasy (14mo). Notes: extended notice (120d)."
   },
@@ -10144,8 +10188,9 @@
     "semantic_similarity_score": 0.32636741631636773,
     "semantic_boost": 0.9603379890160381,
     "final_score": 0.7627,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 45,
-    "reasoning": "A NLP Engineer currently at Locobuzz (6.8 yrs), located in Indore, Madhya Pradesh. Highlights: JD-aligned expertise in Deep Learning (45mo, expert), RAG (60mo, expert), QLoRA (48mo, expert); verified assessments (Deep Learning: 81/100); career trajectory: NLP Engineer at Locobuzz (20mo); Machine Learning Engineer at Yellow.ai (34mo). Caveats: standard notice period required for transition."
+    "reasoning": "A NLP Engineer currently at Locobuzz (6.8 yrs), located in Indore, Madhya Pradesh. Highlights: JD-aligned expertise in Deep Learning (45mo, expert), RAG (60mo, expert), QLoRA (48mo, expert); verified assessments (Deep Learning: 81/100); career trajectory: NLP Engineer at Locobuzz (20mo); Machine Learning Engineer at Yellow.ai (34mo)."
   },
   {
     "candidate_id": "CAND_0037566",
@@ -10352,8 +10397,9 @@
     "semantic_similarity_score": 0.2707051219862046,
     "semantic_boost": 0.9364032024540679,
     "final_score": 0.7621,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 46,
-    "reasoning": "Machine Learning Engineer at LinkedIn with 6.9 yrs, based in Bangalore, Karnataka. Strengths: JD-aligned expertise in Pinecone (60mo, expert), NLP (35mo, advanced), LoRA (48mo, advanced); verified assessments (Pinecone: 82/100); career trajectory: Machine Learning Engineer at LinkedIn (51mo); Machine Learning Engineer at Paytm (31mo). Notes: focused primarily on proprietary enterprise systems."
+    "reasoning": "Machine Learning Engineer at LinkedIn with 6.9 yrs, based in Bangalore, Karnataka. Strengths: JD-aligned expertise in Pinecone (60mo, expert), NLP (35mo, advanced), LoRA (48mo, advanced); verified assessments (Pinecone: 82/100); career trajectory: Machine Learning Engineer at LinkedIn (51mo); Machine Learning Engineer at Paytm (31mo)."
   },
   {
     "candidate_id": "CAND_0096172",
@@ -10566,8 +10612,9 @@
     "semantic_similarity_score": 0.2938542568647906,
     "semantic_boost": 0.9463573304518599,
     "final_score": 0.7619,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 47,
-    "reasoning": "Based in Chennai, Tamil Nadu, this candidate is a NLP Engineer at Krutrim with 5.2 yrs of experience. Key strengths include: JD-aligned expertise in LangChain (79mo, expert), RAG (58mo, expert), Fine-tuning LLMs (43mo, expert); career trajectory: NLP Engineer at Krutrim (40mo); Machine Learning Engineer at Dream11 (21mo); product-company background (AI/ML). Considerations: limited public open-source repository contributions."
+    "reasoning": "Based in Chennai, Tamil Nadu, this candidate is a NLP Engineer at Krutrim with 5.2 yrs of experience. Key strengths include: JD-aligned expertise in LangChain (79mo, expert), RAG (58mo, expert), Fine-tuning LLMs (43mo, expert); career trajectory: NLP Engineer at Krutrim (40mo); Machine Learning Engineer at Dream11 (21mo); product-company background (AI/ML)."
   },
   {
     "candidate_id": "CAND_0011432",
@@ -10788,8 +10835,9 @@
     "semantic_similarity_score": 0.316202930683396,
     "semantic_boost": 0.9559672601938602,
     "final_score": 0.7618,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 48,
-    "reasoning": "A Senior Data Scientist currently at Amazon (7.6 yrs), located in Chennai, Tamil Nadu. Highlights: JD-aligned expertise in PEFT (39mo, advanced), QLoRA (48mo, expert), MLflow (28mo, intermediate); verified assessments (Haystack: 82/100; BentoML: 76/100); career trajectory: Senior Data Scientist at Amazon (28mo); Machine Learning Engineer at Krutrim (36mo). Caveats: requires hybrid relocation/travel coordination to Noida/Pune."
+    "reasoning": "A Senior Data Scientist currently at Amazon (7.6 yrs), located in Chennai, Tamil Nadu. Highlights: JD-aligned expertise in PEFT (39mo, advanced), QLoRA (48mo, expert), MLflow (28mo, intermediate); verified assessments (Haystack: 82/100; BentoML: 76/100); career trajectory: Senior Data Scientist at Amazon (28mo); Machine Learning Engineer at Krutrim (36mo)."
   },
   {
     "candidate_id": "CAND_0066999",
@@ -10997,8 +11045,9 @@
     "semantic_similarity_score": 0.32636229501279046,
     "semantic_boost": 0.9603357868554998,
     "final_score": 0.7604,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 49,
-    "reasoning": "Recommendation Systems Engineer at Microsoft with 5.9 yrs, based in Delhi, Delhi. Strengths: JD-aligned expertise in FAISS (54mo, expert), LLMs (94mo, expert), Pinecone (31mo, advanced); verified assessments (Pinecone: 90/100; LLMs: 74/100); career trajectory: Recommendation Systems Engineer at Microsoft (49mo); Senior Data Scientist at Amazon (21mo). Notes: no recent public-facing research publications."
+    "reasoning": "Recommendation Systems Engineer at Microsoft with 5.9 yrs, based in Delhi, Delhi. Strengths: JD-aligned expertise in FAISS (54mo, expert), LLMs (94mo, expert), Pinecone (31mo, advanced); verified assessments (Pinecone: 90/100; LLMs: 74/100); career trajectory: Recommendation Systems Engineer at Microsoft (49mo); Senior Data Scientist at Amazon (21mo)."
   },
   {
     "candidate_id": "CAND_0075249",
@@ -11196,18 +11245,19 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.5918749999999999,
+      "technical": 0.5927,
       "hiring_manager": 0.9099999999999999,
       "culture_fit": 0.8999999999999999,
       "recruiter_ops": 0.6467264891639712,
       "logistics_education": 0.825,
-      "persona_sum": 0.7608214733745957
+      "persona_sum": 0.7610689733745957
     },
     "semantic_similarity_score": 0.4161004311576327,
     "semantic_boost": 0.998923185397782,
-    "final_score": 0.76,
+    "final_score": 0.7602,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 50,
-    "reasoning": "Applied ML Engineer at Zomato with 6.2 yrs, based in Ahmedabad, Gujarat. Strengths: JD-aligned expertise in Sentence Transformers (68mo, expert), Milvus (60mo, expert), Machine Learning (68mo, expert); verified assessments (Sentence Transformers: 81/100; Milvus: 78/100); career trajectory: Applied ML Engineer at Zomato (36mo); Search Engineer at upGrad (38mo). Notes: no recent public-facing research publications."
+    "reasoning": "Applied ML Engineer at Zomato with 6.2 yrs, based in Ahmedabad, Gujarat. Strengths: JD-aligned expertise in Sentence Transformers (68mo, expert), Milvus (60mo, expert), Machine Learning (68mo, expert); verified assessments (Sentence Transformers: 81/100; Milvus: 78/100); career trajectory: Applied ML Engineer at Zomato (36mo); Search Engineer at upGrad (38mo)."
   },
   {
     "candidate_id": "CAND_0044855",
@@ -11419,18 +11469,19 @@
       "linkedin_connected": false
     },
     "scores": {
-      "technical": 0.6668668384247332,
+      "technical": 0.6656168261562998,
       "hiring_manager": 0.91,
       "culture_fit": 0.8999999999999999,
       "recruiter_ops": 0.6553218836618617,
       "logistics_education": 0.8760000000000001,
-      "persona_sum": 0.7922583340766993
+      "persona_sum": 0.7918833303961693
     },
     "semantic_similarity_score": 0.3210090451157179,
     "semantic_boost": 0.9580338893997586,
-    "final_score": 0.759,
+    "final_score": 0.7587,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 51,
-    "reasoning": "A Senior Data Scientist currently at Flipkart (6.6 yrs), located in Coimbatore, Tamil Nadu. Highlights: JD-aligned expertise in Hugging Face Transformers (32mo, advanced), Information Retrieval (91mo, expert), Pinecone (44mo, expert); verified assessments (BentoML: 80/100; OpenSearch: 79/100); career trajectory: Senior Data Scientist at Flipkart (31mo); Recommendation Systems Engineer at LinkedIn (22mo). Caveats: standard notice period required for transition."
+    "reasoning": "A Senior Data Scientist currently at Flipkart (6.6 yrs), located in Coimbatore, Tamil Nadu. Highlights: JD-aligned expertise in Hugging Face Transformers (32mo, advanced), Information Retrieval (91mo, expert), Pinecone (44mo, expert); verified assessments (BentoML: 80/100; OpenSearch: 79/100); career trajectory: Senior Data Scientist at Flipkart (31mo); Recommendation Systems Engineer at LinkedIn (22mo)."
   },
   {
     "candidate_id": "CAND_0079064",
@@ -11629,6 +11680,7 @@
     "semantic_similarity_score": 0.31899270862713686,
     "semantic_boost": 0.9571668647096688,
     "final_score": 0.7568,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 52,
     "reasoning": "A Senior Data Scientist currently at Niramai (5.2 yrs), located in Noida, Uttar Pradesh. Highlights: JD-aligned expertise in NLP (60mo, advanced), Fine-tuning LLMs (95mo, expert), Pinecone (60mo, expert); verified assessments (OpenSearch: 58/100; LlamaIndex: 57/100); career trajectory: Senior Data Scientist at Niramai (44mo); NLP Engineer at Razorpay (18mo). Caveats: extended notice (120d)."
   },
@@ -11858,8 +11910,9 @@
     "semantic_similarity_score": 0.2722250931754795,
     "semantic_boost": 0.9370567900654562,
     "final_score": 0.7557,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 53,
-    "reasoning": "Based in Chennai, Tamil Nadu, this candidate is a Applied ML Engineer at Zoho with 6.8 yrs of experience. Key strengths include: JD-aligned expertise in NLP (66mo, expert), Hugging Face Transformers (86mo, expert), Machine Learning (27mo, advanced); verified assessments (Image Classification: 84/100; NLP: 83/100); career trajectory: Applied ML Engineer at Zoho (25mo); Applied ML Engineer at Vedantu (44mo). Considerations: limited public open-source repository contributions."
+    "reasoning": "Based in Chennai, Tamil Nadu, this candidate is a Applied ML Engineer at Zoho with 6.8 yrs of experience. Key strengths include: JD-aligned expertise in NLP (66mo, expert), Hugging Face Transformers (86mo, expert), Machine Learning (27mo, advanced); verified assessments (Image Classification: 84/100; NLP: 83/100); career trajectory: Applied ML Engineer at Zoho (25mo); Applied ML Engineer at Vedantu (44mo)."
   },
   {
     "candidate_id": "CAND_0053695",
@@ -12062,16 +12115,17 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.6126277777777778,
+      "technical": 0.6131454545454545,
       "hiring_manager": 0.85,
       "culture_fit": 0.9999999999999999,
       "recruiter_ops": 0.6160529719068942,
       "logistics_education": 0.9299999999999999,
-      "persona_sum": 0.7781962791193675
+      "persona_sum": 0.7783515821496705
     },
     "semantic_similarity_score": 0.350812694068121,
     "semantic_boost": 0.9708494584492919,
-    "final_score": 0.7555,
+    "final_score": 0.7557,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 54,
     "reasoning": "Based in Bhubaneswar, Odisha, this candidate is a Recommendation Systems Engineer at Meesho with 5.8 yrs of experience. Key strengths include: JD-aligned expertise in Pinecone (60mo, expert), Weights & Biases (25mo, advanced), LangChain (61mo, expert); career trajectory: Recommendation Systems Engineer at Meesho (20mo); Machine Learning Engineer at Genpact AI (34mo); active GitHub (score: 68/100). Considerations: incomplete profile (51% filled)."
   },
@@ -12283,6 +12337,7 @@
     "semantic_similarity_score": 0.3711542951327732,
     "semantic_boost": 0.9795963469070924,
     "final_score": 0.7544,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 55,
     "reasoning": "Based in Delhi, Delhi, this candidate is a Applied ML Engineer at Rephrase.ai with 6.6 yrs of experience. Key strengths include: JD-aligned expertise in Sentence Transformers (57mo, expert), Milvus (51mo, advanced), LoRA (24mo, advanced); verified assessments (Sentence Transformers: 83/100; Embeddings: 73/100); career trajectory: Applied ML Engineer at Rephrase.ai (46mo); Applied ML Engineer at Paytm (32mo). Considerations: no public GitHub activity."
   },
@@ -12498,6 +12553,7 @@
     "semantic_similarity_score": 0.3516635728222826,
     "semantic_boost": 0.9712153363135815,
     "final_score": 0.7539,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 56,
     "reasoning": "Senior Data Scientist at Rephrase.ai with 4.3 yrs, based in Noida, Uttar Pradesh. Strengths: JD-aligned expertise in LangChain (42mo, advanced), TensorFlow (82mo, expert), PyTorch (44mo, expert); verified assessments (LangChain: 91/100; Image Classification: 88/100); career trajectory: Senior Data Scientist at Rephrase.ai (51mo). Gaps: below target YoE (4.3 vs 5-9yr); incomplete profile (56% filled)."
   },
@@ -12720,6 +12776,7 @@
     "semantic_similarity_score": 0.37639739787770093,
     "semantic_boost": 0.9818508810874114,
     "final_score": 0.7531,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 57,
     "reasoning": "Based in Bangalore, Karnataka, this candidate is a Machine Learning Engineer at Haptik with 5.7 yrs of experience. Key strengths include: JD-aligned expertise in Hugging Face Transformers (28mo, advanced), Weaviate (60mo, expert), Recommendation Systems (21mo, advanced); verified assessments (pgvector: 83/100; Weaviate: 74/100); career trajectory: Machine Learning Engineer at Haptik (24mo); Machine Learning Engineer at Observe.AI (36mo). Considerations: incomplete profile (51% filled)."
   },
@@ -12905,6 +12962,7 @@
     "semantic_similarity_score": 0.3298576076796947,
     "semantic_boost": 0.9618387713022687,
     "final_score": 0.7528,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 58,
     "reasoning": "Based in Singapore, this candidate is a Machine Learning Engineer at Freshworks with 7.3 yrs of experience. Key strengths include: JD-aligned expertise in Recommendation Systems (85mo, expert), Fine-tuning LLMs (78mo, expert), Pinecone (60mo, expert); verified assessments (Statistical Modeling: 82/100; Elasticsearch: 69/100); career trajectory: Machine Learning Engineer at Freshworks (52mo); Senior Data Scientist at Netflix (34mo). Considerations: extended notice (90d)."
   },
@@ -13125,6 +13183,7 @@
     "semantic_similarity_score": 0.3222474267624615,
     "semantic_boost": 0.9585663935078583,
     "final_score": 0.7527,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 59,
     "reasoning": "Recommendation Systems Engineer at Verloop.io with 5.1 yrs, based in Kochi, Kerala. Strengths: JD-aligned expertise in Machine Learning (43mo, expert), FAISS (66mo, expert), Recommendation Systems (40mo, advanced); verified assessments (Machine Learning: 66/100; Haystack: 51/100); career trajectory: Recommendation Systems Engineer at Verloop.io (12mo); Senior Data Scientist at Adobe (49mo). Gaps: incomplete profile (58% filled)."
   },
@@ -13348,8 +13407,9 @@
     "semantic_similarity_score": 0.36392463031186223,
     "semantic_boost": 0.9764875910341007,
     "final_score": 0.7524,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 60,
-    "reasoning": "A Machine Learning Engineer currently at Meta (6.3 yrs), located in Coimbatore, Tamil Nadu. Highlights: JD-aligned expertise in TensorFlow (80mo, expert), NLP (50mo, expert), Hugging Face Transformers (55mo, expert); verified assessments (pgvector: 80/100; Statistical Modeling: 69/100); career trajectory: Machine Learning Engineer at Meta (34mo); Applied ML Engineer at Genpact AI (30mo). Caveats: requires hybrid relocation/travel coordination to Noida/Pune."
+    "reasoning": "A Machine Learning Engineer currently at Meta (6.3 yrs), located in Coimbatore, Tamil Nadu. Highlights: JD-aligned expertise in TensorFlow (80mo, expert), NLP (50mo, expert), Hugging Face Transformers (55mo, expert); verified assessments (pgvector: 80/100; Statistical Modeling: 69/100); career trajectory: Machine Learning Engineer at Meta (34mo); Applied ML Engineer at Genpact AI (30mo)."
   },
   {
     "candidate_id": "CAND_0028793",
@@ -13567,16 +13627,17 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.6873392628205128,
+      "technical": 0.688227149321267,
       "hiring_manager": 0.865,
       "culture_fit": 0.8999999999999999,
       "recruiter_ops": 0.7541784720370923,
       "logistics_education": 0.7304999999999999,
-      "persona_sum": 0.7801535496517177
+      "persona_sum": 0.780419915601944
     },
     "semantic_similarity_score": 0.33172810347255105,
     "semantic_boost": 0.9626430844931969,
-    "final_score": 0.751,
+    "final_score": 0.7513,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 61,
     "reasoning": "A Search Engineer currently at Google (7.2 yrs), located in Trivandrum, Kerala. Highlights: JD-aligned expertise in Embeddings (78mo, expert), LoRA (48mo, expert), Information Retrieval (36mo, expert); verified assessments (Embeddings: 89/100; Haystack: 85/100); career trajectory: Search Engineer at Google (32mo); Senior Data Scientist at Amazon (40mo). Caveats: extended notice (120d)."
   },
@@ -13794,8 +13855,9 @@
     "semantic_similarity_score": 0.3741788972576722,
     "semantic_boost": 0.980896925820799,
     "final_score": 0.7507,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 62,
-    "reasoning": "Based in Trivandrum, Kerala, this candidate is a AI Engineer at Microsoft with 5.7 yrs of experience. Key strengths include: JD-aligned expertise in Information Retrieval (19mo, advanced), PyTorch (38mo, advanced), NLP (94mo, expert); verified assessments (PyTorch: 91/100; Object Detection: 77/100); career trajectory: AI Engineer at Microsoft (13mo); Senior Data Scientist at Amazon (27mo). Considerations: reliance on direct career track rather than certification badges."
+    "reasoning": "Based in Trivandrum, Kerala, this candidate is a AI Engineer at Microsoft with 5.7 yrs of experience. Key strengths include: JD-aligned expertise in Information Retrieval (19mo, advanced), PyTorch (38mo, advanced), NLP (94mo, expert); verified assessments (PyTorch: 91/100; Object Detection: 77/100); career trajectory: AI Engineer at Microsoft (13mo); Senior Data Scientist at Amazon (27mo)."
   },
   {
     "candidate_id": "CAND_0070525",
@@ -13972,217 +14034,9 @@
     "semantic_similarity_score": 0.2361594764119574,
     "semantic_boost": 0.9215485748571416,
     "final_score": 0.7507,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 63,
-    "reasoning": "Based in Hyderabad, Telangana, this candidate is a Senior Software Engineer (ML) at Mad Street Den with 5.4 yrs of experience. Key strengths include: JD-aligned expertise in Recommendation Systems (53mo, advanced), LLMs (32mo, advanced), Computer Vision (19mo, intermediate); verified assessments (Recommendation Systems: 63/100); career trajectory: Senior Software Engineer (ML) at Mad Street Den (34mo); Senior Software Engineer (ML) at Wysa (30mo). Considerations: reliance on direct career tra..."
-  },
-  {
-    "candidate_id": "CAND_0066376",
-    "profile": {
-      "anonymized_name": "Amit Goyal",
-      "headline": "Applied ML Engineer | Search, Ranking & Retrieval",
-      "summary": "Machine learning engineer with 5.7 years of experience building ML-powered features in production. Strong background in NLP, recommendation systems, and applied AI; comfortable across the ML stack from feature engineering through deployment. Recently, my main project for the last 18 months has been the recommendation system that powers our discovery feed. I care a lot about evaluation rigor — too many teams ship models without offline benchmarks they trust. My academic background is in CS/ML but my main learning has come from shipping real systems and seeing what holds up under production load. Open to senior IC roles in applied ML or AI engineering, ideally at product companies where I'd own a meaningful piece of the ML stack.",
-      "location": "Mumbai, Maharashtra",
-      "country": "India",
-      "years_of_experience": 5.7,
-      "current_title": "Applied ML Engineer",
-      "current_company": "Dream11",
-      "current_company_size": "1001-5000",
-      "current_industry": "Gaming"
-    },
-    "career_history": [
-      {
-        "company": "Dream11",
-        "title": "Applied ML Engineer",
-        "start_date": "2022-09-15",
-        "end_date": null,
-        "duration_months": 45,
-        "is_current": true,
-        "industry": "Gaming",
-        "company_size": "1001-5000",
-        "description": "Built a content recommendation system serving 10M+ users that combined collaborative filtering with content-based ranking. The system uses item-item similarity (via sentence-transformer embeddings) for cold starts and a gradient-boosted model trained on engagement signals for warm users. Most of my time went into the feature pipeline (~200 features) and the A/B testing infrastructure. The launch improved 7-day retention by 6% and time spent per session by 14%."
-      },
-      {
-        "company": "Salesforce",
-        "title": "Senior Data Scientist",
-        "start_date": "2020-11-24",
-        "end_date": "2022-09-15",
-        "duration_months": 22,
-        "is_current": false,
-        "industry": "Software",
-        "company_size": "10001+",
-        "description": "Developed a semantic search feature for an internal knowledge base of ~500K documents. Used sentence-transformers (all-MiniLM-L6-v2 initially, later upgraded to bge-base) with FAISS for fast nearest-neighbor retrieval. Designed the query expansion module that handles vocabulary mismatch between user queries and document terms. Reported search-relevance improvement of 35% over the prior Elasticsearch BM25 setup, validated through human relevance judgments."
-      }
-    ],
-    "education": [
-      {
-        "institution": "IIT Kharagpur",
-        "degree": "M.Sc",
-        "field_of_study": "Artificial Intelligence",
-        "start_year": 2008,
-        "end_year": 2011,
-        "grade": "7.64 CGPA",
-        "tier": "tier_1"
-      }
-    ],
-    "skills": [
-      {
-        "name": "Recommendation Systems",
-        "proficiency": "advanced",
-        "endorsements": 41,
-        "duration_months": 35
-      },
-      {
-        "name": "LoRA",
-        "proficiency": "expert",
-        "endorsements": 55,
-        "duration_months": 42
-      },
-      {
-        "name": "Learning to Rank",
-        "proficiency": "expert",
-        "endorsements": 21,
-        "duration_months": 91
-      },
-      {
-        "name": "LLMs",
-        "proficiency": "expert",
-        "endorsements": 22,
-        "duration_months": 59
-      },
-      {
-        "name": "Fine-tuning LLMs",
-        "proficiency": "advanced",
-        "endorsements": 17,
-        "duration_months": 33
-      },
-      {
-        "name": "Deep Learning",
-        "proficiency": "expert",
-        "endorsements": 8,
-        "duration_months": 46
-      },
-      {
-        "name": "NLP",
-        "proficiency": "expert",
-        "endorsements": 1,
-        "duration_months": 53
-      },
-      {
-        "name": "Reinforcement Learning",
-        "proficiency": "intermediate",
-        "endorsements": 6,
-        "duration_months": 22
-      },
-      {
-        "name": "Information Retrieval",
-        "proficiency": "expert",
-        "endorsements": 25,
-        "duration_months": 50
-      },
-      {
-        "name": "Object Detection",
-        "proficiency": "advanced",
-        "endorsements": 36,
-        "duration_months": 32
-      },
-      {
-        "name": "BM25",
-        "proficiency": "expert",
-        "endorsements": 39,
-        "duration_months": 59
-      },
-      {
-        "name": "PowerPoint",
-        "proficiency": "intermediate",
-        "endorsements": 7,
-        "duration_months": 32
-      },
-      {
-        "name": "Time Series",
-        "proficiency": "intermediate",
-        "endorsements": 7,
-        "duration_months": 25
-      },
-      {
-        "name": "FAISS",
-        "proficiency": "expert",
-        "endorsements": 38,
-        "duration_months": 84
-      },
-      {
-        "name": "LlamaIndex",
-        "proficiency": "expert",
-        "endorsements": 44,
-        "duration_months": 93
-      },
-      {
-        "name": "CNN",
-        "proficiency": "intermediate",
-        "endorsements": 9,
-        "duration_months": 21
-      },
-      {
-        "name": "Semantic Search",
-        "proficiency": "expert",
-        "endorsements": 3,
-        "duration_months": 84
-      }
-    ],
-    "certifications": [],
-    "languages": [
-      {
-        "language": "English",
-        "proficiency": "native"
-      },
-      {
-        "language": "Hindi",
-        "proficiency": "native"
-      }
-    ],
-    "redrob_signals": {
-      "profile_completeness_score": 62.8,
-      "signup_date": "2025-10-09",
-      "last_active_date": "2026-05-03",
-      "open_to_work_flag": true,
-      "profile_views_received_30d": 109,
-      "applications_submitted_30d": 15,
-      "recruiter_response_rate": 0.51,
-      "avg_response_time_hours": 62.7,
-      "skill_assessment_scores": {
-        "Recommendation Systems": 68.2,
-        "LoRA": 81.8
-      },
-      "connection_count": 866,
-      "endorsements_received": 37,
-      "notice_period_days": 90,
-      "expected_salary_range_inr_lpa": {
-        "min": 44.0,
-        "max": 42.4
-      },
-      "preferred_work_mode": "hybrid",
-      "willing_to_relocate": false,
-      "github_activity_score": -1,
-      "search_appearance_30d": 61,
-      "saved_by_recruiters_30d": 59,
-      "interview_completion_rate": 0.77,
-      "offer_acceptance_rate": -1,
-      "verified_email": false,
-      "verified_phone": true,
-      "linkedin_connected": true
-    },
-    "scores": {
-      "technical": 0.6187857142857143,
-      "hiring_manager": 0.91,
-      "culture_fit": 0.8999999999999999,
-      "recruiter_ops": 0.6028338949881465,
-      "logistics_education": 0.8320000000000001,
-      "persona_sum": 0.7633607985339362
-    },
-    "semantic_similarity_score": 0.3763631958848914,
-    "semantic_boost": 0.9818361742305033,
-    "final_score": 0.7495,
-    "rank": 64,
-    "reasoning": "Based in Mumbai, Maharashtra, this candidate is a Applied ML Engineer at Dream11 with 5.7 yrs of experience. Key strengths include: JD-aligned expertise in Recommendation Systems (35mo, advanced), LoRA (42mo, expert), LLMs (59mo, expert); verified assessments (LoRA: 82/100; Recommendation Systems: 68/100); career trajectory: Applied ML Engineer at Dream11 (45mo); Senior Data Scientist at Salesforce (22mo). Considerations: no public GitHub activity; extended notice (90d)."
+    "reasoning": "Based in Hyderabad, Telangana, this candidate is a Senior Software Engineer (ML) at Mad Street Den with 5.4 yrs of experience. Key strengths include: JD-aligned expertise in Recommendation Systems (53mo, advanced), LLMs (32mo, advanced), Computer Vision (19mo, intermediate); verified assessments (Recommendation Systems: 63/100); career trajectory: Senior Software Engineer (ML) at Mad Street Den (34mo); Senior Software Engineer (ML) at Wysa (30mo)."
   },
   {
     "candidate_id": "CAND_0051004",
@@ -14410,8 +14264,219 @@
     "semantic_similarity_score": 0.24347731822578675,
     "semantic_boost": 0.9246952468370883,
     "final_score": 0.7493,
-    "rank": 65,
+    "hard_disqualifier_multiplier": 1.0,
+    "rank": 64,
     "reasoning": "Based in Delhi, Delhi, this candidate is a Senior Data Scientist at CRED with 4.7 yrs of experience. Key strengths include: JD-aligned expertise in MLflow (12mo, intermediate), Embeddings (57mo, advanced), PyTorch (51mo, advanced); verified assessments (Embeddings: 90/100; Semantic Search: 78/100); career trajectory: Senior Data Scientist at CRED (24mo); NLP Engineer at Niramai (32mo). Considerations: below target YoE (4.7 vs 5-9yr); incomplete profile (57% filled)."
+  },
+  {
+    "candidate_id": "CAND_0066376",
+    "profile": {
+      "anonymized_name": "Amit Goyal",
+      "headline": "Applied ML Engineer | Search, Ranking & Retrieval",
+      "summary": "Machine learning engineer with 5.7 years of experience building ML-powered features in production. Strong background in NLP, recommendation systems, and applied AI; comfortable across the ML stack from feature engineering through deployment. Recently, my main project for the last 18 months has been the recommendation system that powers our discovery feed. I care a lot about evaluation rigor — too many teams ship models without offline benchmarks they trust. My academic background is in CS/ML but my main learning has come from shipping real systems and seeing what holds up under production load. Open to senior IC roles in applied ML or AI engineering, ideally at product companies where I'd own a meaningful piece of the ML stack.",
+      "location": "Mumbai, Maharashtra",
+      "country": "India",
+      "years_of_experience": 5.7,
+      "current_title": "Applied ML Engineer",
+      "current_company": "Dream11",
+      "current_company_size": "1001-5000",
+      "current_industry": "Gaming"
+    },
+    "career_history": [
+      {
+        "company": "Dream11",
+        "title": "Applied ML Engineer",
+        "start_date": "2022-09-15",
+        "end_date": null,
+        "duration_months": 45,
+        "is_current": true,
+        "industry": "Gaming",
+        "company_size": "1001-5000",
+        "description": "Built a content recommendation system serving 10M+ users that combined collaborative filtering with content-based ranking. The system uses item-item similarity (via sentence-transformer embeddings) for cold starts and a gradient-boosted model trained on engagement signals for warm users. Most of my time went into the feature pipeline (~200 features) and the A/B testing infrastructure. The launch improved 7-day retention by 6% and time spent per session by 14%."
+      },
+      {
+        "company": "Salesforce",
+        "title": "Senior Data Scientist",
+        "start_date": "2020-11-24",
+        "end_date": "2022-09-15",
+        "duration_months": 22,
+        "is_current": false,
+        "industry": "Software",
+        "company_size": "10001+",
+        "description": "Developed a semantic search feature for an internal knowledge base of ~500K documents. Used sentence-transformers (all-MiniLM-L6-v2 initially, later upgraded to bge-base) with FAISS for fast nearest-neighbor retrieval. Designed the query expansion module that handles vocabulary mismatch between user queries and document terms. Reported search-relevance improvement of 35% over the prior Elasticsearch BM25 setup, validated through human relevance judgments."
+      }
+    ],
+    "education": [
+      {
+        "institution": "IIT Kharagpur",
+        "degree": "M.Sc",
+        "field_of_study": "Artificial Intelligence",
+        "start_year": 2008,
+        "end_year": 2011,
+        "grade": "7.64 CGPA",
+        "tier": "tier_1"
+      }
+    ],
+    "skills": [
+      {
+        "name": "Recommendation Systems",
+        "proficiency": "advanced",
+        "endorsements": 41,
+        "duration_months": 35
+      },
+      {
+        "name": "LoRA",
+        "proficiency": "expert",
+        "endorsements": 55,
+        "duration_months": 42
+      },
+      {
+        "name": "Learning to Rank",
+        "proficiency": "expert",
+        "endorsements": 21,
+        "duration_months": 91
+      },
+      {
+        "name": "LLMs",
+        "proficiency": "expert",
+        "endorsements": 22,
+        "duration_months": 59
+      },
+      {
+        "name": "Fine-tuning LLMs",
+        "proficiency": "advanced",
+        "endorsements": 17,
+        "duration_months": 33
+      },
+      {
+        "name": "Deep Learning",
+        "proficiency": "expert",
+        "endorsements": 8,
+        "duration_months": 46
+      },
+      {
+        "name": "NLP",
+        "proficiency": "expert",
+        "endorsements": 1,
+        "duration_months": 53
+      },
+      {
+        "name": "Reinforcement Learning",
+        "proficiency": "intermediate",
+        "endorsements": 6,
+        "duration_months": 22
+      },
+      {
+        "name": "Information Retrieval",
+        "proficiency": "expert",
+        "endorsements": 25,
+        "duration_months": 50
+      },
+      {
+        "name": "Object Detection",
+        "proficiency": "advanced",
+        "endorsements": 36,
+        "duration_months": 32
+      },
+      {
+        "name": "BM25",
+        "proficiency": "expert",
+        "endorsements": 39,
+        "duration_months": 59
+      },
+      {
+        "name": "PowerPoint",
+        "proficiency": "intermediate",
+        "endorsements": 7,
+        "duration_months": 32
+      },
+      {
+        "name": "Time Series",
+        "proficiency": "intermediate",
+        "endorsements": 7,
+        "duration_months": 25
+      },
+      {
+        "name": "FAISS",
+        "proficiency": "expert",
+        "endorsements": 38,
+        "duration_months": 84
+      },
+      {
+        "name": "LlamaIndex",
+        "proficiency": "expert",
+        "endorsements": 44,
+        "duration_months": 93
+      },
+      {
+        "name": "CNN",
+        "proficiency": "intermediate",
+        "endorsements": 9,
+        "duration_months": 21
+      },
+      {
+        "name": "Semantic Search",
+        "proficiency": "expert",
+        "endorsements": 3,
+        "duration_months": 84
+      }
+    ],
+    "certifications": [],
+    "languages": [
+      {
+        "language": "English",
+        "proficiency": "native"
+      },
+      {
+        "language": "Hindi",
+        "proficiency": "native"
+      }
+    ],
+    "redrob_signals": {
+      "profile_completeness_score": 62.8,
+      "signup_date": "2025-10-09",
+      "last_active_date": "2026-05-03",
+      "open_to_work_flag": true,
+      "profile_views_received_30d": 109,
+      "applications_submitted_30d": 15,
+      "recruiter_response_rate": 0.51,
+      "avg_response_time_hours": 62.7,
+      "skill_assessment_scores": {
+        "Recommendation Systems": 68.2,
+        "LoRA": 81.8
+      },
+      "connection_count": 866,
+      "endorsements_received": 37,
+      "notice_period_days": 90,
+      "expected_salary_range_inr_lpa": {
+        "min": 44.0,
+        "max": 42.4
+      },
+      "preferred_work_mode": "hybrid",
+      "willing_to_relocate": false,
+      "github_activity_score": -1,
+      "search_appearance_30d": 61,
+      "saved_by_recruiters_30d": 59,
+      "interview_completion_rate": 0.77,
+      "offer_acceptance_rate": -1,
+      "verified_email": false,
+      "verified_phone": true,
+      "linkedin_connected": true
+    },
+    "scores": {
+      "technical": 0.6171611721611722,
+      "hiring_manager": 0.91,
+      "culture_fit": 0.8999999999999999,
+      "recruiter_ops": 0.6028338949881465,
+      "logistics_education": 0.8320000000000001,
+      "persona_sum": 0.7628734358965736
+    },
+    "semantic_similarity_score": 0.3763631958848914,
+    "semantic_boost": 0.9818361742305033,
+    "final_score": 0.749,
+    "hard_disqualifier_multiplier": 1.0,
+    "rank": 65,
+    "reasoning": "Based in Mumbai, Maharashtra, this candidate is a Applied ML Engineer at Dream11 with 5.7 yrs of experience. Key strengths include: JD-aligned expertise in Recommendation Systems (35mo, advanced), LoRA (42mo, expert), LLMs (59mo, expert); verified assessments (LoRA: 82/100; Recommendation Systems: 68/100); career trajectory: Applied ML Engineer at Dream11 (45mo); Senior Data Scientist at Salesforce (22mo). Considerations: no public GitHub activity; extended notice (90d)."
   },
   {
     "candidate_id": "CAND_0030827",
@@ -14616,6 +14681,7 @@
     "semantic_similarity_score": 0.3997950968736443,
     "semantic_boost": 0.991911891655667,
     "final_score": 0.7478,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 66,
     "reasoning": "A Senior Data Scientist currently at Freshworks (5.4 yrs), located in Singapore. Highlights: JD-aligned expertise in Hugging Face Transformers (81mo, expert), NLP (54mo, expert), Recommendation Systems (47mo, advanced); career trajectory: Senior Data Scientist at Freshworks (27mo); NLP Engineer at Glance (37mo); product-company background (SaaS). Caveats: extended notice (120d)."
   },
@@ -14827,6 +14893,7 @@
     "semantic_similarity_score": 0.27264325184166327,
     "semantic_boost": 0.9372365982919152,
     "final_score": 0.7468,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 67,
     "reasoning": "Based in Kochi, Kerala, this candidate is a NLP Engineer at Genpact AI with 16.1 yrs of experience. Key strengths include: JD-aligned expertise in PyTorch (58mo, expert), QLoRA (35mo, advanced), Embeddings (58mo, advanced); verified assessments (PyTorch: 73/100; Prompt Engineering: 70/100); career trajectory: NLP Engineer at Genpact AI (49mo); NLP Engineer at InMobi (13mo). Considerations: above target YoE (16.1yr)."
   },
@@ -15007,457 +15074,9 @@
     "semantic_similarity_score": 0.29226469135075206,
     "semantic_boost": 0.9456738172808233,
     "final_score": 0.7466,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 68,
     "reasoning": "Based in Vizag, Andhra Pradesh, this candidate is a Machine Learning Engineer at Flipkart with 4.3 yrs of experience. Key strengths include: JD-aligned expertise in LoRA (39mo, advanced), Vector Search (48mo, expert), Information Retrieval (30mo, advanced); verified assessments (Learning to Rank: 85/100; LoRA: 64/100); career trajectory: Machine Learning Engineer at Flipkart (26mo); AI Engineer at Genpact AI (25mo). Considerations: below target YoE (4.3 vs 5-9yr)."
-  },
-  {
-    "candidate_id": "CAND_0055992",
-    "profile": {
-      "anonymized_name": "Deepak Bansal",
-      "headline": "AI Engineer | Search, Ranking & Retrieval",
-      "summary": "Machine learning engineer with 6.8 years of experience building ML-powered features in production. Strong background in NLP, recommendation systems, and applied AI; comfortable across the ML stack from feature engineering through deployment. Recently, I led the team that migrated our keyword-search-based product to embedding-based retrieval. I care a lot about evaluation rigor — too many teams ship models without offline benchmarks they trust. My academic background is in CS/ML but my main learning has come from shipping real systems and seeing what holds up under production load. Open to senior IC roles in applied ML or AI engineering, ideally at product companies where I'd own a meaningful piece of the ML stack.",
-      "location": "Sydney",
-      "country": "Australia",
-      "years_of_experience": 16.9,
-      "current_title": "AI Engineer",
-      "current_company": "CRED",
-      "current_company_size": "1001-5000",
-      "current_industry": "Fintech"
-    },
-    "career_history": [
-      {
-        "company": "CRED",
-        "title": "AI Engineer",
-        "start_date": "2025-02-01",
-        "end_date": null,
-        "duration_months": 16,
-        "is_current": true,
-        "industry": "Fintech",
-        "company_size": "1001-5000",
-        "description": "Implemented a RAG-based customer support chatbot integrated with our existing ticketing system. Built the document ingestion pipeline (chunking, embedding via OpenAI embeddings, storing in Pinecone) and the answer-generation layer (initially GPT-4, then a fine-tuned smaller model for cost control). Designed the evaluation framework with both automatic metrics (BLEU, ROUGE) and human-in-the-loop quality scores. Deployment cut average ticket resolution time by 31% for the supported categories."
-      },
-      {
-        "company": "Aganitha",
-        "title": "Senior Data Scientist",
-        "start_date": "2023-10-26",
-        "end_date": "2025-01-18",
-        "duration_months": 15,
-        "is_current": false,
-        "industry": "AI/ML",
-        "company_size": "51-200",
-        "description": "Developed a semantic search feature for an internal knowledge base of ~500K documents. Used sentence-transformers (all-MiniLM-L6-v2 initially, later upgraded to bge-base) with FAISS for fast nearest-neighbor retrieval. Designed the query expansion module that handles vocabulary mismatch between user queries and document terms. Reported search-relevance improvement of 35% over the prior Elasticsearch BM25 setup, validated through human relevance judgments."
-      },
-      {
-        "company": "Observe.AI",
-        "title": "AI Engineer",
-        "start_date": "2020-10-11",
-        "end_date": "2023-10-26",
-        "duration_months": 37,
-        "is_current": false,
-        "industry": "AI/ML",
-        "company_size": "201-500",
-        "description": "Built a content recommendation system serving 10M+ users that combined collaborative filtering with content-based ranking. The system uses item-item similarity (via sentence-transformer embeddings) for cold starts and a gradient-boosted model trained on engagement signals for warm users. Most of my time went into the feature pipeline (~200 features) and the A/B testing infrastructure. The launch improved 7-day retention by 6% and time spent per session by 14%."
-      },
-      {
-        "company": "Ola",
-        "title": "Machine Learning Engineer",
-        "start_date": "2019-10-17",
-        "end_date": "2020-10-11",
-        "duration_months": 12,
-        "is_current": false,
-        "industry": "Transportation",
-        "company_size": "5001-10000",
-        "description": "Owned the ranking layer for an e-commerce search product, evolving it from a hand-tuned scoring function to a learning-to-rank model over 9 months. Designed the relevance labeling pipeline (mix of click-through data and explicit human judgments), the feature pipeline, and the training/eval workflow. Most of the work was infrastructure and data quality — the modeling part was almost the easy bit. Final model improved revenue-per-search by 12%."
-      }
-    ],
-    "education": [
-      {
-        "institution": "NIT Surathkal",
-        "degree": "M.E.",
-        "field_of_study": "Computer Engineering",
-        "start_year": 2010,
-        "end_year": 2013,
-        "grade": "7.34 CGPA",
-        "tier": "tier_1"
-      },
-      {
-        "institution": "Delhi College of Engineering",
-        "degree": "B.Tech",
-        "field_of_study": "Information Technology",
-        "start_year": 2018,
-        "end_year": 2021,
-        "grade": "7.62 CGPA",
-        "tier": "tier_2"
-      }
-    ],
-    "skills": [
-      {
-        "name": "Information Retrieval",
-        "proficiency": "expert",
-        "endorsements": 54,
-        "duration_months": 38
-      },
-      {
-        "name": "MLflow",
-        "proficiency": "advanced",
-        "endorsements": 54,
-        "duration_months": 57
-      },
-      {
-        "name": "FAISS",
-        "proficiency": "expert",
-        "endorsements": 21,
-        "duration_months": 96
-      },
-      {
-        "name": "RAG",
-        "proficiency": "advanced",
-        "endorsements": 1,
-        "duration_months": 52
-      },
-      {
-        "name": "Feature Engineering",
-        "proficiency": "intermediate",
-        "endorsements": 9,
-        "duration_months": 14
-      },
-      {
-        "name": "Data Science",
-        "proficiency": "advanced",
-        "endorsements": 59,
-        "duration_months": 22
-      },
-      {
-        "name": "LangChain",
-        "proficiency": "expert",
-        "endorsements": 16,
-        "duration_months": 53
-      },
-      {
-        "name": "SQL",
-        "proficiency": "intermediate",
-        "endorsements": 15,
-        "duration_months": 16
-      },
-      {
-        "name": "OpenSearch",
-        "proficiency": "expert",
-        "endorsements": 32,
-        "duration_months": 52
-      },
-      {
-        "name": "Embeddings",
-        "proficiency": "advanced",
-        "endorsements": 46,
-        "duration_months": 56
-      },
-      {
-        "name": "Prompt Engineering",
-        "proficiency": "advanced",
-        "endorsements": 19,
-        "duration_months": 25
-      },
-      {
-        "name": "Accounting",
-        "proficiency": "beginner",
-        "endorsements": 11,
-        "duration_months": 10
-      },
-      {
-        "name": "Vue.js",
-        "proficiency": "intermediate",
-        "endorsements": 13,
-        "duration_months": 10
-      },
-      {
-        "name": "Fine-tuning LLMs",
-        "proficiency": "expert",
-        "endorsements": 43,
-        "duration_months": 62
-      },
-      {
-        "name": "Milvus",
-        "proficiency": "expert",
-        "endorsements": 17,
-        "duration_months": 62
-      },
-      {
-        "name": "Deep Learning",
-        "proficiency": "expert",
-        "endorsements": 60,
-        "duration_months": 68
-      }
-    ],
-    "certifications": [],
-    "languages": [
-      {
-        "language": "English",
-        "proficiency": "professional"
-      },
-      {
-        "language": "Hindi",
-        "proficiency": "professional"
-      }
-    ],
-    "redrob_signals": {
-      "profile_completeness_score": 61.1,
-      "signup_date": "2025-03-13",
-      "last_active_date": "2026-03-28",
-      "open_to_work_flag": true,
-      "profile_views_received_30d": 283,
-      "applications_submitted_30d": 5,
-      "recruiter_response_rate": 0.72,
-      "avg_response_time_hours": 49.8,
-      "skill_assessment_scores": {
-        "Information Retrieval": 80.5,
-        "MLflow": 71.2,
-        "FAISS": 51.2,
-        "RAG": 87.1,
-        "Data Science": 64.7
-      },
-      "connection_count": 1183,
-      "endorsements_received": 28,
-      "notice_period_days": 60,
-      "expected_salary_range_inr_lpa": {
-        "min": 39.4,
-        "max": 57.1
-      },
-      "preferred_work_mode": "hybrid",
-      "willing_to_relocate": true,
-      "github_activity_score": 65.3,
-      "search_appearance_30d": 451,
-      "saved_by_recruiters_30d": 57,
-      "interview_completion_rate": 0.91,
-      "offer_acceptance_rate": 0.74,
-      "verified_email": true,
-      "verified_phone": true,
-      "linkedin_connected": true
-    },
-    "scores": {
-      "technical": 0.6907361917844062,
-      "hiring_manager": 0.73,
-      "culture_fit": 0.8999999999999999,
-      "recruiter_ops": 0.6554826942452788,
-      "logistics_education": 0.8512499999999998,
-      "persona_sum": 0.7507307616721136
-    },
-    "semantic_similarity_score": 0.4052009053039364,
-    "semantic_boost": 0.9942363892806926,
-    "final_score": 0.7464,
-    "rank": 69,
-    "reasoning": "AI Engineer at CRED with 16.9 yrs, based in Sydney. Strengths: JD-aligned expertise in Information Retrieval (38mo, expert), MLflow (57mo, advanced), FAISS (96mo, expert); verified assessments (RAG: 87/100; Information Retrieval: 80/100); career trajectory: AI Engineer at CRED (16mo); Senior Data Scientist at Aganitha (15mo). Gaps: above target YoE (16.9yr)."
-  },
-  {
-    "candidate_id": "CAND_0053605",
-    "profile": {
-      "anonymized_name": "Myra Mishra",
-      "headline": "Senior Software Engineer (ML) | 6.9 yrs in analytics & ML",
-      "summary": "Data scientist / ML engineer with 6.9 years of experience in applied machine learning. Worked across predictive modeling, NLP, analytics, and lightweight deployment workflows. I've spent the last couple of years building NLP-based classification and information extraction pipelines. I'm strongest at the modeling and analysis side; comfortable with Python, scikit-learn, pandas, and standard MLOps tooling, but I'm still building depth on the engineering and infra side of production ML. Looking for a role where I can step up to more end-to-end ownership of ML systems, not just modeling.",
-      "location": "Noida, Uttar Pradesh",
-      "country": "India",
-      "years_of_experience": 6.9,
-      "current_title": "Senior Software Engineer (ML)",
-      "current_company": "Verloop.io",
-      "current_company_size": "51-200",
-      "current_industry": "Conversational AI"
-    },
-    "career_history": [
-      {
-        "company": "Verloop.io",
-        "title": "Senior Software Engineer (ML)",
-        "start_date": "2022-10-15",
-        "end_date": null,
-        "duration_months": 44,
-        "is_current": true,
-        "industry": "Conversational AI",
-        "company_size": "51-200",
-        "description": "Built recommendation-style features at a mid-stage startup — lighter weight than ranking systems at FAANG, but production. Used a combination of collaborative filtering (matrix factorization in implicit-feedback library) and gradient-boosted re-ranking over engagement signals. Pure ML side of the work; production deployment was handled by the platform team."
-      },
-      {
-        "company": "TCS",
-        "title": "ML Engineer",
-        "start_date": "2019-09-01",
-        "end_date": "2022-10-15",
-        "duration_months": 38,
-        "is_current": false,
-        "industry": "IT Services",
-        "company_size": "10001+",
-        "description": "Built computer vision models for our product's image moderation feature using PyTorch — fine-tuned ResNet variants on a labeled dataset of ~200K images. Set up the training pipeline (data loading, augmentation, evaluation) and the inference service. Most of my project work has been in CV; I'm now interested in transitioning toward NLP/LLM work but my professional experience there is limited."
-      }
-    ],
-    "education": [
-      {
-        "institution": "Thapar University",
-        "degree": "M.Tech",
-        "field_of_study": "Machine Learning",
-        "start_year": 2002,
-        "end_year": 2006,
-        "grade": "6.66 CGPA",
-        "tier": "tier_2"
-      },
-      {
-        "institution": "Delhi College of Engineering",
-        "degree": "B.E.",
-        "field_of_study": "Computer Science",
-        "start_year": 2005,
-        "end_year": 2008,
-        "grade": "8.50 CGPA",
-        "tier": "tier_2"
-      }
-    ],
-    "skills": [
-      {
-        "name": "GraphQL",
-        "proficiency": "intermediate",
-        "endorsements": 4,
-        "duration_months": 24
-      },
-      {
-        "name": "LangChain",
-        "proficiency": "advanced",
-        "endorsements": 2,
-        "duration_months": 26
-      },
-      {
-        "name": "CNN",
-        "proficiency": "advanced",
-        "endorsements": 21,
-        "duration_months": 56
-      },
-      {
-        "name": "pgvector",
-        "proficiency": "advanced",
-        "endorsements": 47,
-        "duration_months": 50
-      },
-      {
-        "name": "GCP",
-        "proficiency": "intermediate",
-        "endorsements": 7,
-        "duration_months": 35
-      },
-      {
-        "name": "Semantic Search",
-        "proficiency": "advanced",
-        "endorsements": 30,
-        "duration_months": 37
-      },
-      {
-        "name": "GANs",
-        "proficiency": "intermediate",
-        "endorsements": 10,
-        "duration_months": 10
-      },
-      {
-        "name": "RAG",
-        "proficiency": "advanced",
-        "endorsements": 56,
-        "duration_months": 54
-      },
-      {
-        "name": "BentoML",
-        "proficiency": "intermediate",
-        "endorsements": 5,
-        "duration_months": 10
-      },
-      {
-        "name": "BM25",
-        "proficiency": "intermediate",
-        "endorsements": 0,
-        "duration_months": 11
-      },
-      {
-        "name": "Apache Flink",
-        "proficiency": "intermediate",
-        "endorsements": 13,
-        "duration_months": 16
-      },
-      {
-        "name": "Reinforcement Learning",
-        "proficiency": "intermediate",
-        "endorsements": 3,
-        "duration_months": 10
-      },
-      {
-        "name": "SAP",
-        "proficiency": "beginner",
-        "endorsements": 15,
-        "duration_months": 17
-      },
-      {
-        "name": "ASR",
-        "proficiency": "advanced",
-        "endorsements": 27,
-        "duration_months": 44
-      }
-    ],
-    "certifications": [
-      {
-        "name": "AWS Certified Machine Learning Specialty",
-        "issuer": "AWS",
-        "year": 2020
-      },
-      {
-        "name": "Deep Learning Specialization",
-        "issuer": "Coursera/DeepLearning.AI",
-        "year": 2025
-      }
-    ],
-    "languages": [
-      {
-        "language": "English",
-        "proficiency": "native"
-      },
-      {
-        "language": "Hindi",
-        "proficiency": "conversational"
-      }
-    ],
-    "redrob_signals": {
-      "profile_completeness_score": 87.3,
-      "signup_date": "2026-02-18",
-      "last_active_date": "2026-05-22",
-      "open_to_work_flag": true,
-      "profile_views_received_30d": 33,
-      "applications_submitted_30d": 12,
-      "recruiter_response_rate": 0.88,
-      "avg_response_time_hours": 11.8,
-      "skill_assessment_scores": {
-        "LangChain": 50.9,
-        "CNN": 62.0,
-        "pgvector": 79.9
-      },
-      "connection_count": 93,
-      "endorsements_received": 121,
-      "notice_period_days": 30,
-      "expected_salary_range_inr_lpa": {
-        "min": 33.2,
-        "max": 34.1
-      },
-      "preferred_work_mode": "onsite",
-      "willing_to_relocate": false,
-      "github_activity_score": -1,
-      "search_appearance_30d": 553,
-      "saved_by_recruiters_30d": 26,
-      "interview_completion_rate": 0.97,
-      "offer_acceptance_rate": 0.67,
-      "verified_email": true,
-      "verified_phone": false,
-      "linkedin_connected": false
-    },
-    "scores": {
-      "technical": 0.6553190476190477,
-      "hiring_manager": 1.0,
-      "culture_fit": 0.72,
-      "recruiter_ops": 0.6975552378687326,
-      "logistics_education": 0.9775,
-      "persona_sum": 0.8058539999660242
-    },
-    "semantic_similarity_score": 0.24601908865030192,
-    "semantic_boost": 0.9257882081196298,
-    "final_score": 0.7461,
-    "rank": 70,
-    "reasoning": "Based in Noida, Uttar Pradesh, this candidate is a Senior Software Engineer (ML) at Verloop.io with 6.9 yrs of experience. Key strengths include: JD-aligned expertise in LangChain (26mo, advanced), RAG (54mo, advanced); verified assessments (pgvector: 80/100; CNN: 62/100); career trajectory: Senior Software Engineer (ML) at Verloop.io (44mo); ML Engineer at TCS (38mo). Considerations: no public GitHub activity."
   },
   {
     "candidate_id": "CAND_0020877",
@@ -15672,18 +15291,232 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.6675666666666666,
+      "technical": 0.6694222222222223,
       "hiring_manager": 0.91,
       "culture_fit": 0.9999999999999999,
       "recruiter_ops": 0.5839480679898492,
       "logistics_education": 0.8985000000000001,
-      "persona_sum": 0.8001372101984774
+      "persona_sum": 0.8006938768651441
     },
     "semantic_similarity_score": 0.2612676955758247,
     "semantic_boost": 0.9323451090976046,
-    "final_score": 0.746,
-    "rank": 71,
-    "reasoning": "Applied ML Engineer at CRED with 5.1 yrs, based in Gurgaon, Haryana. Strengths: JD-aligned expertise in QLoRA (48mo, expert), PyTorch (37mo, advanced), Information Retrieval (84mo, expert); verified assessments (YOLO: 89/100; Kubeflow: 82/100); career trajectory: Applied ML Engineer at CRED (38mo); Senior Data Scientist at BYJU'S (22mo). Gaps: no recent public-facing research publications."
+    "final_score": 0.7465,
+    "hard_disqualifier_multiplier": 1.0,
+    "rank": 69,
+    "reasoning": "Applied ML Engineer at CRED with 5.1 yrs, based in Gurgaon, Haryana. Strengths: JD-aligned expertise in QLoRA (48mo, expert), PyTorch (37mo, advanced), Information Retrieval (84mo, expert); verified assessments (YOLO: 89/100; Kubeflow: 82/100); career trajectory: Applied ML Engineer at CRED (38mo); Senior Data Scientist at BYJU'S (22mo)."
+  },
+  {
+    "candidate_id": "CAND_0053605",
+    "profile": {
+      "anonymized_name": "Myra Mishra",
+      "headline": "Senior Software Engineer (ML) | 6.9 yrs in analytics & ML",
+      "summary": "Data scientist / ML engineer with 6.9 years of experience in applied machine learning. Worked across predictive modeling, NLP, analytics, and lightweight deployment workflows. I've spent the last couple of years building NLP-based classification and information extraction pipelines. I'm strongest at the modeling and analysis side; comfortable with Python, scikit-learn, pandas, and standard MLOps tooling, but I'm still building depth on the engineering and infra side of production ML. Looking for a role where I can step up to more end-to-end ownership of ML systems, not just modeling.",
+      "location": "Noida, Uttar Pradesh",
+      "country": "India",
+      "years_of_experience": 6.9,
+      "current_title": "Senior Software Engineer (ML)",
+      "current_company": "Verloop.io",
+      "current_company_size": "51-200",
+      "current_industry": "Conversational AI"
+    },
+    "career_history": [
+      {
+        "company": "Verloop.io",
+        "title": "Senior Software Engineer (ML)",
+        "start_date": "2022-10-15",
+        "end_date": null,
+        "duration_months": 44,
+        "is_current": true,
+        "industry": "Conversational AI",
+        "company_size": "51-200",
+        "description": "Built recommendation-style features at a mid-stage startup — lighter weight than ranking systems at FAANG, but production. Used a combination of collaborative filtering (matrix factorization in implicit-feedback library) and gradient-boosted re-ranking over engagement signals. Pure ML side of the work; production deployment was handled by the platform team."
+      },
+      {
+        "company": "TCS",
+        "title": "ML Engineer",
+        "start_date": "2019-09-01",
+        "end_date": "2022-10-15",
+        "duration_months": 38,
+        "is_current": false,
+        "industry": "IT Services",
+        "company_size": "10001+",
+        "description": "Built computer vision models for our product's image moderation feature using PyTorch — fine-tuned ResNet variants on a labeled dataset of ~200K images. Set up the training pipeline (data loading, augmentation, evaluation) and the inference service. Most of my project work has been in CV; I'm now interested in transitioning toward NLP/LLM work but my professional experience there is limited."
+      }
+    ],
+    "education": [
+      {
+        "institution": "Thapar University",
+        "degree": "M.Tech",
+        "field_of_study": "Machine Learning",
+        "start_year": 2002,
+        "end_year": 2006,
+        "grade": "6.66 CGPA",
+        "tier": "tier_2"
+      },
+      {
+        "institution": "Delhi College of Engineering",
+        "degree": "B.E.",
+        "field_of_study": "Computer Science",
+        "start_year": 2005,
+        "end_year": 2008,
+        "grade": "8.50 CGPA",
+        "tier": "tier_2"
+      }
+    ],
+    "skills": [
+      {
+        "name": "GraphQL",
+        "proficiency": "intermediate",
+        "endorsements": 4,
+        "duration_months": 24
+      },
+      {
+        "name": "LangChain",
+        "proficiency": "advanced",
+        "endorsements": 2,
+        "duration_months": 26
+      },
+      {
+        "name": "CNN",
+        "proficiency": "advanced",
+        "endorsements": 21,
+        "duration_months": 56
+      },
+      {
+        "name": "pgvector",
+        "proficiency": "advanced",
+        "endorsements": 47,
+        "duration_months": 50
+      },
+      {
+        "name": "GCP",
+        "proficiency": "intermediate",
+        "endorsements": 7,
+        "duration_months": 35
+      },
+      {
+        "name": "Semantic Search",
+        "proficiency": "advanced",
+        "endorsements": 30,
+        "duration_months": 37
+      },
+      {
+        "name": "GANs",
+        "proficiency": "intermediate",
+        "endorsements": 10,
+        "duration_months": 10
+      },
+      {
+        "name": "RAG",
+        "proficiency": "advanced",
+        "endorsements": 56,
+        "duration_months": 54
+      },
+      {
+        "name": "BentoML",
+        "proficiency": "intermediate",
+        "endorsements": 5,
+        "duration_months": 10
+      },
+      {
+        "name": "BM25",
+        "proficiency": "intermediate",
+        "endorsements": 0,
+        "duration_months": 11
+      },
+      {
+        "name": "Apache Flink",
+        "proficiency": "intermediate",
+        "endorsements": 13,
+        "duration_months": 16
+      },
+      {
+        "name": "Reinforcement Learning",
+        "proficiency": "intermediate",
+        "endorsements": 3,
+        "duration_months": 10
+      },
+      {
+        "name": "SAP",
+        "proficiency": "beginner",
+        "endorsements": 15,
+        "duration_months": 17
+      },
+      {
+        "name": "ASR",
+        "proficiency": "advanced",
+        "endorsements": 27,
+        "duration_months": 44
+      }
+    ],
+    "certifications": [
+      {
+        "name": "AWS Certified Machine Learning Specialty",
+        "issuer": "AWS",
+        "year": 2020
+      },
+      {
+        "name": "Deep Learning Specialization",
+        "issuer": "Coursera/DeepLearning.AI",
+        "year": 2025
+      }
+    ],
+    "languages": [
+      {
+        "language": "English",
+        "proficiency": "native"
+      },
+      {
+        "language": "Hindi",
+        "proficiency": "conversational"
+      }
+    ],
+    "redrob_signals": {
+      "profile_completeness_score": 87.3,
+      "signup_date": "2026-02-18",
+      "last_active_date": "2026-05-22",
+      "open_to_work_flag": true,
+      "profile_views_received_30d": 33,
+      "applications_submitted_30d": 12,
+      "recruiter_response_rate": 0.88,
+      "avg_response_time_hours": 11.8,
+      "skill_assessment_scores": {
+        "LangChain": 50.9,
+        "CNN": 62.0,
+        "pgvector": 79.9
+      },
+      "connection_count": 93,
+      "endorsements_received": 121,
+      "notice_period_days": 30,
+      "expected_salary_range_inr_lpa": {
+        "min": 33.2,
+        "max": 34.1
+      },
+      "preferred_work_mode": "onsite",
+      "willing_to_relocate": false,
+      "github_activity_score": -1,
+      "search_appearance_30d": 553,
+      "saved_by_recruiters_30d": 26,
+      "interview_completion_rate": 0.97,
+      "offer_acceptance_rate": 0.67,
+      "verified_email": true,
+      "verified_phone": false,
+      "linkedin_connected": false
+    },
+    "scores": {
+      "technical": 0.6553190476190477,
+      "hiring_manager": 1.0,
+      "culture_fit": 0.72,
+      "recruiter_ops": 0.6975552378687326,
+      "logistics_education": 0.9775,
+      "persona_sum": 0.8058539999660242
+    },
+    "semantic_similarity_score": 0.24601908865030192,
+    "semantic_boost": 0.9257882081196298,
+    "final_score": 0.7461,
+    "hard_disqualifier_multiplier": 1.0,
+    "rank": 70,
+    "reasoning": "Based in Noida, Uttar Pradesh, this candidate is a Senior Software Engineer (ML) at Verloop.io with 6.9 yrs of experience. Key strengths include: JD-aligned expertise in LangChain (26mo, advanced), RAG (54mo, advanced); verified assessments (pgvector: 80/100; CNN: 62/100); career trajectory: Senior Software Engineer (ML) at Verloop.io (44mo); ML Engineer at TCS (38mo). Considerations: no public GitHub activity."
   },
   {
     "candidate_id": "CAND_0052335",
@@ -15870,8 +15703,9 @@
     "semantic_similarity_score": 0.25299007627980497,
     "semantic_boost": 0.9287857328003161,
     "final_score": 0.7457,
-    "rank": 72,
-    "reasoning": "Applied ML Engineer at Aganitha with 6.4 yrs, based in Berlin. Strengths: JD-aligned expertise in PyTorch (83mo, expert), Machine Learning (36mo, expert), NLP (79mo, expert); career trajectory: Applied ML Engineer at Aganitha (44mo); AI Engineer at Wysa (32mo); product-company background (AI/ML). Gaps: no recent public-facing research publications."
+    "hard_disqualifier_multiplier": 1.0,
+    "rank": 71,
+    "reasoning": "Applied ML Engineer at Aganitha with 6.4 yrs, based in Berlin. Strengths: JD-aligned expertise in PyTorch (83mo, expert), Machine Learning (36mo, expert), NLP (79mo, expert); career trajectory: Applied ML Engineer at Aganitha (44mo); AI Engineer at Wysa (32mo); product-company background (AI/ML)."
   },
   {
     "candidate_id": "CAND_0081686",
@@ -16104,8 +15938,247 @@
     "semantic_similarity_score": 0.37495361157923474,
     "semantic_boost": 0.9812300529790708,
     "final_score": 0.7457,
-    "rank": 73,
+    "hard_disqualifier_multiplier": 1.0,
+    "rank": 72,
     "reasoning": "A Search Engineer currently at Netflix (6.0 yrs), located in Austin. Highlights: JD-aligned expertise in Machine Learning (84mo, expert), Embeddings (59mo, expert), FAISS (49mo, expert); verified assessments (FAISS: 86/100; Kubeflow: 73/100); career trajectory: Search Engineer at Netflix (28mo); Recommendation Systems Engineer at Niramai (30mo). Caveats: incomplete profile (57% filled)."
+  },
+  {
+    "candidate_id": "CAND_0055992",
+    "profile": {
+      "anonymized_name": "Deepak Bansal",
+      "headline": "AI Engineer | Search, Ranking & Retrieval",
+      "summary": "Machine learning engineer with 6.8 years of experience building ML-powered features in production. Strong background in NLP, recommendation systems, and applied AI; comfortable across the ML stack from feature engineering through deployment. Recently, I led the team that migrated our keyword-search-based product to embedding-based retrieval. I care a lot about evaluation rigor — too many teams ship models without offline benchmarks they trust. My academic background is in CS/ML but my main learning has come from shipping real systems and seeing what holds up under production load. Open to senior IC roles in applied ML or AI engineering, ideally at product companies where I'd own a meaningful piece of the ML stack.",
+      "location": "Sydney",
+      "country": "Australia",
+      "years_of_experience": 16.9,
+      "current_title": "AI Engineer",
+      "current_company": "CRED",
+      "current_company_size": "1001-5000",
+      "current_industry": "Fintech"
+    },
+    "career_history": [
+      {
+        "company": "CRED",
+        "title": "AI Engineer",
+        "start_date": "2025-02-01",
+        "end_date": null,
+        "duration_months": 16,
+        "is_current": true,
+        "industry": "Fintech",
+        "company_size": "1001-5000",
+        "description": "Implemented a RAG-based customer support chatbot integrated with our existing ticketing system. Built the document ingestion pipeline (chunking, embedding via OpenAI embeddings, storing in Pinecone) and the answer-generation layer (initially GPT-4, then a fine-tuned smaller model for cost control). Designed the evaluation framework with both automatic metrics (BLEU, ROUGE) and human-in-the-loop quality scores. Deployment cut average ticket resolution time by 31% for the supported categories."
+      },
+      {
+        "company": "Aganitha",
+        "title": "Senior Data Scientist",
+        "start_date": "2023-10-26",
+        "end_date": "2025-01-18",
+        "duration_months": 15,
+        "is_current": false,
+        "industry": "AI/ML",
+        "company_size": "51-200",
+        "description": "Developed a semantic search feature for an internal knowledge base of ~500K documents. Used sentence-transformers (all-MiniLM-L6-v2 initially, later upgraded to bge-base) with FAISS for fast nearest-neighbor retrieval. Designed the query expansion module that handles vocabulary mismatch between user queries and document terms. Reported search-relevance improvement of 35% over the prior Elasticsearch BM25 setup, validated through human relevance judgments."
+      },
+      {
+        "company": "Observe.AI",
+        "title": "AI Engineer",
+        "start_date": "2020-10-11",
+        "end_date": "2023-10-26",
+        "duration_months": 37,
+        "is_current": false,
+        "industry": "AI/ML",
+        "company_size": "201-500",
+        "description": "Built a content recommendation system serving 10M+ users that combined collaborative filtering with content-based ranking. The system uses item-item similarity (via sentence-transformer embeddings) for cold starts and a gradient-boosted model trained on engagement signals for warm users. Most of my time went into the feature pipeline (~200 features) and the A/B testing infrastructure. The launch improved 7-day retention by 6% and time spent per session by 14%."
+      },
+      {
+        "company": "Ola",
+        "title": "Machine Learning Engineer",
+        "start_date": "2019-10-17",
+        "end_date": "2020-10-11",
+        "duration_months": 12,
+        "is_current": false,
+        "industry": "Transportation",
+        "company_size": "5001-10000",
+        "description": "Owned the ranking layer for an e-commerce search product, evolving it from a hand-tuned scoring function to a learning-to-rank model over 9 months. Designed the relevance labeling pipeline (mix of click-through data and explicit human judgments), the feature pipeline, and the training/eval workflow. Most of the work was infrastructure and data quality — the modeling part was almost the easy bit. Final model improved revenue-per-search by 12%."
+      }
+    ],
+    "education": [
+      {
+        "institution": "NIT Surathkal",
+        "degree": "M.E.",
+        "field_of_study": "Computer Engineering",
+        "start_year": 2010,
+        "end_year": 2013,
+        "grade": "7.34 CGPA",
+        "tier": "tier_1"
+      },
+      {
+        "institution": "Delhi College of Engineering",
+        "degree": "B.Tech",
+        "field_of_study": "Information Technology",
+        "start_year": 2018,
+        "end_year": 2021,
+        "grade": "7.62 CGPA",
+        "tier": "tier_2"
+      }
+    ],
+    "skills": [
+      {
+        "name": "Information Retrieval",
+        "proficiency": "expert",
+        "endorsements": 54,
+        "duration_months": 38
+      },
+      {
+        "name": "MLflow",
+        "proficiency": "advanced",
+        "endorsements": 54,
+        "duration_months": 57
+      },
+      {
+        "name": "FAISS",
+        "proficiency": "expert",
+        "endorsements": 21,
+        "duration_months": 96
+      },
+      {
+        "name": "RAG",
+        "proficiency": "advanced",
+        "endorsements": 1,
+        "duration_months": 52
+      },
+      {
+        "name": "Feature Engineering",
+        "proficiency": "intermediate",
+        "endorsements": 9,
+        "duration_months": 14
+      },
+      {
+        "name": "Data Science",
+        "proficiency": "advanced",
+        "endorsements": 59,
+        "duration_months": 22
+      },
+      {
+        "name": "LangChain",
+        "proficiency": "expert",
+        "endorsements": 16,
+        "duration_months": 53
+      },
+      {
+        "name": "SQL",
+        "proficiency": "intermediate",
+        "endorsements": 15,
+        "duration_months": 16
+      },
+      {
+        "name": "OpenSearch",
+        "proficiency": "expert",
+        "endorsements": 32,
+        "duration_months": 52
+      },
+      {
+        "name": "Embeddings",
+        "proficiency": "advanced",
+        "endorsements": 46,
+        "duration_months": 56
+      },
+      {
+        "name": "Prompt Engineering",
+        "proficiency": "advanced",
+        "endorsements": 19,
+        "duration_months": 25
+      },
+      {
+        "name": "Accounting",
+        "proficiency": "beginner",
+        "endorsements": 11,
+        "duration_months": 10
+      },
+      {
+        "name": "Vue.js",
+        "proficiency": "intermediate",
+        "endorsements": 13,
+        "duration_months": 10
+      },
+      {
+        "name": "Fine-tuning LLMs",
+        "proficiency": "expert",
+        "endorsements": 43,
+        "duration_months": 62
+      },
+      {
+        "name": "Milvus",
+        "proficiency": "expert",
+        "endorsements": 17,
+        "duration_months": 62
+      },
+      {
+        "name": "Deep Learning",
+        "proficiency": "expert",
+        "endorsements": 60,
+        "duration_months": 68
+      }
+    ],
+    "certifications": [],
+    "languages": [
+      {
+        "language": "English",
+        "proficiency": "professional"
+      },
+      {
+        "language": "Hindi",
+        "proficiency": "professional"
+      }
+    ],
+    "redrob_signals": {
+      "profile_completeness_score": 61.1,
+      "signup_date": "2025-03-13",
+      "last_active_date": "2026-03-28",
+      "open_to_work_flag": true,
+      "profile_views_received_30d": 283,
+      "applications_submitted_30d": 5,
+      "recruiter_response_rate": 0.72,
+      "avg_response_time_hours": 49.8,
+      "skill_assessment_scores": {
+        "Information Retrieval": 80.5,
+        "MLflow": 71.2,
+        "FAISS": 51.2,
+        "RAG": 87.1,
+        "Data Science": 64.7
+      },
+      "connection_count": 1183,
+      "endorsements_received": 28,
+      "notice_period_days": 60,
+      "expected_salary_range_inr_lpa": {
+        "min": 39.4,
+        "max": 57.1
+      },
+      "preferred_work_mode": "hybrid",
+      "willing_to_relocate": true,
+      "github_activity_score": 65.3,
+      "search_appearance_30d": 451,
+      "saved_by_recruiters_30d": 57,
+      "interview_completion_rate": 0.91,
+      "offer_acceptance_rate": 0.74,
+      "verified_email": true,
+      "verified_phone": true,
+      "linkedin_connected": true
+    },
+    "scores": {
+      "technical": 0.6881071123321124,
+      "hiring_manager": 0.73,
+      "culture_fit": 0.8999999999999999,
+      "recruiter_ops": 0.6554826942452788,
+      "logistics_education": 0.8512499999999998,
+      "persona_sum": 0.7499420378364255
+    },
+    "semantic_similarity_score": 0.4052009053039364,
+    "semantic_boost": 0.9942363892806926,
+    "final_score": 0.7456,
+    "hard_disqualifier_multiplier": 1.0,
+    "rank": 73,
+    "reasoning": "AI Engineer at CRED with 16.9 yrs, based in Sydney. Strengths: JD-aligned expertise in Information Retrieval (38mo, expert), MLflow (57mo, advanced), FAISS (96mo, expert); verified assessments (RAG: 87/100; Information Retrieval: 80/100); career trajectory: AI Engineer at CRED (16mo); Senior Data Scientist at Aganitha (15mo). Gaps: above target YoE (16.9yr)."
   },
   {
     "candidate_id": "CAND_0005649",
@@ -16322,16 +16395,17 @@
       "linkedin_connected": false
     },
     "scores": {
-      "technical": 0.6752882352941176,
+      "technical": 0.6750888888888888,
       "hiring_manager": 0.895,
       "culture_fit": 0.8999999999999999,
       "recruiter_ops": 0.5964493154956603,
       "logistics_education": 0.75,
-      "persona_sum": 0.7633038679125844
+      "persona_sum": 0.7632440639910157
     },
     "semantic_similarity_score": 0.3643734995754817,
     "semantic_boost": 0.9766806048174571,
-    "final_score": 0.7455,
+    "final_score": 0.7454,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 74,
     "reasoning": "Senior Data Scientist at Sarvam AI with 7.4 yrs, based in Delhi, Delhi. Strengths: JD-aligned expertise in Deep Learning (38mo, expert), TensorFlow (28mo, advanced), Fine-tuning LLMs (63mo, expert); career trajectory: Senior Data Scientist at Sarvam AI (18mo); Recommendation Systems Engineer at Aganitha (12mo); product-company background (AI/ML). Gaps: extended notice (90d); incomplete profile (58% filled)."
   },
@@ -16542,8 +16616,9 @@
     "semantic_similarity_score": 0.2722781450562295,
     "semantic_boost": 0.9370796023741786,
     "final_score": 0.745,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 75,
-    "reasoning": "Based in Noida, Uttar Pradesh, this candidate is a Data Scientist at Ola with 6.0 yrs of experience. Key strengths include: JD-aligned expertise in Fine-tuning LLMs (13mo, intermediate), Weights & Biases (48mo, advanced); career trajectory: Data Scientist at Ola (28mo); AI Research Engineer at Haptik (15mo); active GitHub (score: 74/100). Considerations: reliance on direct career track rather than certification badges."
+    "reasoning": "Based in Noida, Uttar Pradesh, this candidate is a Data Scientist at Ola with 6.0 yrs of experience. Key strengths include: JD-aligned expertise in Fine-tuning LLMs (13mo, intermediate), Weights & Biases (48mo, advanced); career trajectory: Data Scientist at Ola (28mo); AI Research Engineer at Haptik (15mo); active GitHub (score: 74/100)."
   },
   {
     "candidate_id": "CAND_0041669",
@@ -16789,8 +16864,9 @@
     "semantic_similarity_score": 0.40826583728722127,
     "semantic_boost": 0.9955543100335051,
     "final_score": 0.7449,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 76,
-    "reasoning": "A Recommendation Systems Engineer currently at CRED (8.0 yrs), located in Noida, Uttar Pradesh. Highlights: JD-aligned expertise in FAISS (38mo, advanced), Milvus (60mo, expert), PEFT (48mo, expert); verified assessments (FAISS: 84/100; Milvus: 76/100); career trajectory: Recommendation Systems Engineer at CRED (37mo); Search Engineer at Mad Street Den (52mo). Caveats: standard notice period required for transition."
+    "reasoning": "A Recommendation Systems Engineer currently at CRED (8.0 yrs), located in Noida, Uttar Pradesh. Highlights: JD-aligned expertise in FAISS (38mo, advanced), Milvus (60mo, expert), PEFT (48mo, expert); verified assessments (FAISS: 84/100; Milvus: 76/100); career trajectory: Recommendation Systems Engineer at CRED (37mo); Search Engineer at Mad Street Den (52mo)."
   },
   {
     "candidate_id": "CAND_0077285",
@@ -17014,8 +17090,9 @@
     "semantic_similarity_score": 0.3268284119370224,
     "semantic_boost": 0.9605362171329196,
     "final_score": 0.7449,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 77,
-    "reasoning": "A Recommendation Systems Engineer currently at Nykaa (5.5 yrs), located in Ahmedabad, Gujarat. Highlights: JD-aligned expertise in LoRA (48mo, expert), Pinecone (51mo, advanced), Sentence Transformers (66mo, expert); career trajectory: Recommendation Systems Engineer at Nykaa (42mo); Applied ML Engineer at Netflix (15mo); active GitHub (score: 76/100). Caveats: standard notice period required for transition."
+    "reasoning": "A Recommendation Systems Engineer currently at Nykaa (5.5 yrs), located in Ahmedabad, Gujarat. Highlights: JD-aligned expertise in LoRA (48mo, expert), Pinecone (51mo, advanced), Sentence Transformers (66mo, expert); career trajectory: Recommendation Systems Engineer at Nykaa (42mo); Applied ML Engineer at Netflix (15mo); active GitHub (score: 76/100)."
   },
   {
     "candidate_id": "CAND_0070202",
@@ -17234,6 +17311,7 @@
     "semantic_similarity_score": 0.41113719113564656,
     "semantic_boost": 0.996788992188328,
     "final_score": 0.7437,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 78,
     "reasoning": "A Machine Learning Engineer currently at BYJU'S (5.1 yrs), located in Jaipur, Rajasthan. Highlights: JD-aligned expertise in Embeddings (67mo, expert), LoRA (48mo, expert), Fine-tuning LLMs (49mo, expert); verified assessments (Object Detection: 89/100; Learning to Rank: 82/100); career trajectory: Machine Learning Engineer at BYJU'S (49mo); Search Engineer at Dream11 (12mo). Caveats: no public GitHub activity; extended notice (90d)."
   },
@@ -17468,8 +17546,9 @@
     "semantic_similarity_score": 0.27271261740154334,
     "semantic_boost": 0.9372664254826636,
     "final_score": 0.7432,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 79,
-    "reasoning": "A AI Engineer currently at upGrad (7.6 yrs), located in Indore, Madhya Pradesh. Highlights: JD-aligned expertise in Hugging Face Transformers (66mo, expert), PEFT (47mo, expert), QLoRA (48mo, expert); career trajectory: AI Engineer at upGrad (25mo); Machine Learning Engineer at Meesho (20mo); product-company background (EdTech). Caveats: requires hybrid relocation/travel coordination to Noida/Pune."
+    "reasoning": "A AI Engineer currently at upGrad (7.6 yrs), located in Indore, Madhya Pradesh. Highlights: JD-aligned expertise in Hugging Face Transformers (66mo, expert), PEFT (47mo, expert), QLoRA (48mo, expert); career trajectory: AI Engineer at upGrad (25mo); Machine Learning Engineer at Meesho (20mo); product-company background (EdTech)."
   },
   {
     "candidate_id": "CAND_0074735",
@@ -17720,6 +17799,7 @@
     "semantic_similarity_score": 0.2781634085757808,
     "semantic_boost": 0.9396102656875857,
     "final_score": 0.7427,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 80,
     "reasoning": "A Applied ML Engineer currently at Rephrase.ai (5.5 yrs), located in Chandigarh, Chandigarh. Highlights: JD-aligned expertise in RAG (60mo, expert), Machine Learning (65mo, expert), Weaviate (43mo, advanced); verified assessments (RAG: 68/100); career trajectory: Applied ML Engineer at Rephrase.ai (24mo); Search Engineer at Rephrase.ai (19mo). Caveats: extended notice (90d)."
   },
@@ -17935,6 +18015,7 @@
     "semantic_similarity_score": 0.2580453624462418,
     "semantic_boost": 0.9309595058518839,
     "final_score": 0.7426,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 81,
     "reasoning": "Based in Delhi, Delhi, this candidate is a AI Research Engineer at Yellow.ai with 6.0 yrs of experience. Key strengths include: JD-aligned expertise in PEFT (29mo, advanced), PyTorch (32mo, advanced), Computer Vision (41mo, advanced); verified assessments (TTS: 86/100; PyTorch: 85/100); career trajectory: AI Research Engineer at Yellow.ai (32mo); Data Scientist at Zomato (39mo). Considerations: no public GitHub activity."
   },
@@ -18160,6 +18241,7 @@
     "semantic_similarity_score": 0.3109260662065266,
     "semantic_boost": 0.9536982084688064,
     "final_score": 0.7416,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 82,
     "reasoning": "A Applied ML Engineer currently at Sarvam AI (6.6 yrs), located in Bhubaneswar, Odisha. Highlights: JD-aligned expertise in LoRA (48mo, expert), Computer Vision (13mo, intermediate), Recommendation Systems (75mo, expert); verified assessments (LoRA: 71/100); career trajectory: Applied ML Engineer at Sarvam AI (26mo); Machine Learning Engineer at Nykaa (13mo). Caveats: extended notice (90d)."
   },
@@ -18353,6 +18435,7 @@
     "semantic_similarity_score": 0.3735235017081449,
     "semantic_boost": 0.9806151057345023,
     "final_score": 0.7409,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 83,
     "reasoning": "Applied ML Engineer at PolicyBazaar with 4.7 yrs, based in Dubai. Strengths: JD-aligned expertise in PyTorch (38mo, expert), Sentence Transformers (91mo, expert), NLP (64mo, expert); verified assessments (PyTorch: 85/100; Diffusion Models: 79/100); career trajectory: Applied ML Engineer at PolicyBazaar (38mo); Search Engineer at Ola (18mo). Gaps: below target YoE (4.7 vs 5-9yr)."
   },
@@ -18550,8 +18633,9 @@
     "semantic_similarity_score": 0.31551518078972934,
     "semantic_boost": 0.9556715277395835,
     "final_score": 0.7401,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 84,
-    "reasoning": "Based in Bangalore, Karnataka, this candidate is a Machine Learning Engineer at Rephrase.ai with 6.9 yrs of experience. Key strengths include: JD-aligned expertise in LLMs (69mo, expert), Pinecone (60mo, expert), QLoRA (48mo, expert); verified assessments (Image Classification: 90/100; LLMs: 85/100); career trajectory: Machine Learning Engineer at Rephrase.ai (51mo); NLP Engineer at Meta (31mo). Considerations: reliance on direct career track rather than certification badges."
+    "reasoning": "Based in Bangalore, Karnataka, this candidate is a Machine Learning Engineer at Rephrase.ai with 6.9 yrs of experience. Key strengths include: JD-aligned expertise in LLMs (69mo, expert), Pinecone (60mo, expert), QLoRA (48mo, expert); verified assessments (Image Classification: 90/100; LLMs: 85/100); career trajectory: Machine Learning Engineer at Rephrase.ai (51mo); NLP Engineer at Meta (31mo)."
   },
   {
     "candidate_id": "CAND_0016163",
@@ -18772,6 +18856,7 @@
     "semantic_similarity_score": 0.27343491895329164,
     "semantic_boost": 0.9375770151499153,
     "final_score": 0.7399,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 85,
     "reasoning": "A Applied ML Engineer currently at Dream11 (6.7 yrs), located in Gurgaon, Haryana. Highlights: JD-aligned expertise in Hugging Face Transformers (41mo, advanced), Computer Vision (47mo, advanced), Weaviate (36mo, expert); verified assessments (Time Series: 89/100; Weaviate: 88/100); career trajectory: Applied ML Engineer at Dream11 (27mo); Applied ML Engineer at Verloop.io (40mo). Caveats: extended notice (120d)."
   },
@@ -18995,6 +19080,7 @@
     "semantic_similarity_score": 0.33890009747361166,
     "semantic_boost": 0.965727041913653,
     "final_score": 0.7399,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 86,
     "reasoning": "A Applied ML Engineer currently at Saarthi.ai (5.8 yrs), located in Jaipur, Rajasthan. Highlights: JD-aligned expertise in MLflow (35mo, advanced), Computer Vision (19mo, intermediate), Vector Search (41mo, advanced); verified assessments (MLflow: 87/100; TTS: 77/100); career trajectory: Applied ML Engineer at Saarthi.ai (40mo); Recommendation Systems Engineer at PolicyBazaar (19mo). Caveats: incomplete profile (53% filled)."
   },
@@ -19220,6 +19306,7 @@
     "semantic_similarity_score": 0.3298182592350421,
     "semantic_boost": 0.961821851471068,
     "final_score": 0.7394,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 87,
     "reasoning": "A NLP Engineer currently at Dream11 (7.7 yrs), located in Ahmedabad, Gujarat. Highlights: JD-aligned expertise in Embeddings (63mo, expert), Deep Learning (35mo, advanced), Information Retrieval (51mo, expert); career trajectory: NLP Engineer at Dream11 (14mo); Search Engineer at Genpact AI (33mo); active GitHub (score: 24/100). Caveats: extended notice (90d); incomplete profile (52% filled)."
   },
@@ -19418,16 +19505,17 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.5917974529346623,
+      "technical": 0.592004761904762,
       "hiring_manager": 0.8049999999999999,
       "culture_fit": 0.9999999999999999,
       "recruiter_ops": 0.6228638257097471,
       "logistics_education": 0.9075,
-      "persona_sum": 0.7583438097368609
+      "persona_sum": 0.7584060024278907
     },
     "semantic_similarity_score": 0.3585417372751291,
     "semantic_boost": 0.9741729470283055,
     "final_score": 0.7388,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 88,
     "reasoning": "Based in Trivandrum, Kerala, this candidate is a Applied ML Engineer at Freshworks with 5.2 yrs of experience. Key strengths include: JD-aligned expertise in FAISS (21mo, advanced), LLMs (28mo, advanced), Vector Search (43mo, expert); career trajectory: Applied ML Engineer at Freshworks (16mo); Search Engineer at Vedantu (28mo); product-company background (SaaS). Considerations: incomplete profile (51% filled)."
   },
@@ -19627,6 +19715,7 @@
     "semantic_similarity_score": 0.331093212619634,
     "semantic_boost": 0.9623700814264425,
     "final_score": 0.7388,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 89,
     "reasoning": "Machine Learning Engineer at Google with 4.9 yrs, based in Hyderabad, Telangana. Strengths: JD-aligned expertise in Recommendation Systems (48mo, expert), QLoRA (38mo, advanced), Weights & Biases (8mo, intermediate); verified assessments (scikit-learn: 84/100; Recommendation Systems: 69/100); career trajectory: Machine Learning Engineer at Google (36mo); Machine Learning Engineer at Swiggy (22mo). Gaps: no public GitHub activity; below target YoE (4.9 vs 5-9yr)."
   },
@@ -19871,6 +19960,7 @@
     "semantic_similarity_score": 0.40239655242856237,
     "semantic_boost": 0.9930305175442817,
     "final_score": 0.7378,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 90,
     "reasoning": "A Search Engineer currently at Verloop.io (4.2 yrs), located in Mumbai, Maharashtra. Highlights: JD-aligned expertise in PEFT (48mo, expert), Fine-tuning LLMs (53mo, expert), TensorFlow (83mo, expert); verified assessments (OpenCV: 84/100; TTS: 76/100); career trajectory: Search Engineer at Verloop.io (18mo); Machine Learning Engineer at Meesho (32mo). Caveats: below target YoE (4.2 vs 5-9yr)."
   },
@@ -20069,8 +20159,9 @@
     "semantic_similarity_score": 0.3624241331942855,
     "semantic_boost": 0.9758423772735427,
     "final_score": 0.7371,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 91,
-    "reasoning": "Recommendation Systems Engineer at Uber with 6.8 yrs, based in Coimbatore, Tamil Nadu. Strengths: JD-aligned expertise in Computer Vision (27mo, intermediate), Weaviate (44mo, expert), LangChain (81mo, expert); verified assessments (Elasticsearch: 90/100; LangChain: 65/100); career trajectory: Recommendation Systems Engineer at Uber (37mo); Machine Learning Engineer at Flipkart (44mo). Gaps: no recent public-facing research publications."
+    "reasoning": "Recommendation Systems Engineer at Uber with 6.8 yrs, based in Coimbatore, Tamil Nadu. Strengths: JD-aligned expertise in Computer Vision (27mo, intermediate), Weaviate (44mo, expert), LangChain (81mo, expert); verified assessments (Elasticsearch: 90/100; LangChain: 65/100); career trajectory: Recommendation Systems Engineer at Uber (37mo); Machine Learning Engineer at Flipkart (44mo)."
   },
   {
     "candidate_id": "CAND_0010685",
@@ -20287,16 +20378,17 @@
       "linkedin_connected": false
     },
     "scores": {
-      "technical": 0.5921613812544044,
+      "technical": 0.5912312661498708,
       "hiring_manager": 0.8049999999999999,
       "culture_fit": 0.9999999999999999,
       "recruiter_ops": 0.6538689989070748,
       "logistics_education": 0.822,
-      "persona_sum": 0.7502787642123825
+      "persona_sum": 0.7499997296810224
     },
     "semantic_similarity_score": 0.3772180446886692,
     "semantic_boost": 0.9822037592161277,
-    "final_score": 0.7369,
+    "final_score": 0.7367,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 92,
     "reasoning": "A NLP Engineer currently at Rephrase.ai (6.7 yrs), located in Kolkata, West Bengal. Highlights: JD-aligned expertise in Deep Learning (36mo, advanced), PyTorch (83mo, expert), Information Retrieval (41mo, expert); career trajectory: NLP Engineer at Rephrase.ai (18mo); NLP Engineer at Microsoft (28mo); product-company background (AI/ML). Caveats: no public GitHub activity."
   },
@@ -20511,6 +20603,7 @@
     "semantic_similarity_score": 0.403179697740827,
     "semantic_boost": 0.9933672700285556,
     "final_score": 0.735,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 93,
     "reasoning": "Search Engineer at Sarvam AI with 7.6 yrs, based in Gurgaon, Haryana. Strengths: JD-aligned expertise in PyTorch (36mo, expert), Milvus (58mo, advanced), Deep Learning (73mo, expert); verified assessments (Milvus: 76/100; PyTorch: 72/100); career trajectory: Search Engineer at Sarvam AI (31mo); Machine Learning Engineer at Aganitha (24mo). Gaps: incomplete profile (54% filled)."
   },
@@ -20731,8 +20824,9 @@
     "semantic_similarity_score": 0.29171792022015164,
     "semantic_boost": 0.9454387056946651,
     "final_score": 0.735,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 94,
-    "reasoning": "A AI Research Engineer currently at PhonePe (6.0 yrs), located in Chennai, Tamil Nadu. Highlights: JD-aligned expertise in Fine-tuning LLMs (9mo, intermediate), NLP (53mo, advanced), LoRA (10mo, intermediate); career trajectory: AI Research Engineer at PhonePe (37mo); AI Specialist at PolicyBazaar (14mo); product-company background (Fintech). Caveats: standard notice period required for transition."
+    "reasoning": "A AI Research Engineer currently at PhonePe (6.0 yrs), located in Chennai, Tamil Nadu. Highlights: JD-aligned expertise in Fine-tuning LLMs (9mo, intermediate), NLP (53mo, advanced), LoRA (10mo, intermediate); career trajectory: AI Research Engineer at PhonePe (37mo); AI Specialist at PolicyBazaar (14mo); product-company background (Fintech)."
   },
   {
     "candidate_id": "CAND_0093547",
@@ -20971,16 +21065,17 @@
       "linkedin_connected": true
     },
     "scores": {
-      "technical": 0.7148000000000001,
+      "technical": 0.7143509803921569,
       "hiring_manager": 0.59,
       "culture_fit": 0.8999999999999999,
       "recruiter_ops": 0.6734074848608308,
       "logistics_education": 0.8109999999999999,
-      "persona_sum": 0.7196011227291247
+      "persona_sum": 0.7194664168467717
     },
     "semantic_similarity_score": 0.46743416095412466,
     "semantic_boost": 1.0209966892102735,
-    "final_score": 0.7347,
+    "final_score": 0.7346,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 95,
     "reasoning": "Based in Coimbatore, Tamil Nadu, this candidate is a Senior Machine Learning Engineer at PhonePe with 2.9 yrs of experience. Key strengths include: JD-aligned expertise in LLMs (42mo, expert), RAG (60mo, expert), QLoRA (48mo, advanced); verified assessments (RAG: 97/100; LLMs: 68/100); career trajectory: Senior Machine Learning Engineer at PhonePe (22mo); Senior Machine Learning Engineer at Sarvam AI (43mo). Considerations: below target YoE (2.9 vs 5-9yr)."
   },
@@ -21191,8 +21286,9 @@
     "semantic_similarity_score": 0.31807615598034444,
     "semantic_boost": 0.956772747071548,
     "final_score": 0.7342,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 96,
-    "reasoning": "A Recommendation Systems Engineer currently at Nykaa (7.7 yrs), located in Bangalore, Karnataka. Highlights: JD-aligned expertise in QLoRA (48mo, expert), Hugging Face Transformers (36mo, expert), Machine Learning (28mo, advanced); career trajectory: Recommendation Systems Engineer at Nykaa (54mo); NLP Engineer at Wysa (21mo); active GitHub (score: 92/100). Caveats: requires hybrid relocation/travel coordination to Noida/Pune."
+    "reasoning": "A Recommendation Systems Engineer currently at Nykaa (7.7 yrs), located in Bangalore, Karnataka. Highlights: JD-aligned expertise in QLoRA (48mo, expert), Hugging Face Transformers (36mo, expert), Machine Learning (28mo, advanced); career trajectory: Recommendation Systems Engineer at Nykaa (54mo); NLP Engineer at Wysa (21mo); active GitHub (score: 92/100)."
   },
   {
     "candidate_id": "CAND_0065878",
@@ -21420,6 +21516,7 @@
     "semantic_similarity_score": 0.3172160590509945,
     "semantic_boost": 0.9564029053919276,
     "final_score": 0.7336,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 97,
     "reasoning": "Based in Trivandrum, Kerala, this candidate is a Senior Data Scientist at Niramai with 7.8 yrs of experience. Key strengths include: JD-aligned expertise in RAG (44mo, advanced), Computer Vision (16mo, intermediate), QLoRA (48mo, expert); verified assessments (scikit-learn: 71/100; pgvector: 70/100); career trajectory: Senior Data Scientist at Niramai (24mo); NLP Engineer at Uber (20mo). Considerations: no public GitHub activity."
   },
@@ -21667,6 +21764,7 @@
     "semantic_similarity_score": 0.31724302747932487,
     "semantic_boost": 0.9564145018161097,
     "final_score": 0.7332,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 98,
     "reasoning": "A Applied ML Engineer currently at Freshworks (6.0 yrs), located in Kolkata, West Bengal. Highlights: JD-aligned expertise in FAISS (31mo, advanced), Weights & Biases (59mo, advanced), Machine Learning (51mo, advanced); verified assessments (FAISS: 81/100; Qdrant: 61/100); career trajectory: Applied ML Engineer at Freshworks (38mo); AI Engineer at Yellow.ai (24mo). Caveats: extended notice (90d)."
   },
@@ -21890,8 +21988,9 @@
     "semantic_similarity_score": 0.36604290928813465,
     "semantic_boost": 0.9773984509938979,
     "final_score": 0.7327,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 99,
-    "reasoning": "A Recommendation Systems Engineer currently at Amazon (6.5 yrs), located in Pune, Maharashtra. Highlights: JD-aligned expertise in LoRA (48mo, advanced), QLoRA (48mo, expert), Recommendation Systems (34mo, advanced); verified assessments (LoRA: 85/100; OpenSearch: 66/100); career trajectory: Recommendation Systems Engineer at Amazon (52mo); Senior Data Scientist at Observe.AI (25mo). Caveats: requires hybrid relocation/travel coordination to Noida/Pune."
+    "reasoning": "A Recommendation Systems Engineer currently at Amazon (6.5 yrs), located in Pune, Maharashtra. Highlights: JD-aligned expertise in LoRA (48mo, advanced), QLoRA (48mo, expert), Recommendation Systems (34mo, advanced); verified assessments (LoRA: 85/100; OpenSearch: 66/100); career trajectory: Recommendation Systems Engineer at Amazon (52mo); Senior Data Scientist at Observe.AI (25mo)."
   },
   {
     "candidate_id": "CAND_0061655",
@@ -22102,6 +22201,7 @@
     "semantic_similarity_score": 0.3192719686416644,
     "semantic_boost": 0.9572869465159156,
     "final_score": 0.7312,
+    "hard_disqualifier_multiplier": 1.0,
     "rank": 100,
     "reasoning": "A Machine Learning Engineer currently at Krutrim (4.6 yrs), located in Jaipur, Rajasthan. Highlights: JD-aligned expertise in PEFT (48mo, expert), Pinecone (60mo, expert), Machine Learning (78mo, expert); career trajectory: Machine Learning Engineer at Krutrim (43mo); Recommendation Systems Engineer at Google (11mo); product-company background (AI/ML). Caveats: below target YoE (4.6 vs 5-9yr)."
   }

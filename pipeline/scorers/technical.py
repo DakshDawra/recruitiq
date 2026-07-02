@@ -65,6 +65,12 @@ def calculate_technical_score(candidate):
         for req in REQUIRED_SKILLS:
             if req in desc:
                 skill_job_durations[req] = skill_job_durations.get(req, 0.0) + dur
+                
+    # Apply technology limits (cannot have more experience than the tech has existed)
+    if 'rag' in skill_job_durations:
+        skill_job_durations['rag'] = min(skill_job_durations['rag'], 60.0)
+    if 'peft' in skill_job_durations:
+        skill_job_durations['peft'] = min(skill_job_durations['peft'], 48.0)
         
     # 3. Score each skill listed in the profile
     proven_skills_scores = []
@@ -91,6 +97,12 @@ def calculate_technical_score(candidate):
             if matched_req in skill_job_durations:
                 job_dur_sum = skill_job_durations[matched_req]
                 claimed_dur = float(s.get('duration_months', 0))
+                
+                if matched_req == 'rag' or 'rag' in name:
+                    claimed_dur = min(claimed_dur, 60.0)
+                if matched_req == 'peft' or 'peft' in name:
+                    claimed_dur = min(claimed_dur, 48.0)
+                    
                 if claimed_dur > 0:
                     ratio = min(job_dur_sum / claimed_dur, 1.0)
                     # Downscale in_desc if the career history doesn't support the claimed duration
@@ -107,6 +119,10 @@ def calculate_technical_score(candidate):
                 
         endorsements = float(s.get('endorsements', 0))
         duration = float(s.get('duration_months', 0))
+        if matched_req == 'rag' or 'rag' in name:
+            duration = min(duration, 60.0)
+        if matched_req == 'peft' or 'peft' in name:
+            duration = min(duration, 48.0)
         proficiency = str(s.get('proficiency', '')).lower()
         
         # Proficiency multiplier (differentiates expert vs intermediate)

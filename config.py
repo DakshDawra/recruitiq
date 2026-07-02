@@ -1,4 +1,5 @@
 import os
+import datetime
 
 # Base paths — use relative paths so it works on any machine
 WORKSPACE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -15,6 +16,9 @@ elif os.path.exists(os.path.join(WORKSPACE_DIR, "candidates.jsonl")):
     CANDIDATES_FILE = os.path.join(WORKSPACE_DIR, "candidates.jsonl")
 else:
     CANDIDATES_FILE = "candidates.jsonl"
+
+# Hackathon dataset reference date (used for all recency/age calculations)
+REFERENCE_DATE = datetime.datetime(2026, 6, 9)
 
 # JD Specific Requirements (extracted from job_description.docx)
 REQUIRED_SKILLS = {

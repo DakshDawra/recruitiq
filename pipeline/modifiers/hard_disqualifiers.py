@@ -1,3 +1,5 @@
+from config import CONSULTING_COMPANIES
+
 def get_hard_disqualifier_multiplier(candidate, jd_disqualifiers=None):
     """
     Evaluates narrative JD disqualifiers. 
@@ -13,7 +15,7 @@ def get_hard_disqualifier_multiplier(candidate, jd_disqualifiers=None):
     
     # 1. Pure Consulting-Only
     # Check if ALL career entries belong to companies in a predefined/dynamic consulting blacklist
-    consulting_blacklist = {'tcs', 'infosys', 'wipro', 'accenture', 'cognizant', 'capgemini', 'tech mahindra', 'hcl'}
+    consulting_blacklist = set(CONSULTING_COMPANIES)
     if jd_disqualifiers and 'consulting_only' in jd_disqualifiers:
         consulting_blacklist = consulting_blacklist.union(set(jd_disqualifiers['consulting_only']))
         

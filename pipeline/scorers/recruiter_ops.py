@@ -1,13 +1,6 @@
-import datetime
 import math
-
-def parse_date(date_str):
-    if not date_str:
-        return None
-    try:
-        return datetime.datetime.strptime(date_str, "%Y-%m-%d")
-    except ValueError:
-        return None
+from config import REFERENCE_DATE
+from pipeline.utils import parse_date
 
 def calculate_recruiter_ops_score(candidate):
     """
@@ -19,7 +12,7 @@ def calculate_recruiter_ops_score(candidate):
     signals = candidate.get('redrob_signals', {})
     
     # 1. Platform Activity Factor (Exponential decay based on last login)
-    ref_date = datetime.datetime(2026, 6, 9) # Hackathon dataset reference date
+    ref_date = REFERENCE_DATE
     last_active_str = signals.get('last_active_date')
     last_active = parse_date(last_active_str)
     
