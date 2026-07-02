@@ -87,17 +87,19 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
     font-size: 11px !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
-    display: inline-block;
+    display: inline-block !important;
+    white-space: nowrap !important;
 }
 .badge-lilac {
-    background-color: #EBE3FF !important;
-    color: #4338CA !important;
+    background-color: #F3E8FF !important;
+    color: #6B21A8 !important;
     padding: 4px 12px !important;
     border-radius: 9999px !important;
     font-size: 11px !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
-    display: inline-block;
+    display: inline-block !important;
+    white-space: nowrap !important;
 }
 .badge-mint {
     background-color: #D1FADF !important;
@@ -107,7 +109,8 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
     font-size: 11px !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
-    display: inline-block;
+    display: inline-block !important;
+    white-space: nowrap !important;
 }
 .badge-indigo {
     background-color: #E0E7FF !important;
@@ -117,7 +120,8 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
     font-size: 11px !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
-    display: inline-block;
+    display: inline-block !important;
+    white-space: nowrap !important;
 }
 .stat-card {
     background-color: #FFFFFF;
@@ -865,7 +869,7 @@ if nav_page == "📋 Intelligence Dashboard":
                 border_color = "#4F46E5" if is_selected else "transparent"
                 
                 # Row Container
-                row_col1, row_col2, row_col3 = st.columns([3.6, 1.8, 1.6])
+                row_col1, row_col2, row_col3 = st.columns([3.6, 2.2, 1.2])
                 
                 with row_col1:
                     # Render avatar initial & details
