@@ -852,9 +852,9 @@ if nav_page == "📋 Intelligence Dashboard":
                 rank_val = c.get('rank') or (idx + 1)
                 if rank_val <= 3:
                     tag_html = '<span class="badge-peach">Perfect Fit</span>'
-                elif c.get('semantic_boost', 1.0) > 1.10 and rank_val <= 50:
+                elif c.get('semantic_boost', 1.0) > 1.025 and rank_val <= 50:
                     tag_html = '<span class="badge-lilac">Hidden Gem</span>'
-                elif c.get('scores', {}).get('technical', 0) > 0.75:
+                elif c.get('scores', {}).get('technical', 0) > 0.68:
                     tag_html = '<span class="badge-indigo">Tech Star</span>'
                 else:
                     tag_html = '<span class="badge-mint">Behavioral Match</span>'
